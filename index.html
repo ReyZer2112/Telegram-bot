@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0f172a">
 
 <title>ReyZer — Portfolio</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
 <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 :root {
@@ -51,12 +51,15 @@ html {
 body {
     min-height: 100vh;
     background:
-        radial-gradient(circle at top left,
-        rgba(99,102,241,.15),
-        transparent 35%),
+        radial-gradient(
+            circle at top left,
+            rgba(99,102,241,.15),
+            transparent 35%
+        ),
         var(--bg);
 
     color: var(--text);
+
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -87,7 +90,7 @@ button {
     margin: auto;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 .header {
     display: flex;
@@ -107,6 +110,7 @@ button {
 .brand-icon {
     width: 34px;
     height: 34px;
+
     border-radius: 11px;
 
     display: grid;
@@ -115,11 +119,14 @@ button {
     color: white;
 
     background:
-        linear-gradient(135deg,
-        var(--accent),
-        #8b5cf6);
+        linear-gradient(
+            135deg,
+            var(--accent),
+            #8b5cf6
+        );
 
-    box-shadow: 0 8px 20px rgba(99,102,241,.3);
+    box-shadow:
+        0 8px 20px rgba(99,102,241,.3);
 }
 
 .header-actions {
@@ -132,6 +139,7 @@ button {
     height: 38px;
 
     border-radius: 12px;
+
     border: 1px solid var(--border);
 
     background: var(--card);
@@ -141,16 +149,17 @@ button {
     place-items: center;
 
     cursor: pointer;
+
     box-shadow: var(--shadow);
 
-    transition: transform .2s, background .2s;
+    transition: transform .2s;
 }
 
 .icon-btn:active {
     transform: scale(.92);
 }
 
-/* ================= PROFILE ================= */
+/* PROFILE */
 
 .profile {
     position: relative;
@@ -176,22 +185,6 @@ button {
     overflow: hidden;
 
     animation: fadeUp .5s ease;
-}
-
-.profile::before {
-    content: "";
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    background: var(--accent);
-    opacity: .07;
-
-    border-radius: 50%;
-
-    top: -90px;
-    right: -60px;
 }
 
 .avatar-wrap {
@@ -237,8 +230,6 @@ button {
 .profile h1 {
     font-size: 27px;
     font-weight: 800;
-
-    letter-spacing: -.5px;
 }
 
 .profile-role {
@@ -261,7 +252,7 @@ button {
     margin: 9px auto 0;
 }
 
-/* ================= STATS ================= */
+/* STATS */
 
 .stats {
     display: grid;
@@ -270,6 +261,7 @@ button {
     margin-top: 19px;
 
     border-top: 1px solid var(--border);
+
     padding-top: 16px;
 }
 
@@ -292,7 +284,7 @@ button {
     font-size: 11px;
 }
 
-/* ================= TABS ================= */
+/* TABS */
 
 .tabs {
     display: grid;
@@ -301,6 +293,7 @@ button {
     padding: 5px;
 
     background: var(--card);
+
     border: 1px solid var(--border);
 
     border-radius: 17px;
@@ -316,6 +309,7 @@ button {
     border-radius: 12px;
 
     background: transparent;
+
     color: var(--muted);
 
     cursor: pointer;
@@ -329,16 +323,15 @@ button {
 .tab.active {
     background: var(--accent);
     color: white;
-
-    box-shadow: 0 5px 15px rgba(99,102,241,.25);
 }
 
-/* ================= SECTIONS ================= */
+/* SECTIONS */
 
 .section {
     display: none;
 
     flex-direction: column;
+
     gap: 11px;
 
     animation: fadeUp .3s ease;
@@ -383,14 +376,10 @@ button {
     line-height: 1.65;
 }
 
-/* ================= SKILLS ================= */
+/* SKILLS */
 
 .skill {
     margin-top: 15px;
-}
-
-.skill:first-child {
-    margin-top: 10px;
 }
 
 .skill-head {
@@ -422,8 +411,6 @@ button {
 
     height: 100%;
 
-    width: 0;
-
     background:
         linear-gradient(
             90deg,
@@ -432,11 +419,9 @@ button {
         );
 
     border-radius: inherit;
-
-    animation: progress .9s ease forwards;
 }
 
-/* ================= PROJECTS ================= */
+/* PROJECTS */
 
 .project {
     padding: 15px;
@@ -448,12 +433,6 @@ button {
     border-radius: 16px;
 
     margin-top: 10px;
-
-    transition: transform .2s, border .2s;
-}
-
-.project:active {
-    transform: scale(.98);
 }
 
 .project-top {
@@ -526,10 +505,11 @@ button {
     font-weight: 700;
 }
 
-/* ================= SOCIAL ================= */
+/* SOCIAL */
 
 .socials {
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
 
     gap: 8px;
@@ -566,7 +546,7 @@ button {
     transform: scale(.96);
 }
 
-/* ================= BOTTOM NAV ================= */
+/* BOTTOM NAV */
 
 .bottom-nav {
     position: fixed;
@@ -581,15 +561,14 @@ button {
     width: min(92%, 500px);
 
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
 
     padding: 6px;
 
-    background:
-        rgba(30,41,59,.88);
+    background: rgba(30,41,59,.88);
 
     backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
 
     border: 1px solid var(--border);
 
@@ -631,8 +610,6 @@ button {
     background: rgba(99,102,241,.1);
 }
 
-/* ================= FOOTER ================= */
-
 .footer {
     text-align: center;
 
@@ -643,9 +620,8 @@ button {
     margin-top: 18px;
 }
 
-/* ================= ANIMATIONS ================= */
-
 @keyframes fadeUp {
+
     from {
         opacity: 0;
         transform: translateY(10px);
@@ -655,33 +631,20 @@ button {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
-@keyframes progress {
-    from {
-        width: 0;
-    }
-}
+@media(max-width:360px) {
 
-/* ================= MOBILE ================= */
-
-@media (max-width: 360px) {
     body {
         padding-left: 10px;
         padding-right: 10px;
-    }
-
-    .profile {
-        padding: 23px 13px;
     }
 
     .profile h1 {
         font-size: 24px;
     }
 
-    .tab {
-        font-size: 11px;
-    }
 }
 </style>
 </head>
@@ -690,477 +653,545 @@ button {
 
 <div class="container">
 
-    <!-- HEADER -->
+<!-- HEADER -->
 
-    <header class="header">
+<header class="header">
 
-        <div class="brand">
-            <div class="brand-icon">
-                <i class="fa-solid fa-bolt"></i>
-            </div>
+    <div class="brand">
 
-            <span>ReyZer</span>
+        <div class="brand-icon">
+            <i class="fa-solid fa-bolt"></i>
         </div>
 
-        <div class="header-actions">
+        <span>ReyZer</span>
 
-            <button
-                class="icon-btn"
-                id="themeBtn"
-                onclick="toggleTheme()"
-                aria-label="Theme">
+    </div>
 
-                <i class="fa-solid fa-sun"></i>
+    <div class="header-actions">
 
-            </button>
+        <button
+            class="icon-btn"
+            id="themeBtn"
+            onclick="toggleTheme()">
 
-            <button
-                class="icon-btn"
-                onclick="changeLanguage()"
-                aria-label="Language">
+            <i class="fa-solid fa-sun"></i>
 
-                <span id="languageButton">UZ</span>
+        </button>
 
-            </button>
+        <button
+            class="icon-btn"
+            onclick="changeLanguage()">
+
+            <span id="languageButton">UZ</span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- PROFILE -->
+
+<section class="profile">
+
+    <div class="avatar-wrap">
+
+        <img
+            class="avatar"
+            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=300"
+            alt="ReyZer">
+
+        <span class="online"></span>
+
+    </div>
+
+    <h1>ReyZer</h1>
+
+    <div
+        class="profile-role"
+        id="profileRole">
+        Frontend & Backend Developer
+    </div>
+
+    <p
+        class="profile-bio"
+        id="profileBio">
+        Developer, creator va kreativ loyihalar ishqibozi.
+        G'oyalarni real loyihalarga aylantiraman.
+    </p>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <strong>10+</strong>
+
+            <span id="statProjects">
+                Loyihalar
+            </span>
 
         </div>
 
-    </header>
 
+        <div class="stat">
 
-    <!-- PROFILE -->
+            <strong id="gifViewsNumber">
+                3 mlrd+
+            </strong>
 
-    <section class="profile">
-
-        <div class="avatar-wrap">
-
-            <img
-                class="avatar"
-                id="profileImage"
-                src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=300"
-                alt="ReyZer">
-
-            <span class="online"></span>
+            <span id="statViews">
+                GIF Ko'rishlar
+            </span>
 
         </div>
 
-        <h1>ReyZer</h1>
 
-        <div
-            class="profile-role"
-            id="profileRole">
+        <div class="stat">
 
-            Frontend & Backend Developer
+            <strong>5+</strong>
+
+            <span id="statSkills">
+                Ko'nikmalar
+            </span>
 
         </div>
 
-        <p
-            class="profile-bio"
-            id="profileBio">
+    </div>
 
-            Developer, creator va kreativ loyihalar ishqibozi.
-            G'oyalarni real loyihalarga aylantiraman.
+</section>
 
+
+<!-- TOP TABS -->
+
+<div class="tabs">
+
+    <button
+        class="tab active"
+        data-tab="info"
+        onclick="switchTab('info')">
+
+        <i class="fa-solid fa-user"></i>
+        <span id="tabInfo">Info</span>
+
+    </button>
+
+
+    <button
+        class="tab"
+        data-tab="skills"
+        onclick="switchTab('skills')">
+
+        <i class="fa-solid fa-code"></i>
+        <span id="tabSkills">Ko'nikmalar</span>
+
+    </button>
+
+
+    <button
+        class="tab"
+        data-tab="projects"
+        onclick="switchTab('projects')">
+
+        <i class="fa-solid fa-folder"></i>
+        <span id="tabProjects">Loyihalar</span>
+
+    </button>
+
+</div>
+
+
+<!-- INFO -->
+
+<section
+    id="info"
+    class="section active">
+
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <i class="fa-solid fa-laptop-code"></i>
+
+            <span id="infoTitle1">
+                Frontend & Backend
+            </span>
+
+        </div>
+
+        <p id="infoText1">
+            Zamonaviy va interaktiv web-loyihalar
+            yaratishga qiziqaman. Frontend va backend
+            yo'nalishlarida ishlayman.
         </p>
 
-
-        <!-- STATS -->
-
-        <div class="stats">
-
-            <div class="stat">
-                <strong>10+</strong>
-                <span id="statProjects">Projects</span>
-            </div>
-
-            <div class="stat">
-                <strong>3B+</strong>
-                <span id="statViews">GIF Views</span>
-            </div>
-
-            <div class="stat">
-                <strong>5+</strong>
-                <span id="statSkills">Skills</span>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TABS -->
-
-    <div class="tabs">
-
-        <button
-            class="tab active"
-            data-tab="info"
-            onclick="switchTab('info')">
-
-            <i class="fa-solid fa-user"></i>
-            <span id="tabInfo">Info</span>
-
-        </button>
-
-        <button
-            class="tab"
-            data-tab="skills"
-            onclick="switchTab('skills')">
-
-            <i class="fa-solid fa-code"></i>
-            <span id="tabSkills">Skills</span>
-
-        </button>
-
-        <button
-            class="tab"
-            data-tab="projects"
-            onclick="switchTab('projects')">
-
-            <i class="fa-solid fa-folder"></i>
-            <span id="tabProjects">Projects</span>
-
-        </button>
-
     </div>
 
 
-    <!-- ================= INFO ================= -->
+    <div class="card">
 
-    <section
-        id="info"
-        class="section active">
-
-        <div class="card">
-
-            <div class="card-title">
-
-                <i class="fa-solid fa-laptop-code"></i>
-
-                <span id="infoTitle1">
-                    Frontend & Backend
-                </span>
-
-            </div>
-
-            <p id="infoText1">
-                Zamonaviy va interaktiv web-loyihalar
-                yaratishga qiziqaman. Frontend va backend
-                yo'nalishlarida ishlayman.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-title">
-
-                <i class="fa-solid fa-gamepad"></i>
-
-                <span id="infoTitle2">
-                    Gaming & Creation
-                </span>
-
-            </div>
-
-            <p id="infoText2">
-                Roblox va Minecraft kabi platformalarga
-                qiziqaman hamda kreativ game loyihalar
-                yaratishni yoqtiraman.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-title">
-
-                <i class="fa-solid fa-photo-film"></i>
-
-                <span id="infoTitle3">
-                    GIF Creator
-                </span>
-
-            </div>
-
-            <p id="infoText3">
-                Instagram uchun kreativ GIF animatsiyalar
-                yarataman va vizual kontent bilan ishlayman.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-title">
-
-                <i class="fa-solid fa-bullseye"></i>
-
-                <span id="infoTitle4">
-                    My Goal
-                </span>
-
-            </div>
-
-            <p id="infoText4">
-                IT va kreativ yo'nalishlarni birlashtirib,
-                katta va innovatsion loyihalar yaratish.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= SKILLS ================= -->
-
-    <section
-        id="skills"
-        class="section">
-
-        <div class="card">
-
-            <div class="card-title">
-
-                <i class="fa-solid fa-code"></i>
-
-                <span id="skillsTitle">
-                    My Skills
-                </span>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-                    <span>HTML</span>
-                    <span>90%</span>
-                </div>
-
-                <div class="progress">
-                    <span style="width:90%"></span>
-                </div>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-                    <span>CSS</span>
-                    <span>85%</span>
-                </div>
-
-                <div class="progress">
-                    <span style="width:85%"></span>
-                </div>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-                    <span>JavaScript</span>
-                    <span>80%</span>
-                </div>
-
-                <div class="progress">
-                    <span style="width:80%"></span>
-                </div>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-                    <span>Branding</span>
-                    <span>88%</span>
-                </div>
-
-                <div class="progress">
-                    <span style="width:88%"></span>
-                </div>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-                    <span>UI / UX</span>
-                    <span>75%</span>
-                </div>
-
-                <div class="progress">
-                    <span style="width:75%"></span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= PROJECTS ================= -->
-
-    <section
-        id="projects"
-        class="section">
-
-        <div class="card">
-
-            <div class="card-title">
-
-                <i class="fa-solid fa-fire"></i>
-
-                <span id="projectsTitle">
-                    Main Projects
-                </span>
-
-            </div>
-
-
-            <!-- PROJECT 1 -->
-
-            <div class="project">
-
-                <div class="project-top">
-
-                    <div class="project-icon">
-                        <i class="fa-brands fa-telegram"></i>
-                    </div>
-
-                    <div class="project-info">
-
-                        <h4>
-                            ReyZer Portfolio
-                        </h4>
-
-                        <span>
-                            Telegram Mini App
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <p>
-                    Telegram ichida ishlaydigan zamonaviy
-                    shaxsiy portfolio Mini App.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Telegram API</span>
-
-                </div>
-
-            </div>
-
-
-            <!-- PROJECT 2 -->
-
-            <div class="project">
-
-                <div class="project-top">
-
-                    <div class="project-icon">
-                        <i class="fa-solid fa-film"></i>
-                    </div>
-
-                    <div class="project-info">
-
-                        <h4>
-                            GIF Creator Studio
-                        </h4>
-
-                        <span>
-                            Creative Project
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <p>
-                    Kreativ GIF animatsiyalar va visual
-                    kontent yaratish loyihasi.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">GIF</span>
-                    <span class="tag">Design</span>
-                    <span class="tag">Animation</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SOCIAL -->
-
-    <div class="socials">
-
-        <a
-            class="social"
-            href="https://instagram.com"
-            target="_blank"
-            onclick="haptic()">
-
-            <i class="fa-brands fa-instagram"></i>
-            Instagram
-
-        </a>
-
-        <a
-            class="social"
-            href="https://t.me"
-            target="_blank"
-            onclick="haptic()">
-
-            <i class="fa-brands fa-telegram"></i>
-            Telegram
-
-        </a>
-
-        <a
-            class="social"
-            href="https://youtube.com"
-            target="_blank"
-            onclick="haptic()">
-
-            <i class="fa-brands fa-youtube"></i>
-            YouTube
-
-        </a>
-
-        <a
-            class="social"
-            href="https://roblox.com"
-            target="_blank"
-            onclick="haptic()">
+        <div class="card-title">
 
             <i class="fa-solid fa-gamepad"></i>
-            Roblox
 
-        </a>
+            <span id="infoTitle2">
+                Gaming & Creation
+            </span>
+
+        </div>
+
+        <p id="infoText2">
+            Roblox va Minecraft kabi platformalarga
+            qiziqaman hamda kreativ game loyihalar
+            yaratishni yoqtiraman.
+        </p>
 
     </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <i class="fa-solid fa-photo-film"></i>
+
+            <span id="infoTitle3">
+                GIF Creator
+            </span>
+
+        </div>
+
+        <p id="infoText3">
+            Instagram uchun kreativ GIF animatsiyalar
+            yarataman va vizual kontent bilan ishlayman.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <i class="fa-solid fa-camera"></i>
+
+            <span id="infoTitle4">
+                Mobilografiya
+            </span>
+
+        </div>
+
+        <p id="infoText4">
+            Mobil fotografiya, video va kreativ vizual
+            kontent yaratishga qiziqaman.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <i class="fa-solid fa-bullseye"></i>
+
+            <span id="infoTitle5">
+                Maqsadim
+            </span>
+
+        </div>
+
+        <p id="infoText5">
+            IT va kreativ yo'nalishlarni birlashtirib,
+            katta va innovatsion loyihalar yaratish.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section
+    id="skills"
+    class="section">
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <i class="fa-solid fa-code"></i>
+
+            <span id="skillsTitle">
+                Ko'nikmalarim
+            </span>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-head">
+                <span>HTML</span>
+                <span>90%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:90%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-head">
+                <span>CSS</span>
+                <span>85%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:85%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-head">
+                <span>JavaScript</span>
+                <span>80%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:80%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-head">
+                <span>Telegram Mini Apps</span>
+                <span>80%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:80%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-head">
+                <span>UI / UX</span>
+                <span>75%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:75%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-head">
+                <span>GIF / Animation</span>
+                <span>99%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:99%"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section
+    id="projects"
+    class="section">
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <i class="fa-solid fa-fire"></i>
+
+            <span id="projectsTitle">
+                Asosiy loyihalar
+            </span>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-top">
+
+                <div class="project-icon">
+                    <i class="fa-brands fa-telegram"></i>
+                </div>
+
+                <div class="project-info">
+
+                    <h4>
+                        ReyZer Portfolio
+                    </h4>
+
+                    <span id="project1Type">
+                        Telegram Mini App
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p id="project1Text">
+                Telegram ichida ishlaydigan zamonaviy
+                shaxsiy portfolio Mini App.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Telegram API</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-top">
+
+                <div class="project-icon">
+                    <i class="fa-solid fa-film"></i>
+                </div>
+
+                <div class="project-info">
+
+                    <h4>
+                        GIF Creator Studio
+                    </h4>
+
+                    <span id="project2Type">
+                        Creative Project
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p id="project2Text">
+                Kreativ GIF animatsiyalar va vizual
+                kontent yaratish loyihasi.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">GIF</span>
+                <span class="tag">Design</span>
+                <span class="tag">Animation</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SOCIAL LINKS -->
+
+<div class="socials">
+
+    <a
+        class="social"
+        href="https://instagram.com/reyzer2112"
+        target="_blank">
+
+        <i class="fa-brands fa-instagram"></i>
+        Instagram
+
+    </a>
+
+
+    <a
+        class="social"
+        href="https://t.me/reyzer2112"
+        target="_blank">
+
+        <i class="fa-brands fa-telegram"></i>
+        Telegram
+
+    </a>
+
+
+    <a
+        class="social"
+        href="https://www.youtube.com/@reyzer2112"
+        target="_blank">
+
+        <i class="fa-brands fa-youtube"></i>
+        YouTube
+
+    </a>
+
+
+    <a
+        class="social"
+        href="https://www.roblox.com/users/4669071068/profile"
+        target="_blank">
+
+        <i class="fa-solid fa-gamepad"></i>
+        Roblox
+
+    </a>
+
+
+    <a
+        class="social"
+        href="https://www.snapchat.com/add/reyzer2112"
+        target="_blank">
+
+        <i class="fa-brands fa-snapchat"></i>
+        Snapchat
+
+    </a>
+
+
+    <a
+        class="social"
+        href="https://discord.com/users/reyzer2112"
+        target="_blank">
+
+        <i class="fa-brands fa-discord"></i>
+        Discord
+
+    </a>
+
+</div>
 
 </div>
 
@@ -1175,9 +1206,13 @@ button {
         onclick="switchTab('info')">
 
         <i class="fa-solid fa-user"></i>
-        <span id="bottomInfo">Info</span>
+
+        <span id="bottomInfo">
+            Info
+        </span>
 
     </button>
+
 
     <button
         class="bottom-btn"
@@ -1185,9 +1220,13 @@ button {
         onclick="switchTab('skills')">
 
         <i class="fa-solid fa-code"></i>
-        <span id="bottomSkills">Skills</span>
+
+        <span id="bottomSkills">
+            Ko'nikmalar
+        </span>
 
     </button>
+
 
     <button
         class="bottom-btn"
@@ -1195,7 +1234,10 @@ button {
         onclick="switchTab('projects')">
 
         <i class="fa-solid fa-folder"></i>
-        <span id="bottomProjects">Projects</span>
+
+        <span id="bottomProjects">
+            Loyihalar
+        </span>
 
     </button>
 
@@ -1204,9 +1246,9 @@ button {
 
 <script>
 
-/* ==========================================
+/* =========================================
    TELEGRAM
-========================================== */
+========================================= */
 
 const tg = window.Telegram?.WebApp;
 
@@ -1215,15 +1257,12 @@ if (tg) {
     tg.ready();
     tg.expand();
 
-    tg.setHeaderColor?.("#0f172a");
-    tg.setBackgroundColor?.("#0f172a");
-
 }
 
 
-/* ==========================================
+/* =========================================
    HAPTIC
-========================================== */
+========================================= */
 
 function haptic() {
 
@@ -1231,14 +1270,14 @@ function haptic() {
 
         tg?.HapticFeedback?.impactOccurred("light");
 
-    } catch (e) {}
+    } catch(e) {}
 
 }
 
 
-/* ==========================================
-   TAB SYSTEM
-========================================== */
+/* =========================================
+   TABS
+========================================= */
 
 function switchTab(tab) {
 
@@ -1246,11 +1285,11 @@ function switchTab(tab) {
 
     document
         .querySelectorAll(".tab")
-        .forEach(button => {
+        .forEach(btn => {
 
-            button.classList.toggle(
+            btn.classList.toggle(
                 "active",
-                button.dataset.tab === tab
+                btn.dataset.tab === tab
             );
 
         });
@@ -1258,11 +1297,11 @@ function switchTab(tab) {
 
     document
         .querySelectorAll(".bottom-btn")
-        .forEach(button => {
+        .forEach(btn => {
 
-            button.classList.toggle(
+            btn.classList.toggle(
                 "active",
-                button.dataset.bottom === tab
+                btn.dataset.bottom === tab
             );
 
         });
@@ -1282,25 +1321,23 @@ function switchTab(tab) {
 }
 
 
-/* ==========================================
+/* =========================================
    THEME
-========================================== */
+========================================= */
 
 function toggleTheme() {
 
     haptic();
 
-    const body = document.body;
-
     const current =
-        body.dataset.theme || "dark";
+        document.body.dataset.theme || "dark";
 
     const next =
         current === "dark"
             ? "light"
             : "dark";
 
-    body.dataset.theme = next;
+    document.body.dataset.theme = next;
 
     localStorage.setItem(
         "reyzer-theme",
@@ -1312,29 +1349,24 @@ function toggleTheme() {
 }
 
 
-/* ==========================================
-   THEME ICON
-========================================== */
-
 function updateThemeIcon() {
 
     const button =
         document.getElementById("themeBtn");
 
-    const isDark =
+    const dark =
         document.body.dataset.theme === "dark";
 
-    button.innerHTML =
-        isDark
-            ? '<i class="fa-solid fa-sun"></i>'
-            : '<i class="fa-solid fa-moon"></i>';
+    button.innerHTML = dark
+        ? '<i class="fa-solid fa-sun"></i>'
+        : '<i class="fa-solid fa-moon"></i>';
 
 }
 
 
-/* ==========================================
-   LANGUAGE SYSTEM
-========================================== */
+/* =========================================
+   TRANSLATIONS
+========================================= */
 
 const translations = {
 
@@ -1351,6 +1383,9 @@ const translations = {
 
         views:
             "GIF Ko'rishlar",
+
+        viewsNumber:
+            "3 mlrd+",
 
         skills:
             "Ko'nikmalar",
@@ -1374,7 +1409,7 @@ const translations = {
             "Gaming & Creation",
 
         infoText2:
-            "Roblox va Minecraft kabi platformalarda kreativ o'yinlar loyihalar yaratishni yoqtiraman.",
+            "Roblox va Minecraft kabi platformalarga qiziqaman hamda kreativ game loyihalar yaratishni yoqtiraman.",
 
         infoTitle3:
             "GIF Creator",
@@ -1383,16 +1418,43 @@ const translations = {
             "Instagram uchun kreativ GIF animatsiyalar yarataman va vizual kontent bilan ishlayman.",
 
         infoTitle4:
-            "Maqsadim",
+            "Mobilografiya",
 
         infoText4:
+            "Mobil fotografiya, video va kreativ vizual kontent yaratishga qiziqaman.",
+
+        infoTitle5:
+            "Maqsadim",
+
+        infoText5:
             "IT va kreativ yo'nalishlarni birlashtirib, katta va innovatsion loyihalar yaratish.",
 
         mySkills:
             "Ko'nikmalarim",
 
         mainProjects:
-            "Asosiy loyihalar"
+            "Asosiy loyihalar",
+
+        miniApp:
+            "Telegram Mini App",
+
+        creativeProject:
+            "Kreativ loyiha",
+
+        project1:
+            "Telegram ichida ishlaydigan zamonaviy shaxsiy portfolio Mini App.",
+
+        project2:
+            "Kreativ GIF animatsiyalar va vizual kontent yaratish loyihasi.",
+
+        footer:
+            "© 2026 ReyZer. Barcha huquqlar himoyalangan.",
+
+        contact:
+            "Bog'lanish",
+
+        contactMessage:
+            "Telegram orqali ReyZer bilan bog'lanishingiz mumkin."
 
     },
 
@@ -1409,7 +1471,10 @@ const translations = {
             "Проекты",
 
         views:
-            "GIF просмотры",
+            "Просмотры GIF",
+
+        viewsNumber:
+            "3 млрд+",
 
         skills:
             "Навыки",
@@ -1427,31 +1492,58 @@ const translations = {
             "Frontend & Backend",
 
         infoText1:
-            "Создаю современные интерактивные веб-проекты и работаю с frontend и backend.",
+            "Создаю современные и интерактивные веб-проекты. Работаю в направлениях frontend и backend.",
 
         infoTitle2:
-            "Gaming & Creation",
+            "Игры и создание",
 
         infoText2:
-            "Интересуюсь Roblox и Minecraft и создаю собственные креативные игровые проекты.",
+            "Интересуюсь Roblox и Minecraft, а также созданием собственных игровых и креативных проектов.",
 
         infoTitle3:
             "GIF Creator",
 
         infoText3:
-            "Создаю креативные GIF-анимации и визуальный контент.",
+            "Создаю креативные GIF-анимации для Instagram и работаю с визуальным контентом.",
 
         infoTitle4:
-            "Моя цель",
+            "Мобилография",
 
         infoText4:
-            "Объединять IT и креатив для создания крупных инновационных проектов.",
+            "Интересуюсь мобильной фотографией, видео и созданием визуального контента.",
+
+        infoTitle5:
+            "Моя цель",
+
+        infoText5:
+            "Объединить IT и креативные направления для создания крупных инновационных проектов.",
 
         mySkills:
             "Мои навыки",
 
         mainProjects:
-            "Основные проекты"
+            "Основные проекты",
+
+        miniApp:
+            "Telegram Mini App",
+
+        creativeProject:
+            "Креативный проект",
+
+        project1:
+            "Современное персональное портфолио Mini App, работающее внутри Telegram.",
+
+        project2:
+            "Проект по созданию креативных GIF-анимаций и визуального контента.",
+
+        footer:
+            "© 2026 ReyZer. Все права защищены.",
+
+        contact:
+            "Связаться",
+
+        contactMessage:
+            "Вы можете связаться с ReyZer через Telegram."
 
     },
 
@@ -1469,6 +1561,9 @@ const translations = {
 
         views:
             "GIF Views",
+
+        viewsNumber:
+            "3B+",
 
         skills:
             "Skills",
@@ -1492,25 +1587,52 @@ const translations = {
             "Gaming & Creation",
 
         infoText2:
-            "I'm interested in Roblox and Minecraft and enjoy creating creative game projects.",
+            "I am interested in Roblox and Minecraft and enjoy creating my own gaming and creative projects.",
 
         infoTitle3:
             "GIF Creator",
 
         infoText3:
-            "I create creative GIF animations and visual content.",
+            "I create creative GIF animations for Instagram and work with visual content.",
 
         infoTitle4:
-            "My Goal",
+            "Mobile Photography",
 
         infoText4:
-            "Combining IT and creativity to build large innovative projects.",
+            "I am interested in mobile photography, video production and visual content creation.",
+
+        infoTitle5:
+            "My Goal",
+
+        infoText5:
+            "Combining IT and creativity to build large and innovative projects.",
 
         mySkills:
             "My Skills",
 
         mainProjects:
-            "Main Projects"
+            "Main Projects",
+
+        miniApp:
+            "Telegram Mini App",
+
+        creativeProject:
+            "Creative Project",
+
+        project1:
+            "A modern personal portfolio Mini App that runs directly inside Telegram.",
+
+        project2:
+            "A creative project focused on GIF animations and visual content.",
+
+        footer:
+            "© 2026 ReyZer. All rights reserved.",
+
+        contact:
+            "Contact Me",
+
+        contactMessage:
+            "You can contact ReyZer through Telegram."
 
     }
 
@@ -1520,6 +1642,10 @@ const translations = {
 let currentLanguage =
     localStorage.getItem("reyzer-language") || "uz";
 
+
+/* =========================================
+   APPLY LANGUAGE
+========================================= */
 
 function setLanguage(lang) {
 
@@ -1535,87 +1661,170 @@ function setLanguage(lang) {
     );
 
 
-    document.getElementById("languageButton")
+    document
+        .getElementById("languageButton")
         .textContent =
         lang.toUpperCase();
 
 
-    document.getElementById("profileRole")
+    /* PROFILE */
+
+    document
+        .getElementById("profileRole")
         .textContent = t.role;
 
-    document.getElementById("profileBio")
+    document
+        .getElementById("profileBio")
         .textContent = t.bio;
 
 
-    document.getElementById("statProjects")
+    /* STATS */
+
+    document
+        .getElementById("statProjects")
         .textContent = t.projects;
 
-    document.getElementById("statViews")
+    document
+        .getElementById("gifViewsNumber")
+        .textContent = t.viewsNumber;
+
+    document
+        .getElementById("statViews")
         .textContent = t.views;
 
-    document.getElementById("statSkills")
+    document
+        .getElementById("statSkills")
         .textContent = t.skills;
 
 
-    document.getElementById("tabInfo")
+    /* TABS */
+
+    document
+        .getElementById("tabInfo")
         .textContent = t.info;
 
-    document.getElementById("tabSkills")
+    document
+        .getElementById("tabSkills")
         .textContent = t.skill;
 
-    document.getElementById("tabProjects")
+    document
+        .getElementById("tabProjects")
         .textContent = t.project;
 
 
-    document.getElementById("bottomInfo")
+    document
+        .getElementById("bottomInfo")
         .textContent = t.info;
 
-    document.getElementById("bottomSkills")
+    document
+        .getElementById("bottomSkills")
         .textContent = t.skill;
 
-    document.getElementById("bottomProjects")
+    document
+        .getElementById("bottomProjects")
         .textContent = t.project;
 
 
-    document.getElementById("infoTitle1")
+    /* INFO */
+
+    document
+        .getElementById("infoTitle1")
         .textContent = t.infoTitle1;
 
-    document.getElementById("infoText1")
+    document
+        .getElementById("infoText1")
         .textContent = t.infoText1;
 
-    document.getElementById("infoTitle2")
+
+    document
+        .getElementById("infoTitle2")
         .textContent = t.infoTitle2;
 
-    document.getElementById("infoText2")
+    document
+        .getElementById("infoText2")
         .textContent = t.infoText2;
 
-    document.getElementById("infoTitle3")
+
+    document
+        .getElementById("infoTitle3")
         .textContent = t.infoTitle3;
 
-    document.getElementById("infoText3")
+    document
+        .getElementById("infoText3")
         .textContent = t.infoText3;
 
-    document.getElementById("infoTitle4")
+
+    document
+        .getElementById("infoTitle4")
         .textContent = t.infoTitle4;
 
-    document.getElementById("infoText4")
+    document
+        .getElementById("infoText4")
         .textContent = t.infoText4;
 
 
-    document.getElementById("skillsTitle")
+    document
+        .getElementById("infoTitle5")
+        .textContent = t.infoTitle5;
+
+    document
+        .getElementById("infoText5")
+        .textContent = t.infoText5;
+
+
+    /* SKILLS */
+
+    document
+        .getElementById("skillsTitle")
         .textContent = t.mySkills;
 
-    document.getElementById("projectsTitle")
+
+    /* PROJECTS */
+
+    document
+        .getElementById("projectsTitle")
         .textContent = t.mainProjects;
+
+    document
+        .getElementById("project1Type")
+        .textContent = t.miniApp;
+
+    document
+        .getElementById("project2Type")
+        .textContent = t.creativeProject;
+
+    document
+        .getElementById("project1Text")
+        .textContent = t.project1;
+
+    document
+        .getElementById("project2Text")
+        .textContent = t.project2;
+
+
+    /* FOOTER */
+
+    document
+        .getElementById("footerText")
+        .textContent = t.footer;
+
+
+    /* TELEGRAM MAIN BUTTON */
+
+    if (tg && tg.MainButton) {
+
+        tg.MainButton.setText(t.contact);
+
+    }
 
     haptic();
 
 }
 
 
-/* ==========================================
+/* =========================================
    CHANGE LANGUAGE
-========================================== */
+========================================= */
 
 function changeLanguage() {
 
@@ -1638,9 +1847,9 @@ function changeLanguage() {
 }
 
 
-/* ==========================================
-   LOAD SETTINGS
-========================================== */
+/* =========================================
+   LOAD THEME
+========================================= */
 
 const savedTheme =
     localStorage.getItem("reyzer-theme");
@@ -1653,52 +1862,59 @@ updateThemeIcon();
 setLanguage(currentLanguage);
 
 
-/* ==========================================
+/* =========================================
    TELEGRAM MAIN BUTTON
-========================================== */
+========================================= */
 
 if (tg) {
 
     tg.MainButton
-        .setText("Bog'lanish")
+        .setText(
+            translations[currentLanguage].contact
+        )
         .show();
 
-    tg.MainButton
-        .onClick(() => {
 
-            haptic();
+    tg.MainButton.onClick(() => {
 
-            tg.showPopup?.({
+        haptic();
 
-                title: "ReyZer",
+        const t =
+            translations[currentLanguage];
 
-                message:
-                    "Telegram orqali bog'lanishingiz mumkin.",
+        tg.showPopup?.({
 
-                buttons: [
-                    {
-                        id: "telegram",
-                        type: "default",
-                        text: "Telegram"
-                    },
-                    {
-                        type: "cancel"
-                    }
-                ]
+            title: "ReyZer",
 
-            }, (buttonId) => {
+            message: t.contactMessage,
 
-                if (buttonId === "telegram") {
+            buttons: [
 
-                    tg.openTelegramLink?.(
-                        "https://t.me/"
-                    );
+                {
+                    id: "telegram",
+                    type: "default",
+                    text: "Telegram"
+                },
 
+                {
+                    type: "cancel"
                 }
 
-            });
+            ]
+
+        }, (buttonId) => {
+
+            if (buttonId === "telegram") {
+
+                tg.openTelegramLink?.(
+                    "https://t.me/reyzer2112"
+                );
+
+            }
 
         });
+
+    });
 
 }
 
