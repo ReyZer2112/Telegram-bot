@@ -6,6 +6,8 @@
     <title>ReyZer Portfolio Mini App</title>
     <!-- Telegram Web App Script -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
             --bg-color: #f8f9fa;
@@ -203,79 +205,15 @@
             font-size: 16px;
             margin-bottom: 6px;
             color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .card p {
             font-size: 13px;
             color: var(--subtext-color);
-            line-height: 1.4;
-        }
-
-        /* AI Chatbox Styles */
-        .chat-box {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .chat-messages {
-            max-height: 200px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding-right: 4px;
-        }
-
-        .message {
-            padding: 10px 14px;
-            border-radius: 12px;
-            font-size: 13px;
-            max-width: 85%;
-            line-height: 1.4;
-        }
-
-        .message.user {
-            background: var(--accent-color);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 2px;
-        }
-
-        .message.ai {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            align-self: flex-start;
-            border-bottom-left-radius: 2px;
-        }
-
-        .chat-input-area {
-            display: flex;
-            gap: 8px;
-            margin-top: 6px;
-        }
-
-        .chat-input {
-            flex: 1;
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 10px 14px;
-            border-radius: 12px;
-            font-size: 13px;
-            outline: none;
-        }
-
-        .send-btn {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 0 16px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 13px;
+            line-height: 1.5;
         }
 
         /* Social Links */
@@ -321,7 +259,7 @@
     <div class="container">
         <!-- Top Controls -->
         <div class="header-top">
-            <div class="badge">⚡ <span id="lbl-badge">ReyZer Portfolio</span></div>
+            <div class="badge"><i class="fa-solid fa-bolt"></i> <span id="lbl-badge">ReyZer Portfolio</span></div>
             <div class="controls">
                 <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">☀️</button>
                 <button class="lang-btn active" onclick="setLang('uz')" id="btn-uz">O'z</button>
@@ -333,77 +271,71 @@
         <!-- Profile -->
         <div class="profile-card">
             <div class="avatar-container">
-                <!-- O'z rasmingiz havolasini shu yerga qo'yasiz -->
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Avatar" class="avatar">
+                <!-- Yangi rasm (siz taqdim etgan dizayn logotipi) -->
+                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=150" alt="Avatar" class="avatar" id="profile-img">
                 <div class="status-dot"></div>
             </div>
             <h1 class="name">ReyZer</h1>
             <p class="title" id="lbl-title">Frontend & Backend Developer</p>
         </div>
 
-        <!-- Navigation Tabs -->
+        <!-- Navigation Tabs (AI olib tashlandi) -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('info')" id="tab-info">Info</button>
             <button class="tab-btn" onclick="switchTab('skills')" id="tab-skills">Ko'nikmalar</button>
             <button class="tab-btn" onclick="switchTab('projects')" id="tab-projects">Loyihalar</button>
-            <button class="tab-btn" onclick="switchTab('ai')" id="tab-ai">🤖 AI</button>
         </div>
 
-        <!-- Tab 1: Info -->
+        <!-- Tab 1: Info (Men haqimda to'liq versiya) -->
         <div id="section-info" class="section-content active">
             <div class="card">
-                <h3 id="info-h1">💻 Frontend & Backend | IT</h3>
-                <p id="info-p1">Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. 10+ dan ortiq loyihalar muallifiman.</p>
+                <h3><i class="fa-solid fa-laptop-code"></i> <span id="info-h1">Frontend & Backend | IT</span></h3>
+                <p id="info-p1">Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. Frontend va backend yo'nalishlarida ishlayman, yangi texnologiyalarni o'rganib, ularni amaliy loyihalarda qo'llayman. 10+ loyihaning muallifi sifatida turli g'oyalarni real loyihalarga aylantirib kelmoqdaman.</p>
             </div>
             <div class="card">
-                <h3 id="info-h2">🎮 Gaming & Creation</h3>
-                <p id="info-p2">Roblox va Minecraft ishqibozi, o'yin yaratuvchisi va Giphy platformasida 3 mlrd+ ko'rishlar to'plagan GIF creator.</p>
+                <h3><i class="fa-solid fa-gamepad"></i> <span id="info-h2">Gaming & Creation</span></h3>
+                <p id="info-p2">Gaming olamiga, ayniqsa Roblox va Minecraft platformalariga katta qiziqaman. Ushbu o'yinlarni o'ynash bilan birga, ular uchun o'z g'oyalarim asosida o'yinlar va kreativ loyihalar yarataman.</p>
             </div>
             <div class="card">
-                <h3 id="info-h3">📸 Mobilografiya & Media</h3>
-                <p id="info-p3">Kreativ kadrlar va vizual kontent yaratish bo'yicha ijodiy yondashuv.</p>
+                <h3><i class="fa-solid fa-photo-film"></i> <span id="info-h3">GIF Creator</span></h3>
+                <p id="info-p3">Instagram uchun kreativ va trendga mos GIF animatsiyalar yarataman. GIF'larim umumiy hisobda 3 mlrd+ ko'rishlar to'plagan. Ushbu yo'nalishda faol ijod qilib, GIF yaratish sohasida taniqli creator sifatida o'z auditoriyamni shakllantirganman.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-camera"></i> <span id="info-h4">Mobilograf</span></h3>
+                <p id="info-p4">Mobilografiya va vizual kontent yaratishga ham qiziqaman. Kreativ g'oyalarni foto va video orqali ifodalash, yangi uslublarni sinab ko'rish va sifatli kontent yaratish ustida ishlayman.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-bullseye"></i> <span id="info-h5">Maqsadim</span></h3>
+                <p id="info-p5">IT, dasturlash va kreativ sohalardagi bilimlarimni birlashtirib, yanada yirik va innovatsion loyihalar yaratish. Doimiy ravishda rivojlanish, yangi texnologiyalarni o'rganish va o'z g'oyalarimni real mahsulotlarga aylantirish.</p>
             </div>
         </div>
 
-        <!-- Tab 2: Skills -->
+        <!-- Tab 2: Skills (Ko'nikmalar to'liq versiya) -->
         <div id="section-skills" class="section-content">
             <div class="card">
-                <h3>🚀 Texnologiyalar</h3>
-                <p>• HTML5, CSS3, JavaScript (ES6+)<br>• Python, Telegram Bot API<br>• React, Node.js asoslari<br>• Git, GitHub va Vercel</p>
+                <h3><i class="fa-solid fa-briefcase"></i> <span id="skills-title">Ko'nikmalarim</span></h3>
+                <p style="margin-bottom: 8px;">🌐 <b>Web-texnologiyalar:</b> HTML, CSS, JavaScript — zamonaviy web-interfeyslar va interaktiv sahifalar yaratish.</p>
+                <p style="margin-bottom: 8px;">🎮 <b>Game Creation & Gaming:</b> O'yin yaratish jarayoni, gaming loyihalari va kreativ mexanikalarga qiziqish.</p>
+                <p style="margin-bottom: 8px;">🎬 <b>GIF Creation:</b> Giphy platformasi orqali kreativ GIF animatsiyalar yaratish va ulardan foydalanish.</p>
+                <p style="margin-bottom: 8px;">📸 <b>Media & Mobilografiya:</b> Mobil fotografiya, vizual kontent yaratish va kadr kompozitsiyasi ustida ishlash.</p>
+                <p>🧠 <b>Doimiy rivojlanish:</b> Yangi texnologiyalarni o'rganish, tajriba qilish va amaliy loyihalar orqali ko'nikmalarni mustahkamlash.</p>
             </div>
         </div>
 
         <!-- Tab 3: Projects -->
         <div id="section-projects" class="section-content">
             <div class="card">
-                <h3>🔥 Asosiy Loyihalar</h3>
+                <h3><i class="fa-solid fa-fire"></i> <span id="proj-title">Asosiy Loyihalar</span></h3>
                 <p>1. <b>ReyZer Portfolio Bot</b> - Telegram Mini App shaklidagi shaxsiy portfolio.<br>2. <b>GIF Creator Studio</b> - Giphy uchun maxsus animatsiyalar va dizaynlar.</p>
             </div>
         </div>
 
-        <!-- Tab 4: AI Assistant (Fully Working!) -->
-        <div id="section-ai" class="section-content">
-            <div class="card chat-box">
-                <h3 id="ai-title">🤖 AI Assistant</h3>
-                <p id="ai-desc">ReyZer va uning faoliyati haqida istalgan savolni bering:</p>
-                
-                <div class="chat-messages" id="chat-messages">
-                    <div class="message ai" id="ai-welcome">Salom! Men ReyZer botining AI yordamchisiman. Menga istalgan savolni yozing!</div>
-                </div>
-
-                <div class="chat-input-area">
-                    <input type="text" id="user-input" class="chat-input" placeholder="Masalan: ReyZer kim?" onkeypress="handleKeyPress(event)">
-                    <button class="send-btn" onclick="sendMessage()" id="send-btn">Yuborish</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Social Links -->
+        <!-- Social Links (Saytlarga o'tadigan qilindi) -->
         <div class="social-container">
-            <a href="https://instagram.com" target="_blank" class="social-btn">📷 Instagram</a>
-            <a href="https://telegram.org" target="_blank" class="social-btn">✈️ Telegram</a>
-            <a href="https://youtube.com" target="_blank" class="social-btn">▶️ YouTube</a>
-            <a href="https://roblox.com" target="_blank" class="social-btn">🎮 Roblox</a>
+            <a href="https://instagram.com" target="_blank" class="social-btn"><i class="fa-brands fa-instagram" style="color: #e1306c;"></i> Instagram</a>
+            <a href="https://telegram.org" target="_blank" class="social-btn"><i class="fa-brands fa-telegram" style="color: #24a1de;"></i> Telegram</a>
+            <a href="https://youtube.com" target="_blank" class="social-btn"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> YouTube</a>
+            <a href="https://roblox.com" target="_blank" class="social-btn"><i class="fa-solid fa-gamepad" style="color: #ffffff;"></i> Roblox</a>
         </div>
 
         <div class="footer">
@@ -443,89 +375,40 @@
             } else if (tabName === 'projects') {
                 document.getElementById('section-projects').classList.add('active');
                 event.target.classList.add('active');
-            } else if (tabName === 'ai') {
-                document.getElementById('section-ai').classList.add('active');
-                event.target.classList.add('active');
             }
         }
 
-        // Fully Working AI Assistant Logic
-        function sendMessage() {
-            const inputField = document.getElementById('user-input');
-            const messageText = inputField.value.trim();
-            if (!messageText) return;
-
-            const chatMessages = document.getElementById('chat-messages');
-
-            // User message
-            const userMsg = document.createElement('div');
-            userMsg.className = 'message user';
-            userMsg.innerText = messageText;
-            chatMessages.appendChild(userMsg);
-
-            inputField.value = '';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            // AI Smart Response Simulation
-            setTimeout(() => {
-                const aiMsg = document.createElement('div');
-                aiMsg.className = 'message ai';
-                aiMsg.innerText = getSmartAIResponse(messageText);
-                chatMessages.appendChild(aiMsg);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 600);
-        }
-
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        }
-
-        function getSmartAIResponse(query) {
-            const q = query.toLowerCase();
-            if (q.includes('reyzer') || q.includes('kim')) {
-                return "ReyZer — tajribali frontend & backend dasturchisi, 10+ ta loyihalar va Giphy'da 3 mlrd+ ko'rishga ega GIF creator!";
-            } else if (q.includes('loyiha') || q.includes('project')) {
-                return "ReyZer Telegram Mini App botlari, veb-saytlar va animatsiyalar yaratish bo'yicha ko'plab qiziqarli loyihalar qilgan.";
-            } else if (q.includes('aloqa') || q.includes('boglanish') || q.includes('kontakt')) {
-                return "U bilan pastdagi Telegram yoki Instagram havolalari orqali bog'lanishingiz mumkin!";
-            } else {
-                return "Ajoyib savol! ReyZer bu yo'nalishda juda ko'p qiziqarli ishlanmalarga ega. Batafsil ma'lumot olish uchun uning ijtimoiy tarmoqlariga o'ting.";
-            }
-        }
-
-        // Multi-language system (Uzbek, Russian, English)
+        // Multi-language system
         const texts = {
             uz: {
                 title: "Frontend & Backend Developer",
                 tabInfo: "Info", tabSkills: "Ko'nikmalar", tabProjects: "Loyihalar",
-                infoH1: "💻 Frontend & Backend | IT", infoP1: "Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. 10+ dan ortiq loyihalar muallifiman.",
-                infoH2: "🎮 Gaming & Creation", infoP2: "Roblox va Minecraft ishqibozi, o'yin yaratuvchisi va Giphy platformasida 3 mlrd+ ko'rishlar to'plagan GIF creator.",
-                infoH3: "📸 Mobilografiya & Media", infoP3: "Kreativ kadrlar va vizual kontent yaratish bo'yicha ijodiy yondashuv.",
-                aiTitle: "🤖 AI Assistant", aiDesc: "ReyZer va uning faoliyati haqida istalgan savolni bering:",
-                aiWelcome: "Salom! Men ReyZer botining AI yordamchisiman. Menga istalgan savolni yozing!",
-                sendBtn: "Yuborish", placeholder: "Masalan: ReyZer kim?"
+                infoH1: "Frontend & Backend | IT", infoP1: "Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. Frontend va backend yo'nalishlarida ishlayman, yangi texnologiyalarni o'rganib, ularni amaliy loyihalarda qo'llayman. 10+ loyihaning muallifi sifatida turli g'oyalarni real loyihalarga aylantirib kelmoqdaman.",
+                infoH2: "Gaming & Creation", infoP2: "Gaming olamiga, ayniqsa Roblox va Minecraft platformalariga katta qiziqaman. Ushbu o'yinlarni o'ynash bilan birga, ular uchun o'z g'oyalarim asosida o'yinlar va kreativ loyihalar yarataman.",
+                infoH3: "GIF Creator", infoP3: "Instagram uchun kreativ va trendga mos GIF animatsiyalar yarataman. GIF'larim umumiy hisobda 3 mlrd+ ko'rishlar to'plagan. Ushbu yo'nalishda faol ijod qilib, GIF yaratish sohasida taniqli creator sifatida o'z auditoriyamni shakllantirganman.",
+                infoH4: "Mobilograf", infoP4: "Mobilografiya va vizual kontent yaratishga ham qiziqaman. Kreativ g'oyalarni foto va video orqali ifodalash, yangi uslublarni sinab ko'rish va sifatli kontent yaratish ustida ishlayman.",
+                infoH5: "Maqsadim", infoP5: "IT, dasturlash va kreativ sohalardagi bilimlarimni birlashtirib, yanada yirik va innovatsion loyihalar yaratish. Doimiy ravishda rivojlanish, yangi texnologiyalarni o'rganish va o'z g'oyalarimni real mahsulotlarga aylantirish.",
+                skillsTitle: "Ko'nikmalarim", projTitle: "Asosiy Loyihalar"
             },
             py: {
                 title: "Frontend & Backend Разработчик",
                 tabInfo: "Инфо", tabSkills: "Навыки", tabProjects: "Проекты",
-                infoH1: "💻 Frontend & Backend | IT", infoP1: "Создаю современные и интерактивные веб-проекты. Автор более 10+ проектов.",
-                infoH2: "🎮 Gaming & Creation", infoP2: "Любитель Roblox и Minecraft, создатель игр и GIF creator с 3 млрд+ просмотров на Giphy.",
-                infoH3: "📸 Мобилография & Медиа", infoP3: "Креативный подход к созданию видео и визуального контента.",
-                aiTitle: "🤖 ИИ Ассистент", aiDesc: "Задайте любой вопрос о ReyZer и его проектах:",
-                aiWelcome: "Привет! Я ИИ-помощник бота ReyZer. Задайте мне любой вопрос!",
-                sendBtn: "Отправить", placeholder: "Например: Кто такой ReyZer?"
+                infoH1: "Frontend & Backend | IT", infoP1: "Создаю современные и интерактивные веб-проекты. Работаю в направлениях frontend и backend, применяю новые технологии на практике. Автор более 10+ проектов.",
+                infoH2: "Gaming & Creation", infoP2: "Увлекаюсь миром гейминга, особенно Roblox и Minecraft, создаю собственные игровые проекты.",
+                infoH3: "GIF Creator", infoP3: "Создаю креативные GIF-анимации для Instagram с общим числом просмотров 3 млрд+.",
+                infoH4: "Мобилограф", infoP4: "Занимаюсь мобилографией и созданием визуального контента.",
+                infoH5: "Моя цель", infoP5: "Объединить IT и креативные сферы для создания крупных инновационных проектов.",
+                skillsTitle: "Мои навыки", projTitle: "Основные проекты"
             },
             en: {
                 title: "Frontend & Backend Developer",
                 tabInfo: "Info", tabSkills: "Skills", tabProjects: "Projects",
-                infoH1: "💻 Frontend & Backend | IT", infoP1: "Passionate about creating modern & interactive web projects. Author of 10+ projects.",
-                infoH2: "🎮 Gaming & Creation", infoP2: "Roblox & Minecraft fan, game creator, and Giphy GIF creator with 3B+ views.",
-                infoH3: "📸 Mobilography & Media", infoP3: "Creative approach to shooting and visual content creation.",
-                aiTitle: "🤖 AI Assistant", aiDesc: "Ask anything about ReyZer and his projects:",
-                aiWelcome: "Hello! I am ReyZer's AI assistant. Ask me anything!",
-                sendBtn: "Send", placeholder: "E.g: Who is ReyZer?"
+                infoH1: "Frontend & Backend | IT", infoP1: "Passionate about building modern web projects. Working across frontend and backend, turning ideas into real products.",
+                infoH2: "Gaming & Creation", infoP2: "Passionate about gaming, especially Roblox and Minecraft, creating creative game projects.",
+                infoH3: "GIF Creator", infoP3: "Creating creative GIF animations for Instagram with 3B+ total views.",
+                infoH4: "Mobilographer", infoP4: "Interested in mobile photography and visual content creation.",
+                infoH5: "My Goal", infoP5: "Combining IT and creative fields to build major innovative projects.",
+                skillsTitle: "My Skills", projTitle: "Main Projects"
             }
         };
 
@@ -545,12 +428,13 @@
             document.getElementById('info-p2').innerText = t.infoP2;
             document.getElementById('info-h3').innerText = t.infoH3;
             document.getElementById('info-p3').innerText = t.infoP3;
+            document.getElementById('info-h4').innerText = t.infoH4;
+            document.getElementById('info-p4').innerText = t.infoP4;
+            document.getElementById('info-h5').innerText = t.infoH5;
+            document.getElementById('info-p5').innerText = t.infoP5;
 
-            document.getElementById('ai-title').innerText = t.aiTitle;
-            document.getElementById('ai-desc').innerText = t.aiDesc;
-            document.getElementById('ai-welcome').innerText = t.aiWelcome;
-            document.getElementById('send-btn').innerText = t.sendBtn;
-            document.getElementById('user-input').placeholder = t.placeholder;
+            document.getElementById('skills-title').innerText = t.skillsTitle;
+            document.getElementById('proj-title').innerText = t.projTitle;
         }
     </script>
 </body>
