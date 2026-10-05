@@ -1,441 +1,1708 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReyZer Portfolio Mini App</title>
-    <!-- Telegram Web App Script -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #212529;
-            --subtext-color: #6c757d;
-            --accent-color: #6366f1;
-            --accent-hover: #4f46e5;
-            --border-color: #e5e7eb;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
 
-        [data-theme="dark"] {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --subtext-color: #94a3b8;
-            --accent-color: #818cf8;
-            --accent-hover: #6366f1;
-            --border-color: #334155;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-        }
+<title>ReyZer — Portfolio</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background 0.3s, color 0.3s;
-        }
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
+<style>
+:root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card2: #172033;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --accent: #6366f1;
+    --accent2: #818cf8;
+    --border: rgba(255,255,255,.08);
+    --success: #22c55e;
+    --shadow: 0 12px 35px rgba(0,0,0,.25);
+}
 
-        .container {
-            width: 100%;
-            max-width: 480px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+[data-theme="light"] {
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --card2: #f8fafc;
+    --text: #0f172a;
+    --muted: #64748b;
+    --accent: #4f46e5;
+    --accent2: #6366f1;
+    --border: rgba(15,23,42,.08);
+    --shadow: 0 10px 30px rgba(15,23,42,.08);
+}
 
-        /* Top Header & Controls */
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
 
-        .badge {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--accent-color);
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .controls {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left,
+        rgba(99,102,241,.15),
+        transparent 35%),
+        var(--bg);
 
-        .theme-toggle, .lang-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 6px 10px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            box-shadow: var(--shadow);
-        }
+    color: var(--text);
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
 
-        .lang-btn.active {
-            background: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
-        }
+    padding:
+        calc(14px + env(safe-area-inset-top))
+        14px
+        calc(90px + env(safe-area-inset-bottom));
 
-        /* Profile Section */
-        .profile-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 24px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
+    transition: background .3s, color .3s;
+}
 
-        .avatar-container {
-            position: relative;
-            width: 90px;
-            height: 90px;
-        }
+button,
+a {
+    font: inherit;
+}
 
-        .avatar {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-color);
-        }
+button {
+    border: 0;
+}
 
-        .status-dot {
-            position: absolute;
-            bottom: 4px;
-            right: 4px;
-            width: 16px;
-            height: 16px;
-            background-color: #22c55e;
-            border: 2px solid var(--card-bg);
-            border-radius: 50%;
-        }
+.container {
+    width: 100%;
+    max-width: 520px;
+    margin: auto;
+}
 
-        .name {
-            font-size: 22px;
-            font-weight: 700;
-        }
+/* ================= HEADER ================= */
 
-        .title {
-            font-size: 14px;
-            color: var(--accent-color);
-            font-weight: 600;
-        }
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
 
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 6px;
-            border-radius: 16px;
-            gap: 4px;
-            box-shadow: var(--shadow);
-        }
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 17px;
+}
 
-        .tab-btn {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: var(--subtext-color);
-            padding: 10px;
-            border-radius: 12px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-        }
+.brand-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
 
-        .tab-btn.active {
-            background: var(--accent-color);
-            color: white;
-        }
+    display: grid;
+    place-items: center;
 
-        /* Content Sections */
-        .section-content {
-            display: none;
-            flex-direction: column;
-            gap: 12px;
-        }
+    color: white;
 
-        .section-content.active {
-            display: flex;
-        }
+    background:
+        linear-gradient(135deg,
+        var(--accent),
+        #8b5cf6);
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 16px;
-            box-shadow: var(--shadow);
-        }
+    box-shadow: 0 8px 20px rgba(99,102,241,.3);
+}
 
-        .card h3 {
-            font-size: 16px;
-            margin-bottom: 6px;
-            color: var(--accent-color);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+.header-actions {
+    display: flex;
+    gap: 7px;
+}
 
-        .card p {
-            font-size: 13px;
-            color: var(--subtext-color);
-            line-height: 1.5;
-        }
+.icon-btn {
+    width: 38px;
+    height: 38px;
 
-        /* Social Links */
-        .social-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: 10px;
-        }
+    border-radius: 12px;
+    border: 1px solid var(--border);
 
-        .social-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 12px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
+    background: var(--card);
+    color: var(--text);
 
-        .social-btn:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-        }
+    display: grid;
+    place-items: center;
 
-        .footer {
-            text-align: center;
-            font-size: 12px;
-            color: var(--subtext-color);
-            margin-top: 20px;
-        }
-    </style>
+    cursor: pointer;
+    box-shadow: var(--shadow);
+
+    transition: transform .2s, background .2s;
+}
+
+.icon-btn:active {
+    transform: scale(.92);
+}
+
+/* ================= PROFILE ================= */
+
+.profile {
+    position: relative;
+
+    padding: 28px 18px 22px;
+    margin-bottom: 14px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(99,102,241,.16),
+            transparent 55%
+        ),
+        var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 25px;
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+
+    animation: fadeUp .5s ease;
+}
+
+.profile::before {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    background: var(--accent);
+    opacity: .07;
+
+    border-radius: 50%;
+
+    top: -90px;
+    right: -60px;
+}
+
+.avatar-wrap {
+    position: relative;
+
+    width: 105px;
+    height: 105px;
+
+    margin: auto auto 13px;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 3px solid var(--accent);
+
+    box-shadow:
+        0 0 0 5px rgba(99,102,241,.1),
+        0 10px 35px rgba(0,0,0,.25);
+}
+
+.online {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    right: 4px;
+    bottom: 5px;
+
+    background: var(--success);
+
+    border: 3px solid var(--card);
+
+    border-radius: 50%;
+}
+
+.profile h1 {
+    font-size: 27px;
+    font-weight: 800;
+
+    letter-spacing: -.5px;
+}
+
+.profile-role {
+    color: var(--accent2);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    margin-top: 4px;
+}
+
+.profile-bio {
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    max-width: 390px;
+
+    margin: 9px auto 0;
+}
+
+/* ================= STATS ================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-top: 19px;
+
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.stat:not(:last-child) {
+    border-right: 1px solid var(--border);
+}
+
+.stat strong {
+    font-size: 18px;
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* ================= TABS ================= */
+
+.tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    padding: 5px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+
+    border-radius: 17px;
+
+    margin-bottom: 13px;
+
+    box-shadow: var(--shadow);
+}
+
+.tab {
+    padding: 10px 5px;
+
+    border-radius: 12px;
+
+    background: transparent;
+    color: var(--muted);
+
+    cursor: pointer;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: .25s;
+}
+
+.tab.active {
+    background: var(--accent);
+    color: white;
+
+    box-shadow: 0 5px 15px rgba(99,102,241,.25);
+}
+
+/* ================= SECTIONS ================= */
+
+.section {
+    display: none;
+
+    flex-direction: column;
+    gap: 11px;
+
+    animation: fadeUp .3s ease;
+}
+
+.section.active {
+    display: flex;
+}
+
+.card {
+    padding: 17px;
+
+    border-radius: 18px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 8px;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.card-title i {
+    color: var(--accent2);
+}
+
+.card p {
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+/* ================= SKILLS ================= */
+
+.skill {
+    margin-top: 15px;
+}
+
+.skill:first-child {
+    margin-top: 10px;
+}
+
+.skill-head {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.skill-head span:last-child {
+    color: var(--accent2);
+}
+
+.progress {
+    height: 7px;
+
+    background: rgba(148,163,184,.15);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress span {
+    display: block;
+
+    height: 100%;
+
+    width: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent2)
+        );
+
+    border-radius: inherit;
+
+    animation: progress .9s ease forwards;
+}
+
+/* ================= PROJECTS ================= */
+
+.project {
+    padding: 15px;
+
+    background: var(--card2);
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    margin-top: 10px;
+
+    transition: transform .2s, border .2s;
+}
+
+.project:active {
+    transform: scale(.98);
+}
+
+.project-top {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+.project-icon {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 13px;
+
+    display: grid;
+    place-items: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            #8b5cf6
+        );
+}
+
+.project-info {
+    flex: 1;
+}
+
+.project-info h4 {
+    font-size: 14px;
+}
+
+.project-info span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.project p {
+    margin-top: 10px;
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    color: var(--muted);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-top: 10px;
+}
+
+.tag {
+    padding: 4px 8px;
+
+    border-radius: 7px;
+
+    background: rgba(99,102,241,.1);
+
+    color: var(--accent2);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* ================= SOCIAL ================= */
+
+.socials {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 8px;
+
+    margin-top: 14px;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 12px;
+
+    border-radius: 13px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: .2s;
+}
+
+.social:active {
+    transform: scale(.96);
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav {
+    position: fixed;
+
+    z-index: 100;
+
+    left: 50%;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+
+    transform: translateX(-50%);
+
+    width: min(92%, 500px);
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    padding: 6px;
+
+    background:
+        rgba(30,41,59,.88);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid var(--border);
+
+    border-radius: 19px;
+
+    box-shadow: 0 15px 45px rgba(0,0,0,.3);
+}
+
+[data-theme="light"] .bottom-nav {
+    background: rgba(255,255,255,.88);
+}
+
+.bottom-btn {
+    padding: 8px 5px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    border-radius: 13px;
+
+    cursor: pointer;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.bottom-btn i {
+    display: block;
+
+    font-size: 16px;
+
+    margin-bottom: 3px;
+}
+
+.bottom-btn.active {
+    color: var(--accent2);
+
+    background: rgba(99,102,241,.1);
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 18px;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes progress {
+    from {
+        width: 0;
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 360px) {
+    body {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .profile {
+        padding: 23px 13px;
+    }
+
+    .profile h1 {
+        font-size: 24px;
+    }
+
+    .tab {
+        font-size: 11px;
+    }
+}
+</style>
 </head>
-<body data-theme="dark">
 
-    <div class="container">
-        <!-- Top Controls -->
-        <div class="header-top">
-            <div class="badge"><i class="fa-solid fa-bolt"></i> <span id="lbl-badge">ReyZer Portfolio</span></div>
-            <div class="controls">
-                <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">☀️</button>
-                <button class="lang-btn active" onclick="setLang('uz')" id="btn-uz">O'z</button>
-                <button class="lang-btn" onclick="setLang('py')" id="btn-py">Ру</button>
-                <button class="lang-btn" onclick="setLang('en')" id="btn-en">En</button>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-bolt"></i>
             </div>
+
+            <span>ReyZer</span>
         </div>
 
-        <!-- Profile -->
-        <div class="profile-card">
-            <div class="avatar-container">
-                <!-- Yangi rasm (siz taqdim etgan dizayn logotipi) -->
-                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=150" alt="Avatar" class="avatar" id="profile-img">
-                <div class="status-dot"></div>
-            </div>
-            <h1 class="name">ReyZer</h1>
-            <p class="title" id="lbl-title">Frontend & Backend Developer</p>
+        <div class="header-actions">
+
+            <button
+                class="icon-btn"
+                id="themeBtn"
+                onclick="toggleTheme()"
+                aria-label="Theme">
+
+                <i class="fa-solid fa-sun"></i>
+
+            </button>
+
+            <button
+                class="icon-btn"
+                onclick="changeLanguage()"
+                aria-label="Language">
+
+                <span id="languageButton">UZ</span>
+
+            </button>
+
         </div>
 
-        <!-- Navigation Tabs (AI olib tashlandi) -->
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('info')" id="tab-info">Info</button>
-            <button class="tab-btn" onclick="switchTab('skills')" id="tab-skills">Ko'nikmalar</button>
-            <button class="tab-btn" onclick="switchTab('projects')" id="tab-projects">Loyihalar</button>
+    </header>
+
+
+    <!-- PROFILE -->
+
+    <section class="profile">
+
+        <div class="avatar-wrap">
+
+            <img
+                class="avatar"
+                id="profileImage"
+                src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=300"
+                alt="ReyZer">
+
+            <span class="online"></span>
+
         </div>
 
-        <!-- Tab 1: Info (Men haqimda to'liq versiya) -->
-        <div id="section-info" class="section-content active">
-            <div class="card">
-                <h3><i class="fa-solid fa-laptop-code"></i> <span id="info-h1">Frontend & Backend | IT</span></h3>
-                <p id="info-p1">Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. Frontend va backend yo'nalishlarida ishlayman, yangi texnologiyalarni o'rganib, ularni amaliy loyihalarda qo'llayman. 10+ loyihaning muallifi sifatida turli g'oyalarni real loyihalarga aylantirib kelmoqdaman.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fa-solid fa-gamepad"></i> <span id="info-h2">Gaming & Creation</span></h3>
-                <p id="info-p2">Gaming olamiga, ayniqsa Roblox va Minecraft platformalariga katta qiziqaman. Ushbu o'yinlarni o'ynash bilan birga, ular uchun o'z g'oyalarim asosida o'yinlar va kreativ loyihalar yarataman.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fa-solid fa-photo-film"></i> <span id="info-h3">GIF Creator</span></h3>
-                <p id="info-p3">Instagram uchun kreativ va trendga mos GIF animatsiyalar yarataman. GIF'larim umumiy hisobda 3 mlrd+ ko'rishlar to'plagan. Ushbu yo'nalishda faol ijod qilib, GIF yaratish sohasida taniqli creator sifatida o'z auditoriyamni shakllantirganman.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fa-solid fa-camera"></i> <span id="info-h4">Mobilograf</span></h3>
-                <p id="info-p4">Mobilografiya va vizual kontent yaratishga ham qiziqaman. Kreativ g'oyalarni foto va video orqali ifodalash, yangi uslublarni sinab ko'rish va sifatli kontent yaratish ustida ishlayman.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fa-solid fa-bullseye"></i> <span id="info-h5">Maqsadim</span></h3>
-                <p id="info-p5">IT, dasturlash va kreativ sohalardagi bilimlarimni birlashtirib, yanada yirik va innovatsion loyihalar yaratish. Doimiy ravishda rivojlanish, yangi texnologiyalarni o'rganish va o'z g'oyalarimni real mahsulotlarga aylantirish.</p>
-            </div>
+        <h1>ReyZer</h1>
+
+        <div
+            class="profile-role"
+            id="profileRole">
+
+            Frontend & Backend Developer
+
         </div>
 
-        <!-- Tab 2: Skills (Ko'nikmalar to'liq versiya) -->
-        <div id="section-skills" class="section-content">
-            <div class="card">
-                <h3><i class="fa-solid fa-briefcase"></i> <span id="skills-title">Ko'nikmalarim</span></h3>
-                <p style="margin-bottom: 8px;">🌐 <b>Web-texnologiyalar:</b> HTML, CSS, JavaScript — zamonaviy web-interfeyslar va interaktiv sahifalar yaratish.</p>
-                <p style="margin-bottom: 8px;">🎮 <b>Game Creation & Gaming:</b> O'yin yaratish jarayoni, gaming loyihalari va kreativ mexanikalarga qiziqish.</p>
-                <p style="margin-bottom: 8px;">🎬 <b>GIF Creation:</b> Giphy platformasi orqali kreativ GIF animatsiyalar yaratish va ulardan foydalanish.</p>
-                <p style="margin-bottom: 8px;">📸 <b>Media & Mobilografiya:</b> Mobil fotografiya, vizual kontent yaratish va kadr kompozitsiyasi ustida ishlash.</p>
-                <p>🧠 <b>Doimiy rivojlanish:</b> Yangi texnologiyalarni o'rganish, tajriba qilish va amaliy loyihalar orqali ko'nikmalarni mustahkamlash.</p>
+        <p
+            class="profile-bio"
+            id="profileBio">
+
+            Developer, creator va kreativ loyihalar ishqibozi.
+            G'oyalarni real loyihalarga aylantiraman.
+
+        </p>
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong>10+</strong>
+                <span id="statProjects">Projects</span>
             </div>
-        </div>
 
-        <!-- Tab 3: Projects -->
-        <div id="section-projects" class="section-content">
-            <div class="card">
-                <h3><i class="fa-solid fa-fire"></i> <span id="proj-title">Asosiy Loyihalar</span></h3>
-                <p>1. <b>ReyZer Portfolio Bot</b> - Telegram Mini App shaklidagi shaxsiy portfolio.<br>2. <b>GIF Creator Studio</b> - Giphy uchun maxsus animatsiyalar va dizaynlar.</p>
+            <div class="stat">
+                <strong>3B+</strong>
+                <span id="statViews">GIF Views</span>
             </div>
+
+            <div class="stat">
+                <strong>5+</strong>
+                <span id="statSkills">Skills</span>
+            </div>
+
         </div>
 
-        <!-- Social Links (Saytlarga o'tadigan qilindi) -->
-        <div class="social-container">
-            <a href="https://instagram.com" target="_blank" class="social-btn"><i class="fa-brands fa-instagram" style="color: #e1306c;"></i> Instagram</a>
-            <a href="https://telegram.org" target="_blank" class="social-btn"><i class="fa-brands fa-telegram" style="color: #24a1de;"></i> Telegram</a>
-            <a href="https://youtube.com" target="_blank" class="social-btn"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> YouTube</a>
-            <a href="https://roblox.com" target="_blank" class="social-btn"><i class="fa-solid fa-gamepad" style="color: #ffffff;"></i> Roblox</a>
-        </div>
+    </section>
 
-        <div class="footer">
-            @dfsfs1165_bot
-        </div>
+
+    <!-- TABS -->
+
+    <div class="tabs">
+
+        <button
+            class="tab active"
+            data-tab="info"
+            onclick="switchTab('info')">
+
+            <i class="fa-solid fa-user"></i>
+            <span id="tabInfo">Info</span>
+
+        </button>
+
+        <button
+            class="tab"
+            data-tab="skills"
+            onclick="switchTab('skills')">
+
+            <i class="fa-solid fa-code"></i>
+            <span id="tabSkills">Skills</span>
+
+        </button>
+
+        <button
+            class="tab"
+            data-tab="projects"
+            onclick="switchTab('projects')">
+
+            <i class="fa-solid fa-folder"></i>
+            <span id="tabProjects">Projects</span>
+
+        </button>
+
     </div>
 
-    <script>
-        // Telegram WebApp initialization
-        let tg = window.Telegram.WebApp;
-        tg.expand();
 
-        // Theme Toggle Function
-        function toggleTheme() {
-            const body = document.body;
-            const themeBtn = document.getElementById('theme-btn');
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.setAttribute('data-theme', 'light');
-                themeBtn.innerHTML = '🌙';
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                themeBtn.innerHTML = '☀️';
-            }
-        }
+    <!-- ================= INFO ================= -->
 
-        // Tab Switching
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.section-content').forEach(sec => sec.classList.remove('active'));
+    <section
+        id="info"
+        class="section active">
 
-            if (tabName === 'info') {
-                document.getElementById('section-info').classList.add('active');
-                event.target.classList.add('active');
-            } else if (tabName === 'skills') {
-                document.getElementById('section-skills').classList.add('active');
-                event.target.classList.add('active');
-            } else if (tabName === 'projects') {
-                document.getElementById('section-projects').classList.add('active');
-                event.target.classList.add('active');
-            }
-        }
+        <div class="card">
 
-        // Multi-language system
-        const texts = {
-            uz: {
-                title: "Frontend & Backend Developer",
-                tabInfo: "Info", tabSkills: "Ko'nikmalar", tabProjects: "Loyihalar",
-                infoH1: "Frontend & Backend | IT", infoP1: "Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. Frontend va backend yo'nalishlarida ishlayman, yangi texnologiyalarni o'rganib, ularni amaliy loyihalarda qo'llayman. 10+ loyihaning muallifi sifatida turli g'oyalarni real loyihalarga aylantirib kelmoqdaman.",
-                infoH2: "Gaming & Creation", infoP2: "Gaming olamiga, ayniqsa Roblox va Minecraft platformalariga katta qiziqaman. Ushbu o'yinlarni o'ynash bilan birga, ular uchun o'z g'oyalarim asosida o'yinlar va kreativ loyihalar yarataman.",
-                infoH3: "GIF Creator", infoP3: "Instagram uchun kreativ va trendga mos GIF animatsiyalar yarataman. GIF'larim umumiy hisobda 3 mlrd+ ko'rishlar to'plagan. Ushbu yo'nalishda faol ijod qilib, GIF yaratish sohasida taniqli creator sifatida o'z auditoriyamni shakllantirganman.",
-                infoH4: "Mobilograf", infoP4: "Mobilografiya va vizual kontent yaratishga ham qiziqaman. Kreativ g'oyalarni foto va video orqali ifodalash, yangi uslublarni sinab ko'rish va sifatli kontent yaratish ustida ishlayman.",
-                infoH5: "Maqsadim", infoP5: "IT, dasturlash va kreativ sohalardagi bilimlarimni birlashtirib, yanada yirik va innovatsion loyihalar yaratish. Doimiy ravishda rivojlanish, yangi texnologiyalarni o'rganish va o'z g'oyalarimni real mahsulotlarga aylantirish.",
-                skillsTitle: "Ko'nikmalarim", projTitle: "Asosiy Loyihalar"
-            },
-            py: {
-                title: "Frontend & Backend Разработчик",
-                tabInfo: "Инфо", tabSkills: "Навыки", tabProjects: "Проекты",
-                infoH1: "Frontend & Backend | IT", infoP1: "Создаю современные и интерактивные веб-проекты. Работаю в направлениях frontend и backend, применяю новые технологии на практике. Автор более 10+ проектов.",
-                infoH2: "Gaming & Creation", infoP2: "Увлекаюсь миром гейминга, особенно Roblox и Minecraft, создаю собственные игровые проекты.",
-                infoH3: "GIF Creator", infoP3: "Создаю креативные GIF-анимации для Instagram с общим числом просмотров 3 млрд+.",
-                infoH4: "Мобилограф", infoP4: "Занимаюсь мобилографией и созданием визуального контента.",
-                infoH5: "Моя цель", infoP5: "Объединить IT и креативные сферы для создания крупных инновационных проектов.",
-                skillsTitle: "Мои навыки", projTitle: "Основные проекты"
-            },
-            en: {
-                title: "Frontend & Backend Developer",
-                tabInfo: "Info", tabSkills: "Skills", tabProjects: "Projects",
-                infoH1: "Frontend & Backend | IT", infoP1: "Passionate about building modern web projects. Working across frontend and backend, turning ideas into real products.",
-                infoH2: "Gaming & Creation", infoP2: "Passionate about gaming, especially Roblox and Minecraft, creating creative game projects.",
-                infoH3: "GIF Creator", infoP3: "Creating creative GIF animations for Instagram with 3B+ total views.",
-                infoH4: "Mobilographer", infoP4: "Interested in mobile photography and visual content creation.",
-                infoH5: "My Goal", infoP5: "Combining IT and creative fields to build major innovative projects.",
-                skillsTitle: "My Skills", projTitle: "Main Projects"
-            }
-        };
+            <div class="card-title">
 
-        function setLang(lang) {
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-${lang}`).classList.add('active');
+                <i class="fa-solid fa-laptop-code"></i>
 
-            const t = texts[lang];
-            document.getElementById('lbl-title').innerText = t.title;
-            document.getElementById('tab-info').innerText = t.tabInfo;
-            document.getElementById('tab-skills').innerText = t.tabSkills;
-            document.getElementById('tab-projects').innerText = t.tabProjects;
-            
-            document.getElementById('info-h1').innerText = t.infoH1;
-            document.getElementById('info-p1').innerText = t.infoP1;
-            document.getElementById('info-h2').innerText = t.infoH2;
-            document.getElementById('info-p2').innerText = t.infoP2;
-            document.getElementById('info-h3').innerText = t.infoH3;
-            document.getElementById('info-p3').innerText = t.infoP3;
-            document.getElementById('info-h4').innerText = t.infoH4;
-            document.getElementById('info-p4').innerText = t.infoP4;
-            document.getElementById('info-h5').innerText = t.infoH5;
-            document.getElementById('info-p5').innerText = t.infoP5;
+                <span id="infoTitle1">
+                    Frontend & Backend
+                </span>
 
-            document.getElementById('skills-title').innerText = t.skillsTitle;
-            document.getElementById('proj-title').innerText = t.projTitle;
-        }
-    </script>
+            </div>
+
+            <p id="infoText1">
+                Zamonaviy va interaktiv web-loyihalar
+                yaratishga qiziqaman. Frontend va backend
+                yo'nalishlarida ishlayman.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+                <span id="infoTitle2">
+                    Gaming & Creation
+                </span>
+
+            </div>
+
+            <p id="infoText2">
+                Roblox va Minecraft kabi platformalarga
+                qiziqaman hamda kreativ game loyihalar
+                yaratishni yoqtiraman.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <i class="fa-solid fa-photo-film"></i>
+
+                <span id="infoTitle3">
+                    GIF Creator
+                </span>
+
+            </div>
+
+            <p id="infoText3">
+                Instagram uchun kreativ GIF animatsiyalar
+                yarataman va vizual kontent bilan ishlayman.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <i class="fa-solid fa-bullseye"></i>
+
+                <span id="infoTitle4">
+                    My Goal
+                </span>
+
+            </div>
+
+            <p id="infoText4">
+                IT va kreativ yo'nalishlarni birlashtirib,
+                katta va innovatsion loyihalar yaratish.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SKILLS ================= -->
+
+    <section
+        id="skills"
+        class="section">
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <i class="fa-solid fa-code"></i>
+
+                <span id="skillsTitle">
+                    My Skills
+                </span>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-head">
+                    <span>HTML</span>
+                    <span>90%</span>
+                </div>
+
+                <div class="progress">
+                    <span style="width:90%"></span>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-head">
+                    <span>CSS</span>
+                    <span>85%</span>
+                </div>
+
+                <div class="progress">
+                    <span style="width:85%"></span>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-head">
+                    <span>JavaScript</span>
+                    <span>80%</span>
+                </div>
+
+                <div class="progress">
+                    <span style="width:80%"></span>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-head">
+                    <span>Branding</span>
+                    <span>88%</span>
+                </div>
+
+                <div class="progress">
+                    <span style="width:88%"></span>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-head">
+                    <span>UI / UX</span>
+                    <span>75%</span>
+                </div>
+
+                <div class="progress">
+                    <span style="width:75%"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROJECTS ================= -->
+
+    <section
+        id="projects"
+        class="section">
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <i class="fa-solid fa-fire"></i>
+
+                <span id="projectsTitle">
+                    Main Projects
+                </span>
+
+            </div>
+
+
+            <!-- PROJECT 1 -->
+
+            <div class="project">
+
+                <div class="project-top">
+
+                    <div class="project-icon">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
+
+                    <div class="project-info">
+
+                        <h4>
+                            ReyZer Portfolio
+                        </h4>
+
+                        <span>
+                            Telegram Mini App
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Telegram ichida ishlaydigan zamonaviy
+                    shaxsiy portfolio Mini App.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Telegram API</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+
+            <div class="project">
+
+                <div class="project-top">
+
+                    <div class="project-icon">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+
+                    <div class="project-info">
+
+                        <h4>
+                            GIF Creator Studio
+                        </h4>
+
+                        <span>
+                            Creative Project
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Kreativ GIF animatsiyalar va visual
+                    kontent yaratish loyihasi.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">GIF</span>
+                    <span class="tag">Design</span>
+                    <span class="tag">Animation</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SOCIAL -->
+
+    <div class="socials">
+
+        <a
+            class="social"
+            href="https://instagram.com"
+            target="_blank"
+            onclick="haptic()">
+
+            <i class="fa-brands fa-instagram"></i>
+            Instagram
+
+        </a>
+
+        <a
+            class="social"
+            href="https://t.me"
+            target="_blank"
+            onclick="haptic()">
+
+            <i class="fa-brands fa-telegram"></i>
+            Telegram
+
+        </a>
+
+        <a
+            class="social"
+            href="https://youtube.com"
+            target="_blank"
+            onclick="haptic()">
+
+            <i class="fa-brands fa-youtube"></i>
+            YouTube
+
+        </a>
+
+        <a
+            class="social"
+            href="https://roblox.com"
+            target="_blank"
+            onclick="haptic()">
+
+            <i class="fa-solid fa-gamepad"></i>
+            Roblox
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+    <button
+        class="bottom-btn active"
+        data-bottom="info"
+        onclick="switchTab('info')">
+
+        <i class="fa-solid fa-user"></i>
+        <span id="bottomInfo">Info</span>
+
+    </button>
+
+    <button
+        class="bottom-btn"
+        data-bottom="skills"
+        onclick="switchTab('skills')">
+
+        <i class="fa-solid fa-code"></i>
+        <span id="bottomSkills">Skills</span>
+
+    </button>
+
+    <button
+        class="bottom-btn"
+        data-bottom="projects"
+        onclick="switchTab('projects')">
+
+        <i class="fa-solid fa-folder"></i>
+        <span id="bottomProjects">Projects</span>
+
+    </button>
+
+</nav>
+
+
+<script>
+
+/* ==========================================
+   TELEGRAM
+========================================== */
+
+const tg = window.Telegram?.WebApp;
+
+if (tg) {
+
+    tg.ready();
+    tg.expand();
+
+    tg.setHeaderColor?.("#0f172a");
+    tg.setBackgroundColor?.("#0f172a");
+
+}
+
+
+/* ==========================================
+   HAPTIC
+========================================== */
+
+function haptic() {
+
+    try {
+
+        tg?.HapticFeedback?.impactOccurred("light");
+
+    } catch (e) {}
+
+}
+
+
+/* ==========================================
+   TAB SYSTEM
+========================================== */
+
+function switchTab(tab) {
+
+    haptic();
+
+    document
+        .querySelectorAll(".tab")
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.tab === tab
+            );
+
+        });
+
+
+    document
+        .querySelectorAll(".bottom-btn")
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.bottom === tab
+            );
+
+        });
+
+
+    document
+        .querySelectorAll(".section")
+        .forEach(section => {
+
+            section.classList.toggle(
+                "active",
+                section.id === tab
+            );
+
+        });
+
+}
+
+
+/* ==========================================
+   THEME
+========================================== */
+
+function toggleTheme() {
+
+    haptic();
+
+    const body = document.body;
+
+    const current =
+        body.dataset.theme || "dark";
+
+    const next =
+        current === "dark"
+            ? "light"
+            : "dark";
+
+    body.dataset.theme = next;
+
+    localStorage.setItem(
+        "reyzer-theme",
+        next
+    );
+
+    updateThemeIcon();
+
+}
+
+
+/* ==========================================
+   THEME ICON
+========================================== */
+
+function updateThemeIcon() {
+
+    const button =
+        document.getElementById("themeBtn");
+
+    const isDark =
+        document.body.dataset.theme === "dark";
+
+    button.innerHTML =
+        isDark
+            ? '<i class="fa-solid fa-sun"></i>'
+            : '<i class="fa-solid fa-moon"></i>';
+
+}
+
+
+/* ==========================================
+   LANGUAGE SYSTEM
+========================================== */
+
+const translations = {
+
+    uz: {
+
+        role:
+            "Frontend & Backend Developer",
+
+        bio:
+            "Developer, creator va kreativ loyihalar ishqibozi. G'oyalarni real loyihalarga aylantiraman.",
+
+        projects:
+            "Loyihalar",
+
+        views:
+            "GIF Ko'rishlar",
+
+        skills:
+            "Ko'nikmalar",
+
+        info:
+            "Info",
+
+        skill:
+            "Ko'nikmalar",
+
+        project:
+            "Loyihalar",
+
+        infoTitle1:
+            "Frontend & Backend",
+
+        infoText1:
+            "Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. Frontend va backend yo'nalishlarida ishlayman.",
+
+        infoTitle2:
+            "Gaming & Creation",
+
+        infoText2:
+            "Roblox va Minecraft kabi platformalarda kreativ o'yinlar loyihalar yaratishni yoqtiraman.",
+
+        infoTitle3:
+            "GIF Creator",
+
+        infoText3:
+            "Instagram uchun kreativ GIF animatsiyalar yarataman va vizual kontent bilan ishlayman.",
+
+        infoTitle4:
+            "Maqsadim",
+
+        infoText4:
+            "IT va kreativ yo'nalishlarni birlashtirib, katta va innovatsion loyihalar yaratish.",
+
+        mySkills:
+            "Ko'nikmalarim",
+
+        mainProjects:
+            "Asosiy loyihalar"
+
+    },
+
+
+    ru: {
+
+        role:
+            "Frontend & Backend Разработчик",
+
+        bio:
+            "Разработчик и создатель креативных проектов. Превращаю идеи в реальные продукты.",
+
+        projects:
+            "Проекты",
+
+        views:
+            "GIF просмотры",
+
+        skills:
+            "Навыки",
+
+        info:
+            "Инфо",
+
+        skill:
+            "Навыки",
+
+        project:
+            "Проекты",
+
+        infoTitle1:
+            "Frontend & Backend",
+
+        infoText1:
+            "Создаю современные интерактивные веб-проекты и работаю с frontend и backend.",
+
+        infoTitle2:
+            "Gaming & Creation",
+
+        infoText2:
+            "Интересуюсь Roblox и Minecraft и создаю собственные креативные игровые проекты.",
+
+        infoTitle3:
+            "GIF Creator",
+
+        infoText3:
+            "Создаю креативные GIF-анимации и визуальный контент.",
+
+        infoTitle4:
+            "Моя цель",
+
+        infoText4:
+            "Объединять IT и креатив для создания крупных инновационных проектов.",
+
+        mySkills:
+            "Мои навыки",
+
+        mainProjects:
+            "Основные проекты"
+
+    },
+
+
+    en: {
+
+        role:
+            "Frontend & Backend Developer",
+
+        bio:
+            "Developer, creator and creative project enthusiast. I turn ideas into real products.",
+
+        projects:
+            "Projects",
+
+        views:
+            "GIF Views",
+
+        skills:
+            "Skills",
+
+        info:
+            "Info",
+
+        skill:
+            "Skills",
+
+        project:
+            "Projects",
+
+        infoTitle1:
+            "Frontend & Backend",
+
+        infoText1:
+            "I create modern and interactive web projects and work across frontend and backend development.",
+
+        infoTitle2:
+            "Gaming & Creation",
+
+        infoText2:
+            "I'm interested in Roblox and Minecraft and enjoy creating creative game projects.",
+
+        infoTitle3:
+            "GIF Creator",
+
+        infoText3:
+            "I create creative GIF animations and visual content.",
+
+        infoTitle4:
+            "My Goal",
+
+        infoText4:
+            "Combining IT and creativity to build large innovative projects.",
+
+        mySkills:
+            "My Skills",
+
+        mainProjects:
+            "Main Projects"
+
+    }
+
+};
+
+
+let currentLanguage =
+    localStorage.getItem("reyzer-language") || "uz";
+
+
+function setLanguage(lang) {
+
+    const t = translations[lang];
+
+    if (!t) return;
+
+    currentLanguage = lang;
+
+    localStorage.setItem(
+        "reyzer-language",
+        lang
+    );
+
+
+    document.getElementById("languageButton")
+        .textContent =
+        lang.toUpperCase();
+
+
+    document.getElementById("profileRole")
+        .textContent = t.role;
+
+    document.getElementById("profileBio")
+        .textContent = t.bio;
+
+
+    document.getElementById("statProjects")
+        .textContent = t.projects;
+
+    document.getElementById("statViews")
+        .textContent = t.views;
+
+    document.getElementById("statSkills")
+        .textContent = t.skills;
+
+
+    document.getElementById("tabInfo")
+        .textContent = t.info;
+
+    document.getElementById("tabSkills")
+        .textContent = t.skill;
+
+    document.getElementById("tabProjects")
+        .textContent = t.project;
+
+
+    document.getElementById("bottomInfo")
+        .textContent = t.info;
+
+    document.getElementById("bottomSkills")
+        .textContent = t.skill;
+
+    document.getElementById("bottomProjects")
+        .textContent = t.project;
+
+
+    document.getElementById("infoTitle1")
+        .textContent = t.infoTitle1;
+
+    document.getElementById("infoText1")
+        .textContent = t.infoText1;
+
+    document.getElementById("infoTitle2")
+        .textContent = t.infoTitle2;
+
+    document.getElementById("infoText2")
+        .textContent = t.infoText2;
+
+    document.getElementById("infoTitle3")
+        .textContent = t.infoTitle3;
+
+    document.getElementById("infoText3")
+        .textContent = t.infoText3;
+
+    document.getElementById("infoTitle4")
+        .textContent = t.infoTitle4;
+
+    document.getElementById("infoText4")
+        .textContent = t.infoText4;
+
+
+    document.getElementById("skillsTitle")
+        .textContent = t.mySkills;
+
+    document.getElementById("projectsTitle")
+        .textContent = t.mainProjects;
+
+    haptic();
+
+}
+
+
+/* ==========================================
+   CHANGE LANGUAGE
+========================================== */
+
+function changeLanguage() {
+
+    const languages = [
+        "uz",
+        "ru",
+        "en"
+    ];
+
+    const index =
+        languages.indexOf(currentLanguage);
+
+    const next =
+        languages[
+            (index + 1) % languages.length
+        ];
+
+    setLanguage(next);
+
+}
+
+
+/* ==========================================
+   LOAD SETTINGS
+========================================== */
+
+const savedTheme =
+    localStorage.getItem("reyzer-theme");
+
+document.body.dataset.theme =
+    savedTheme || "dark";
+
+updateThemeIcon();
+
+setLanguage(currentLanguage);
+
+
+/* ==========================================
+   TELEGRAM MAIN BUTTON
+========================================== */
+
+if (tg) {
+
+    tg.MainButton
+        .setText("Bog'lanish")
+        .show();
+
+    tg.MainButton
+        .onClick(() => {
+
+            haptic();
+
+            tg.showPopup?.({
+
+                title: "ReyZer",
+
+                message:
+                    "Telegram orqali bog'lanishingiz mumkin.",
+
+                buttons: [
+                    {
+                        id: "telegram",
+                        type: "default",
+                        text: "Telegram"
+                    },
+                    {
+                        type: "cancel"
+                    }
+                ]
+
+            }, (buttonId) => {
+
+                if (buttonId === "telegram") {
+
+                    tg.openTelegramLink?.(
+                        "https://t.me/"
+                    );
+
+                }
+
+            });
+
+        });
+
+}
+
+</script>
+
 </body>
 </html>
