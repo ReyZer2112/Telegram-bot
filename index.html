@@ -3,405 +3,554 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReyZer - Portfolio Mini App</title>
-    <!-- Telegram Web App SDK -->
+    <title>ReyZer Portfolio Mini App</title>
+    <!-- Telegram Web App Script -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body {
-            background-color: var(--tg-theme-bg-color, #0f172a);
-            color: var(--tg-theme-text-color, #f8fafc);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --subtext-color: #6c757d;
+            --accent-color: #6366f1;
+            --accent-hover: #4f46e5;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --subtext-color: #94a3b8;
+            --accent-color: #818cf8;
+            --accent-hover: #6366f1;
+            --border-color: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Top Header & Controls */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .badge {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-color);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .theme-toggle, .lang-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 6px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+
+        .lang-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        /* Profile Section */
+        .profile-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 90px;
+            height: 90px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+        }
+
+        .status-dot {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 16px;
+            height: 16px;
+            background-color: #22c55e;
+            border: 2px solid var(--card-bg);
+            border-radius: 50%;
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .title {
+            font-size: 14px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 6px;
+            border-radius: 16px;
+            gap: 4px;
+            box-shadow: var(--shadow);
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--subtext-color);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Content Sections */
+        .section-content {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .section-content.active {
+            display: flex;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .card h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+            color: var(--accent-color);
+        }
+
+        .card p {
+            font-size: 13px;
+            color: var(--subtext-color);
+            line-height: 1.4;
+        }
+
+        /* AI Chatbox Styles */
+        .chat-box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-messages {
+            max-height: 200px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 4px;
+        }
+
+        .message {
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            max-width: 85%;
+            line-height: 1.4;
+        }
+
+        .message.user {
+            background: var(--accent-color);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .message.ai {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .send-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* Social Links */
+        .social-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .social-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .social-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--subtext-color);
+            margin-top: 20px;
         }
     </style>
 </head>
-<body class="p-3 sm:p-6 pb-24 max-w-2xl mx-auto">
+<body data-theme="dark">
 
-    <!-- Top Bar: Lang switcher -->
-    <div class="flex justify-between items-center mb-4">
-        <span class="text-xs font-semibold text-indigo-400 bg-indigo-500/10 px-3 py-1.5 rounded-full border border-indigo-500/20 flex items-center gap-1.5">
-            <i data-lucide="zap" class="w-3.5 h-3.5"></i> ReyZer Portfolio
-        </span>
-        <div class="flex gap-1 bg-slate-800/80 p-1 rounded-xl border border-slate-700">
-            <button onclick="setLanguage('uz')" id="lang-uz" class="px-2.5 py-1 text-xs font-bold rounded-lg bg-indigo-600 text-white transition">O'z</button>
-            <button onclick="setLanguage('ru')" id="lang-ru" class="px-2.5 py-1 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition">Ру</button>
-            <button onclick="setLanguage('en')" id="lang-en" class="px-2.5 py-1 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition">En</button>
-        </div>
-    </div>
-
-    <!-- Profil qismi -->
-    <div class="text-center my-6">
-        <div class="relative inline-block">
-            <img src="https://github.com/reyzer2112.png" alt="ReyZer" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full mx-auto border-4 border-indigo-500 shadow-2xl object-cover">
-            <span class="absolute bottom-1 right-1 bg-green-500 w-5 h-5 rounded-full border-2 border-slate-900"></span>
-        </div>
-        <h1 id="user-name" class="text-2xl sm:text-3xl font-extrabold mt-3 tracking-tight">ReyZer</h1>
-        <p id="txt-subtitle" class="text-sm text-indigo-400 font-medium mt-1 flex items-center justify-center gap-1">
-            Frontend & Backend Developer <i data-lucide="zap" class="w-4 h-4 text-amber-400 inline"></i>
-        </p>
-    </div>
-
-    <!-- Menyular (Tabs) -->
-    <div class="grid grid-cols-4 gap-1.5 mb-6 bg-slate-800/60 p-1.5 rounded-2xl border border-slate-700/60">
-        <button onclick="switchTab('about')" id="btn-about" class="py-2.5 text-xs font-semibold rounded-xl bg-indigo-600 text-white transition shadow-lg flex items-center justify-center gap-1.5">
-            <i data-lucide="info" class="w-4 h-4"></i> <span id="lbl-info">Info</span>
-        </button>
-        <button onclick="switchTab('skills')" id="btn-skills" class="py-2.5 text-xs font-semibold rounded-xl text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5">
-            <i data-lucide="cpu" class="w-4 h-4"></i> <span id="lbl-skills">Ko'nikmalar</span>
-        </button>
-        <button onclick="switchTab('projects')" id="btn-projects" class="py-2.5 text-xs font-semibold rounded-xl text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5">
-            <i data-lucide="folder-git-2" class="w-4 h-4"></i> <span id="lbl-projects">Loyihalar</span>
-        </button>
-        <button onclick="switchTab('ai')" id="btn-ai" class="py-2.5 text-xs font-semibold rounded-xl text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5">
-            <i data-lucide="bot" class="w-4 h-4"></i> <span id="lbl-ai">AI</span>
-        </button>
-    </div>
-
-    <!-- Kontent Qismlari -->
-    <div id="content-container">
-        
-        <!-- 1. MEN HAQIMDA -->
-        <div id="tab-about" class="space-y-4">
-            <div class="glass-card p-4 sm:p-5 rounded-2xl shadow-xl">
-                <h3 class="font-bold text-indigo-400 mb-2 flex items-center gap-2 text-base">
-                    <i data-lucide="code-2" class="w-5 h-5"></i> <span id="ab-t1">Frontend & Backend | IT</span>
-                </h3>
-                <p id="ab-d1" class="text-sm text-slate-300 leading-relaxed">Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. 10+ dan ortiq loyihalar muallifiman.</p>
-            </div>
-            <div class="glass-card p-4 sm:p-5 rounded-2xl shadow-xl">
-                <h3 class="font-bold text-indigo-400 mb-2 flex items-center gap-2 text-base">
-                    <i data-lucide="gamepad-2" class="w-5 h-5"></i> <span id="ab-t2">Gaming & Creation</span>
-                </h3>
-                <p id="ab-d2" class="text-sm text-slate-300 leading-relaxed">Roblox va Minecraft ishqibozi, o'yin yaratuvchisi va Giphy platformasida 3 mlrd+ ko'rishlar to'plagan GIF creator.</p>
-            </div>
-            <div class="glass-card p-4 sm:p-5 rounded-2xl shadow-xl">
-                <h3 class="font-bold text-indigo-400 mb-2 flex items-center gap-2 text-base">
-                    <i data-lucide="camera" class="w-5 h-5"></i> <span id="ab-t3">Mobilografiya & Media</span>
-                </h3>
-                <p id="ab-d3" class="text-sm text-slate-300 leading-relaxed">Kreativ kadrlar va vizual kontent yaratish bo'yicha ijodiy yondashuv.</p>
+    <div class="container">
+        <!-- Top Controls -->
+        <div class="header-top">
+            <div class="badge">⚡ <span id="lbl-badge">ReyZer Portfolio</span></div>
+            <div class="controls">
+                <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">☀️</button>
+                <button class="lang-btn active" onclick="setLang('uz')" id="btn-uz">O'z</button>
+                <button class="lang-btn" onclick="setLang('py')" id="btn-py">Ру</button>
+                <button class="lang-btn" onclick="setLang('en')" id="btn-en">En</button>
             </div>
         </div>
 
-        <!-- 2. KO'NIKMALAR -->
-        <div id="tab-skills" class="hidden space-y-3">
-            <div class="glass-card p-4 rounded-xl flex items-center justify-between">
-                <span class="text-sm font-semibold flex items-center gap-2"><i data-lucide="globe" class="w-4 h-4 text-indigo-400"></i> HTML, CSS, JavaScript</span>
-                <span id="badge-adv" class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/30">Advanced</span>
+        <!-- Profile -->
+        <div class="profile-card">
+            <div class="avatar-container">
+                <!-- O'z rasmingiz havolasini shu yerga qo'yasiz -->
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Avatar" class="avatar">
+                <div class="status-dot"></div>
             </div>
-            <div class="glass-card p-4 rounded-xl flex items-center justify-between">
-                <span class="text-sm font-semibold flex items-center gap-2"><i data-lucide="terminal" class="w-4 h-4 text-indigo-400"></i> <span id="sk-fb">Frontend & Backend</span></span>
-                <span id="badge-pro" class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/30">Pro</span>
+            <h1 class="name">ReyZer</h1>
+            <p class="title" id="lbl-title">Frontend & Backend Developer</p>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('info')" id="tab-info">Info</button>
+            <button class="tab-btn" onclick="switchTab('skills')" id="tab-skills">Ko'nikmalar</button>
+            <button class="tab-btn" onclick="switchTab('projects')" id="tab-projects">Loyihalar</button>
+            <button class="tab-btn" onclick="switchTab('ai')" id="tab-ai">🤖 AI</button>
+        </div>
+
+        <!-- Tab 1: Info -->
+        <div id="section-info" class="section-content active">
+            <div class="card">
+                <h3 id="info-h1">💻 Frontend & Backend | IT</h3>
+                <p id="info-p1">Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. 10+ dan ortiq loyihalar muallifiman.</p>
             </div>
-            <div class="glass-card p-4 rounded-xl flex items-center justify-between">
-                <span class="text-sm font-semibold flex items-center gap-2"><i data-lucide="film" class="w-4 h-4 text-indigo-400"></i> <span id="sk-gif">GIF Creator (Giphy)</span></span>
-                <span id="badge-views" class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/30">3B+ Views</span>
+            <div class="card">
+                <h3 id="info-h2">🎮 Gaming & Creation</h3>
+                <p id="info-p2">Roblox va Minecraft ishqibozi, o'yin yaratuvchisi va Giphy platformasida 3 mlrd+ ko'rishlar to'plagan GIF creator.</p>
             </div>
-            <div class="glass-card p-4 rounded-xl flex items-center justify-between">
-                <span class="text-sm font-semibold flex items-center gap-2"><i data-lucide="joystick" class="w-4 h-4 text-indigo-400"></i> <span id="sk-game">Game Creation & Roblox</span></span>
-                <span id="badge-creator" class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/30">Creator</span>
+            <div class="card">
+                <h3 id="info-h3">📸 Mobilografiya & Media</h3>
+                <p id="info-p3">Kreativ kadrlar va vizual kontent yaratish bo'yicha ijodiy yondashuv.</p>
             </div>
         </div>
 
-        <!-- 3. LOYIHALAR -->
-        <div id="tab-projects" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <a href="https://reyzer2112.github.io/2048-Oyini/" target="_blank" class="glass-card p-4 rounded-2xl flex items-center justify-between hover:border-indigo-500 transition group">
-                <div><h4 class="font-bold text-sm group-hover:text-indigo-400 transition flex items-center gap-1.5"><i data-lucide="gamepad-2" class="w-4 h-4 text-indigo-400"></i> 1. 2048 O'yini</h4><p class="text-xs text-slate-400" id="p-desc1">Mantiqiy o'yin</p></div>
-                <i data-lucide="external-link" class="w-4 h-4 text-indigo-400"></i>
-            </a>
-            <a href="https://reyzer2112.github.io/Wordle-Uzbekcha/" target="_blank" class="glass-card p-4 rounded-2xl flex items-center justify-between hover:border-indigo-500 transition group">
-                <div><h4 class="font-bold text-sm group-hover:text-indigo-400 transition flex items-center gap-1.5"><i data-lucide="file-text" class="w-4 h-4 text-indigo-400"></i> 2. Wordle Uzbekcha</h4><p class="text-xs text-slate-400" id="p-desc2">So'z topish</p></div>
-                <i data-lucide="external-link" class="w-4 h-4 text-indigo-400"></i>
-            </a>
-            <a href="https://reyzer2112.github.io/Necha-kun-qoldi/" target="_blank" class="glass-card p-4 rounded-2xl flex items-center justify-between hover:border-indigo-500 transition group">
-                <div><h4 class="font-bold text-sm group-hover:text-indigo-400 transition flex items-center gap-1.5"><i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i> 3. Necha kun qoldi</h4><p class="text-xs text-slate-400" id="p-desc3">Hisoblagich</p></div>
-                <i data-lucide="external-link" class="w-4 h-4 text-indigo-400"></i>
-            </a>
-            <a href="https://reyzer2112.github.io/ReyZer-Kubik-Rubik/" target="_blank" class="glass-card p-4 rounded-2xl flex items-center justify-between hover:border-indigo-500 transition group">
-                <div><h4 class="font-bold text-sm group-hover:text-indigo-400 transition flex items-center gap-1.5"><i data-lucide="box" class="w-4 h-4 text-indigo-400"></i> 4. Kubik Rubik</h4><p class="text-xs text-slate-400" id="p-desc4">Interaktiv</p></div>
-                <i data-lucide="external-link" class="w-4 h-4 text-indigo-400"></i>
-            </a>
-            <a href="https://reyzer2112.github.io/Tayoqli-Qahramon/" target="_blank" class="glass-card p-4 rounded-2xl flex items-center justify-between hover:border-indigo-500 transition group">
-                <div><h4 class="font-bold text-sm group-hover:text-indigo-400 transition flex items-center gap-1.5"><i data-lucide="shield" class="w-4 h-4 text-indigo-400"></i> 5. Tayoqli Qahramon</h4><p class="text-xs text-slate-400" id="p-desc5">Arcade</p></div>
-                <i data-lucide="external-link" class="w-4 h-4 text-indigo-400"></i>
-            </a>
-            <a href="https://reyzer2112.github.io/FlappyBird/" target="_blank" class="glass-card p-4 rounded-2xl flex items-center justify-between hover:border-indigo-500 transition group">
-                <div><h4 class="font-bold text-sm group-hover:text-indigo-400 transition flex items-center gap-1.5"><i data-lucide="feather" class="w-4 h-4 text-indigo-400"></i> 6. Flappy Bird</h4><p class="text-xs text-slate-400" id="p-desc6">Klassik o'yin</p></div>
-                <i data-lucide="external-link" class="w-4 h-4 text-indigo-400"></i>
-            </a>
-            <a href="https://reyzer2112.github.io/Tower-Blocks/" target="_blank" class="glass-card p-4 rounded-2xl flex items-center justify-between hover:border-indigo-500 transition group">
-                <div><h4 class="font-bold text-sm group-hover:text-indigo-400 transition flex items-center gap-1.5"><i data-lucide="layers" class="w-4 h-4 text-indigo-400"></i> 7. Tower Blocks</h4><p class="text-xs text-slate-400" id="p-desc7">Minora qurish</p></div>
-                <i data-lucide="external-link" class="w-4 h-4 text-indigo-400"></i>
-            </a>
-            <a href="https://reyzer2112.github.io/Aqldan-Ozgan-Haydovchi/" target="_blank" class="glass-card p-4 rounded-2xl flex items-center justify-between hover:border-indigo-500 transition group">
-                <div><h4 class="font-bold text-sm group-hover:text-indigo-400 transition flex items-center gap-1.5"><i data-lucide="car" class="w-4 h-4 text-indigo-400"></i> 8. Haydovchi</h4><p class="text-xs text-slate-400" id="p-desc8">Poyga o'yini</p></div>
-                <i data-lucide="external-link" class="w-4 h-4 text-indigo-400"></i>
-            </a>
-            <a href="https://reyzer2112.github.io/Xotira-Chiroqlari/" target="_blank" class="glass-card p-4 rounded-2xl flex items-center justify-between hover:border-indigo-500 transition group">
-                <div><h4 class="font-bold text-sm group-hover:text-indigo-400 transition flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4 text-indigo-400"></i> 9. Xotira Chiroqlari</h4><p class="text-xs text-slate-400" id="p-desc9">Miya mashqi</p></div>
-                <i data-lucide="external-link" class="w-4 h-4 text-indigo-400"></i>
-            </a>
-            <a href="https://reyzer2112.github.io/Tarjimon/" target="_blank" class="glass-card p-4 rounded-2xl flex items-center justify-between hover:border-indigo-500 transition group">
-                <div><h4 class="font-bold text-sm group-hover:text-indigo-400 transition flex items-center gap-1.5"><i data-lucide="languages" class="w-4 h-4 text-indigo-400"></i> 10. Tarjimon</h4><p class="text-xs text-slate-400" id="p-desc10">Web App</p></div>
-                <i data-lucide="external-link" class="w-4 h-4 text-indigo-400"></i>
-            </a>
+        <!-- Tab 2: Skills -->
+        <div id="section-skills" class="section-content">
+            <div class="card">
+                <h3>🚀 Texnologiyalar</h3>
+                <p>• HTML5, CSS3, JavaScript (ES6+)<br>• Python, Telegram Bot API<br>• React, Node.js asoslari<br>• Git, GitHub va Vercel</p>
+            </div>
         </div>
 
-        <!-- 4. SUN'IY INTELLEKT (AI CHAT) -->
-        <div id="tab-ai" class="hidden space-y-4">
-            <div class="glass-card p-4 rounded-2xl shadow-xl">
-                <h3 class="font-bold text-indigo-400 mb-1 text-base flex items-center gap-2">
-                    <i data-lucide="bot" class="w-5 h-5"></i> AI Assistant
-                </h3>
-                <p id="ai-desc" class="text-xs text-slate-400 mb-3">ReyZer va uning loyihalari haqida istalgan savolni bering.</p>
-                <div id="ai-chat-box" class="bg-slate-900/60 p-3 rounded-xl min-h-[140px] max-h-[220px] overflow-y-auto text-xs text-slate-300 mb-3 space-y-2 border border-slate-800">
-                    <div id="ai-welcome" class="text-indigo-300 flex items-center gap-1.5">
-                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Salom! Men ReyZer botining AI yordamchisiman. Savolingizni yozing:
-                    </div>
+        <!-- Tab 3: Projects -->
+        <div id="section-projects" class="section-content">
+            <div class="card">
+                <h3>🔥 Asosiy Loyihalar</h3>
+                <p>1. <b>ReyZer Portfolio Bot</b> - Telegram Mini App shaklidagi shaxsiy portfolio.<br>2. <b>GIF Creator Studio</b> - Giphy uchun maxsus animatsiyalar va dizaynlar.</p>
+            </div>
+        </div>
+
+        <!-- Tab 4: AI Assistant (Fully Working!) -->
+        <div id="section-ai" class="section-content">
+            <div class="card chat-box">
+                <h3 id="ai-title">🤖 AI Assistant</h3>
+                <p id="ai-desc">ReyZer va uning faoliyati haqida istalgan savolni bering:</p>
+                
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message ai" id="ai-welcome">Salom! Men ReyZer botining AI yordamchisiman. Menga istalgan savolni yozing!</div>
                 </div>
-                <div class="flex gap-2">
-                    <input type="text" id="ai-input" placeholder="Masalan: Reyzer kim?" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
-                    <button onclick="askAI()" id="ai-send-btn" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
-                        <i data-lucide="send" class="w-3.5 h-3.5"></i> Yuborish
-                    </button>
+
+                <div class="chat-input-area">
+                    <input type="text" id="user-input" class="chat-input" placeholder="Masalan: ReyZer kim?" onkeypress="handleKeyPress(event)">
+                    <button class="send-btn" onclick="sendMessage()" id="send-btn">Yuborish</button>
                 </div>
             </div>
         </div>
 
-    </div>
+        <!-- Social Links -->
+        <div class="social-container">
+            <a href="https://instagram.com" target="_blank" class="social-btn">📷 Instagram</a>
+            <a href="https://telegram.org" target="_blank" class="social-btn">✈️ Telegram</a>
+            <a href="https://youtube.com" target="_blank" class="social-btn">▶️ YouTube</a>
+            <a href="https://roblox.com" target="_blank" class="social-btn">🎮 Roblox</a>
+        </div>
 
-    <!-- Ijtimoiy tarmoqlar pastda -->
-    <div class="mt-8 pt-4 border-t border-slate-800 text-center">
-        <p id="txt-socials" class="text-xs text-slate-400 mb-3">Bizni ijtimoiy tarmoqlarda kuzating</p>
-        <div class="flex flex-wrap justify-center gap-2">
-            <a href="https://instagram.com/reyzer2112" target="_blank" class="bg-slate-800/80 px-3.5 py-2 rounded-xl hover:bg-indigo-600 transition text-xs font-medium border border-slate-700 flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                Instagram
-            </a>
-            <a href="https://t.me/reyzer2112" target="_blank" class="bg-slate-800/80 px-3.5 py-2 rounded-xl hover:bg-indigo-600 transition text-xs font-medium border border-slate-700 flex items-center gap-1.5">
-                <i data-lucide="send" class="w-3.5 h-3.5"></i> Telegram
-            </a>
-            <a href="https://youtube.com/@ReyZer-2112" target="_blank" class="bg-slate-800/80 px-3.5 py-2 rounded-xl hover:bg-indigo-600 transition text-xs font-medium border border-slate-700 flex items-center gap-1.5">
-                <!-- YouTube uchun to'g'ri SVG ikonka qo'shildi -->
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                YouTube
-            </a>
-            <a href="https://www.roblox.com/users/4669071068/profile" target="_blank" class="bg-slate-800/80 px-3.5 py-2 rounded-xl hover:bg-indigo-600 transition text-xs font-medium border border-slate-700 flex items-center gap-1.5">
-                <i data-lucide="gamepad" class="w-3.5 h-3.5"></i> Roblox
-            </a>
+        <div class="footer">
+            @dfsfs1165_bot
         </div>
     </div>
 
     <script>
-        const tg = window.Telegram.WebApp;
+        // Telegram WebApp initialization
+        let tg = window.Telegram.WebApp;
         tg.expand();
 
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            const firstName = tg.initDataUnsafe.user.first_name;
-            document.getElementById('user-name').innerText = firstName ? `${firstName}` : 'ReyZer';
+        // Theme Toggle Function
+        function toggleTheme() {
+            const body = document.body;
+            const themeBtn = document.getElementById('theme-btn');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                themeBtn.innerHTML = '🌙';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeBtn.innerHTML = '☀️';
+            }
         }
 
-        lucide.createIcons();
+        // Tab Switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.section-content').forEach(sec => sec.classList.remove('active'));
 
-        // 3 ta til uchun to'liq tarjimalar bazasi
-        const translations = {
+            if (tabName === 'info') {
+                document.getElementById('section-info').classList.add('active');
+                event.target.classList.add('active');
+            } else if (tabName === 'skills') {
+                document.getElementById('section-skills').classList.add('active');
+                event.target.classList.add('active');
+            } else if (tabName === 'projects') {
+                document.getElementById('section-projects').classList.add('active');
+                event.target.classList.add('active');
+            } else if (tabName === 'ai') {
+                document.getElementById('section-ai').classList.add('active');
+                event.target.classList.add('active');
+            }
+        }
+
+        // Fully Working AI Assistant Logic
+        function sendMessage() {
+            const inputField = document.getElementById('user-input');
+            const messageText = inputField.value.trim();
+            if (!messageText) return;
+
+            const chatMessages = document.getElementById('chat-messages');
+
+            // User message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerText = messageText;
+            chatMessages.appendChild(userMsg);
+
+            inputField.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // AI Smart Response Simulation
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'message ai';
+                aiMsg.innerText = getSmartAIResponse(messageText);
+                chatMessages.appendChild(aiMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 600);
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function getSmartAIResponse(query) {
+            const q = query.toLowerCase();
+            if (q.includes('reyzer') || q.includes('kim')) {
+                return "ReyZer — tajribali frontend & backend dasturchisi, 10+ ta loyihalar va Giphy'da 3 mlrd+ ko'rishga ega GIF creator!";
+            } else if (q.includes('loyiha') || q.includes('project')) {
+                return "ReyZer Telegram Mini App botlari, veb-saytlar va animatsiyalar yaratish bo'yicha ko'plab qiziqarli loyihalar qilgan.";
+            } else if (q.includes('aloqa') || q.includes('boglanish') || q.includes('kontakt')) {
+                return "U bilan pastdagi Telegram yoki Instagram havolalari orqali bog'lanishingiz mumkin!";
+            } else {
+                return "Ajoyib savol! ReyZer bu yo'nalishda juda ko'p qiziqarli ishlanmalarga ega. Batafsil ma'lumot olish uchun uning ijtimoiy tarmoqlariga o'ting.";
+            }
+        }
+
+        // Multi-language system (Uzbek, Russian, English)
+        const texts = {
             uz: {
-                subtitle: "Frontend & Backend Developer ⚡",
-                lblInfo: "Info",
-                lblSkills: "Ko'nikmalar",
-                lblProjects: "Loyihalar",
-                lblAi: "AI",
-                abT1: "Frontend & Backend | IT",
-                abD1: "Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. 10+ dan ortiq loyihalar muallifiman.",
-                abT2: "Gaming & Creation",
-                abD2: "Roblox va Minecraft ishqibozi, o'yin yaratuvchisi va Giphy platformasida 3 mlrd+ ko'rishlar to'plagan GIF creator.",
-                abT3: "Mobilografiya & Media",
-                abD3: "Kreativ kadrlar va vizual kontent yaratish bo'yicha ijodiy yondashuv.",
-                
-                // Ko'nikmalar
-                skFb: "Frontend & Backend",
-                skGif: "GIF Yaratuvchi (Giphy)",
-                skGame: "Game Creation & Roblox",
-                badgeAdv: "Ilg'or",
-                badgePro: "Professional",
-                badgeViews: "3Mlrd+ Ko'rishlar",
-                badgeCreator: "Yaratuvchi",
-
-                // Loyihalar ta'riflari
-                p1: "Mantiqiy o'yin", p2: "So'z topish", p3: "Hisoblagich", p4: "Interaktiv", p5: "Arcade",
-                p6: "Klassik o'yin", p7: "Minora qurish", p8: "Poyga o'yini", p9: "Miya mashqi", p10: "Web App",
-
-                socials: "Bizni ijtimoiy tarmoqlarda kuzating",
-                aiDesc: "ReyZer va uning loyihalari haqida istalgan savolni bering.",
-                aiWelcome: "Salom! Men ReyZer botining AI yordamchisiman. Savolingizni yozing:",
-                aiPlaceholder: "Masalan: Reyzer kim?",
-                aiSend: "Yuborish"
+                title: "Frontend & Backend Developer",
+                tabInfo: "Info", tabSkills: "Ko'nikmalar", tabProjects: "Loyihalar",
+                infoH1: "💻 Frontend & Backend | IT", infoP1: "Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. 10+ dan ortiq loyihalar muallifiman.",
+                infoH2: "🎮 Gaming & Creation", infoP2: "Roblox va Minecraft ishqibozi, o'yin yaratuvchisi va Giphy platformasida 3 mlrd+ ko'rishlar to'plagan GIF creator.",
+                infoH3: "📸 Mobilografiya & Media", infoP3: "Kreativ kadrlar va vizual kontent yaratish bo'yicha ijodiy yondashuv.",
+                aiTitle: "🤖 AI Assistant", aiDesc: "ReyZer va uning faoliyati haqida istalgan savolni bering:",
+                aiWelcome: "Salom! Men ReyZer botining AI yordamchisiman. Menga istalgan savolni yozing!",
+                sendBtn: "Yuborish", placeholder: "Masalan: ReyZer kim?"
             },
-            ru: {
-                subtitle: "Frontend & Backend Разработчик ⚡",
-                lblInfo: "Инфо",
-                lblSkills: "Навыки",
-                lblProjects: "Проекты",
-                lblAi: "ИИ",
-                abT1: "Frontend & Backend | ИТ",
-                abD1: "Увлекаюсь созданием современных и интерактивных веб-проектов. Автор более 10+ проектов.",
-                abT2: "Gaming & Creation",
-                abD2: "Любитель Roblox и Minecraft, создатель игр и GIF-мейкер с 3 млрд+ просмотров на Giphy.",
-                abT3: "Мобилография & Медиа",
-                abD3: "Творческий подход к созданию креативных кадров и визуального контента.",
-                
-                // Навыки
-                skFb: "Фронтенд и Бэкенд",
-                skGif: "Создатель GIF (Giphy)",
-                skGame: "Создание игр & Roblox",
-                badgeAdv: "Продвинутый",
-                badgePro: "Про",
-                badgeViews: "3B+ Просмотров",
-                badgeCreator: "Создатель",
-
-                // Проекты
-                p1: "Логическая игра", p2: "Угадай слово", p3: "Счетчик", p4: "Интерактив", p5: "Аркада",
-                p6: "Классическая игра", p7: "Строительство башни", p8: "Гоночная игра", p9: "Разминка для мозга", p10: "Веб-приложение",
-
-                socials: "Следите за нами в соцсетях",
-                aiDesc: "Задайте любой вопрос о ReyZer и его проектах.",
-                aiWelcome: "Привет! Я AI-помощник бота ReyZer. Задайте свой вопрос:",
-                aiPlaceholder: "Например: Кто такой Reyzer?",
-                aiSend: "Отправить"
+            py: {
+                title: "Frontend & Backend Разработчик",
+                tabInfo: "Инфо", tabSkills: "Навыки", tabProjects: "Проекты",
+                infoH1: "💻 Frontend & Backend | IT", infoP1: "Создаю современные и интерактивные веб-проекты. Автор более 10+ проектов.",
+                infoH2: "🎮 Gaming & Creation", infoP2: "Любитель Roblox и Minecraft, создатель игр и GIF creator с 3 млрд+ просмотров на Giphy.",
+                infoH3: "📸 Мобилография & Медиа", infoP3: "Креативный подход к созданию видео и визуального контента.",
+                aiTitle: "🤖 ИИ Ассистент", aiDesc: "Задайте любой вопрос о ReyZer и его проектах:",
+                aiWelcome: "Привет! Я ИИ-помощник бота ReyZer. Задайте мне любой вопрос!",
+                sendBtn: "Отправить", placeholder: "Например: Кто такой ReyZer?"
             },
             en: {
-                subtitle: "Frontend & Backend Developer ⚡",
-                lblInfo: "Info",
-                lblSkills: "Skills",
-                lblProjects: "Projects",
-                lblAi: "AI",
-                abT1: "Frontend & Backend | IT",
-                abD1: "Passionate about building modern and interactive web projects. Author of 10+ projects.",
-                abT2: "Gaming & Creation",
-                abD2: "Roblox & Minecraft enthusiast, game creator, and GIF creator with 3B+ views on Giphy.",
-                abT3: "Mobography & Media",
-                abD3: "Creative approach to producing stunning visuals and content.",
-                
-                // Skills
-                skFb: "Frontend & Backend",
-                skGif: "GIF Creator (Giphy)",
-                skGame: "Game Creation & Roblox",
-                badgeAdv: "Advanced",
-                badgePro: "Pro",
-                badgeViews: "3B+ Views",
-                badgeCreator: "Creator",
-
-                // Projects
-                p1: "Logic game", p2: "Word puzzle", p3: "Counter", p4: "Interactive", p5: "Arcade",
-                p6: "Classic game", p7: "Tower building", p8: "Racing game", p9: "Brain teaser", p10: "Web App",
-
-                socials: "Follow us on social media",
-                aiDesc: "Ask any question about ReyZer and his projects.",
-                aiWelcome: "Hello! I am ReyZer bot's AI assistant. Ask your question:",
-                aiPlaceholder: "E.g., Who is Reyzer?",
-                aiSend: "Send"
+                title: "Frontend & Backend Developer",
+                tabInfo: "Info", tabSkills: "Skills", tabProjects: "Projects",
+                infoH1: "💻 Frontend & Backend | IT", infoP1: "Passionate about creating modern & interactive web projects. Author of 10+ projects.",
+                infoH2: "🎮 Gaming & Creation", infoP2: "Roblox & Minecraft fan, game creator, and Giphy GIF creator with 3B+ views.",
+                infoH3: "📸 Mobilography & Media", infoP3: "Creative approach to shooting and visual content creation.",
+                aiTitle: "🤖 AI Assistant", aiDesc: "Ask anything about ReyZer and his projects:",
+                aiWelcome: "Hello! I am ReyZer's AI assistant. Ask me anything!",
+                sendBtn: "Send", placeholder: "E.g: Who is ReyZer?"
             }
         };
 
-        function setLanguage(lang) {
-            ['uz', 'ru', 'en'].forEach(l => {
-                const btn = document.getElementById(`lang-${l}`);
-                if (l === lang) {
-                    btn.className = "px-2.5 py-1 text-xs font-bold rounded-lg bg-indigo-600 text-white transition";
-                } else {
-                    btn.className = "px-2.5 py-1 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition";
-                }
-            });
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
 
-            const t = translations[lang];
+            const t = texts[lang];
+            document.getElementById('lbl-title').innerText = t.title;
+            document.getElementById('tab-info').innerText = t.tabInfo;
+            document.getElementById('tab-skills').innerText = t.tabSkills;
+            document.getElementById('tab-projects').innerText = t.tabProjects;
             
-            // Subtitr va menyular
-            document.getElementById('txt-subtitle').innerHTML = `${lang === 'ru' ? 'Frontend & Backend Разработчик' : 'Frontend & Backend Developer'} <i data-lucide="zap" class="w-4 h-4 text-amber-400 inline"></i>`;
-            document.getElementById('lbl-info').innerText = t.lblInfo;
-            document.getElementById('lbl-skills').innerText = t.lblSkills;
-            document.getElementById('lbl-projects').innerText = t.lblProjects;
-            document.getElementById('lbl-ai').innerText = t.lblAi;
-            
-            // Info bo'limi
-            document.getElementById('ab-t1').innerText = t.abT1;
-            document.getElementById('ab-d1').innerText = t.abD1;
-            document.getElementById('ab-t2').innerText = t.abT2;
-            document.getElementById('ab-d2').innerText = t.abD2;
-            document.getElementById('ab-t3').innerText = t.abT3;
-            document.getElementById('ab-d3').innerText = t.abD3;
-            
-            // Ko'nikmalar
-            document.getElementById('sk-fb').innerText = t.skFb;
-            document.getElementById('sk-gif').innerText = t.skGif;
-            document.getElementById('sk-game').innerText = t.skGame;
-            document.getElementById('badge-adv').innerText = t.badgeAdv;
-            document.getElementById('badge-pro').innerText = t.badgePro;
-            document.getElementById('badge-views').innerText = t.badgeViews;
-            document.getElementById('badge-creator').innerText = t.badgeCreator;
+            document.getElementById('info-h1').innerText = t.infoH1;
+            document.getElementById('info-p1').innerText = t.infoP1;
+            document.getElementById('info-h2').innerText = t.infoH2;
+            document.getElementById('info-p2').innerText = t.infoP2;
+            document.getElementById('info-h3').innerText = t.infoH3;
+            document.getElementById('info-p3').innerText = t.infoP3;
 
-            // Loyihalar tavsiflari
-            for(let i=1; i<=10; i++) {
-                const pEl = document.getElementById(`p-desc${i}`);
-                if(pEl) pEl.innerText = t[`p${i}`];
-            }
-
-            // Ijtimoiy tarmoqlar va AI chat
-            document.getElementById('txt-socials').innerText = t.socials;
+            document.getElementById('ai-title').innerText = t.aiTitle;
             document.getElementById('ai-desc').innerText = t.aiDesc;
-            document.getElementById('ai-welcome').innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5"></i> ${t.aiWelcome}`;
-            document.getElementById('ai-input').placeholder = t.aiPlaceholder;
-            document.getElementById('ai-send-btn').innerHTML = `<i data-lucide="send" class="w-3.5 h-3.5"></i> ${t.aiSend}`;
-            
-            lucide.createIcons();
-        }
-
-        function switchTab(tab) {
-            ['about', 'skills', 'projects', 'ai'].forEach(t => {
-                document.getElementById(`tab-${t}`).classList.add('hidden');
-                document.getElementById(`btn-${t}`).className = "py-2.5 text-xs font-semibold rounded-xl text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5";
-            });
-            document.getElementById(`tab-${tab}`).classList.remove('hidden');
-            document.getElementById(`btn-${tab}`).className = "py-2.5 text-xs font-semibold rounded-xl bg-indigo-600 text-white transition shadow-lg flex items-center justify-center gap-1.5";
-            
-            lucide.createIcons();
-        }
-
-        function askAI() {
-            const input = document.getElementById('ai-input');
-            const chatBox = document.getElementById('ai-chat-box');
-            const text = input.value.trim();
-            if(!text) return;
-
-            chatBox.innerHTML += `<div class="text-right text-indigo-400"><b>Siz:</b> ${text}</div>`;
-            input.value = "";
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            const loadingId = 'loading-' + Date.now();
-            chatBox.innerHTML += `<div id="${loadingId}" class="text-slate-500 italic flex items-center gap-1"><i data-lucide="loader-2" class="w-3 h-3 animate-spin inline"></i> AI o'ylamoqda...</div>`;
-            lucide.createIcons();
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            setTimeout(() => {
-                document.getElementById(loadingId).remove();
-                let reply = "ReyZer — tajribali frontend & backend dasturchisi, 10+ ta qiziqarli mini o'yinlar muallifi va Giphy'da 3 mlrd+ ko'rishga ega GIF creator!";
-                
-                const lowerText = text.toLowerCase();
-                if(lowerText.includes('roblox') || lowerText.includes('oyin') || lowerText.includes('minecraft')) {
-                    reply = "ReyZer Roblox va Minecraft olamining ashaddiy muxlisi va o'yin yaratuvchisi! Shuningdek, uning portfoliosida 10 dan ortiq ajoyib o'yinlar mavjud.";
-                } else if(lowerText.includes('loyih') || lowerText.includes('proekt')) {
-                    reply = "ReyZer hisoblagichlar, 2048, Wordle Uzbekcha, Flappy Bird va Tower Blocks kabi ko'plab qiziqarli web loyihalar yaratgan.";
-                }
-
-                chatBox.innerHTML += `<div class="text-slate-200"><b>AI:</b> ${reply}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 1000);
+            document.getElementById('ai-welcome').innerText = t.aiWelcome;
+            document.getElementById('send-btn').innerText = t.sendBtn;
+            document.getElementById('user-input').placeholder = t.placeholder;
         }
     </script>
 </body>
