@@ -23,6 +23,8 @@
 
 
     <!-- Telegram Mini App -->
+    <link rel="preconnect" href="https://telegram.org">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 
@@ -129,7 +131,7 @@
 
         html {
 
-            scroll-behavior: smooth;
+            scroll-behavior: auto;
 
         }
 
@@ -568,7 +570,9 @@
             background:
                 rgba(99,102,241,.15);
 
-            filter: blur(35px);
+            filter: none;
+
+            opacity: .45;
 
             pointer-events: none;
 
@@ -1600,52 +1604,6 @@
 
 
         /* =====================================================
-           RIPPLE
-        ===================================================== */
-
-        .ripple {
-
-            position: absolute;
-
-            pointer-events: none;
-
-            width: 30px;
-
-            height: 30px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(255,255,255,.18);
-
-            transform:
-                scale(0);
-
-            animation:
-
-                rippleAnimation
-                .65s
-                ease-out
-                forwards;
-
-        }
-
-
-        @keyframes rippleAnimation {
-
-            to {
-
-                transform:
-                    scale(5);
-
-                opacity: 0;
-
-            }
-
-        }
-
-
-        /* =====================================================
            BOTTOM NAVIGATION
         ===================================================== */
 
@@ -1697,11 +1655,9 @@
                 0 12px 35px
                 rgba(0,0,0,.30);
 
-            backdrop-filter:
-                blur(20px);
+            backdrop-filter: none;
 
-            -webkit-backdrop-filter:
-                blur(20px);
+            -webkit-backdrop-filter: none;
 
             animation:
 
@@ -2222,6 +2178,29 @@
             }
         }
 
+
+        @media (max-width: 600px) {
+            .skill-item,
+            .project {
+                animation-duration: .38s;
+            }
+
+            .skill-item:nth-child(1), .skill-item:nth-child(2),
+            .skill-item:nth-child(3), .skill-item:nth-child(4),
+            .skill-item:nth-child(5),
+            .project:nth-child(1), .project:nth-child(2),
+            .project:nth-child(3), .project:nth-child(4),
+            .project:nth-child(5), .project:nth-child(6),
+            .project:nth-child(7), .project:nth-child(8),
+            .project:nth-child(9), .project:nth-child(10) {
+                animation-delay: 0s;
+            }
+
+            .section-content.active {
+                animation-duration: .28s;
+            }
+        }
+
         /* If the OS/browser requests reduced motion, keep all features
            but make their visual transitions nearly instant. */
         /* =====================================================
@@ -2337,6 +2316,9 @@
                 src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=300"
                 alt="ReyZer"
                 class="avatar"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
             >
 
             <div class="status-dot"></div>
@@ -3688,42 +3670,6 @@
         topButtons[key].addEventListener("click", () => switchTab(key));
         bottomButtons[key].addEventListener("click", () => switchTab(key));
     }
-
-
-    /* =====================================================
-       RIPPLE
-       Lightweight, single-element effect. No shadows or filters.
-    ===================================================== */
-
-    function createRipple(element, x, y) {
-        if (!element) return;
-
-        const rect = element.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height) * 1.5;
-
-        const ripple = document.createElement("span");
-        ripple.className = "ripple";
-
-        ripple.style.width = `${size}px`;
-        ripple.style.height = `${size}px`;
-        ripple.style.left = `${x - rect.left - size / 2}px`;
-        ripple.style.top = `${y - rect.top - size / 2}px`;
-
-        element.appendChild(ripple);
-
-        ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
-    }
-
-    const rippleSelector =
-        ".theme-toggle, .lang-btn, .social-btn, .project";
-
-    // One delegated listener instead of many individual listeners.
-    document.addEventListener("pointerdown", event => {
-        const target = event.target.closest(rippleSelector);
-        if (!target) return;
-
-        createRipple(target, event.clientX, event.clientY);
-    }, { passive: true });
 
 
     /* =====================================================
