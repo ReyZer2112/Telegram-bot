@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
+
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
-    <meta name="theme-color" content="#0f172a">
+    <meta
+        name="theme-color"
+        content="#070b14"
+    >
+
     <meta
         name="description"
         content="ReyZer — Frontend & Backend Developer Portfolio"
@@ -15,14 +21,17 @@
 
     <title>ReyZer Portfolio</title>
 
+
     <!-- Telegram Mini App -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
 
     <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     >
+
 
     <style>
 
@@ -31,16 +40,21 @@
         ===================================================== */
 
         :root {
+
             --bg: #f5f7fb;
+
             --bg-secondary: #eef1f7;
 
-            --card: rgba(255,255,255,.88);
+            --card: rgba(255,255,255,.90);
+
             --card-solid: #ffffff;
 
             --text: #111827;
+
             --text-secondary: #667085;
 
             --accent: #6366f1;
+
             --accent-2: #8b5cf6;
 
             --border: rgba(15,23,42,.09);
@@ -52,11 +66,14 @@
                 0 18px 45px rgba(99,102,241,.16);
 
             --radius-xl: 26px;
+
             --radius-lg: 20px;
+
             --radius-md: 16px;
 
             --ease:
                 cubic-bezier(.16,1,.3,1);
+
         }
 
 
@@ -65,16 +82,21 @@
         ===================================================== */
 
         [data-theme="dark"] {
+
             --bg: #070b14;
+
             --bg-secondary: #0d1422;
 
-            --card: rgba(18,25,40,.82);
+            --card: rgba(18,25,40,.90);
+
             --card-solid: #121928;
 
             --text: #f8fafc;
+
             --text-secondary: #9aa7bd;
 
             --accent: #818cf8;
+
             --accent-2: #a78bfa;
 
             --border: rgba(255,255,255,.08);
@@ -83,7 +105,8 @@
                 0 12px 40px rgba(0,0,0,.25);
 
             --shadow-hover:
-                0 20px 50px rgba(99,102,241,.2);
+                0 20px 50px rgba(99,102,241,.20);
+
         }
 
 
@@ -92,39 +115,52 @@
         ===================================================== */
 
         * {
+
             margin: 0;
+
             padding: 0;
+
             box-sizing: border-box;
+
             -webkit-tap-highlight-color: transparent;
+
         }
 
 
         html {
+
             scroll-behavior: smooth;
+
         }
 
 
         body {
+
             min-height: 100vh;
 
             overflow-x: hidden;
 
+            padding:
+
+                max(16px, env(safe-area-inset-top))
+
+                16px
+
+                calc(
+                    105px +
+                    env(safe-area-inset-bottom)
+                );
+
             background:
-                radial-gradient(
-                    circle at 10% 0%,
-                    rgba(99,102,241,.10),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 90% 100%,
-                    rgba(139,92,246,.08),
-                    transparent 30%
-                ),
+                radial-gradient(circle at 10% 0%, rgba(99,102,241,.08), transparent 28%),
+                radial-gradient(circle at 90% 100%, rgba(139,92,246,.06), transparent 28%),
                 var(--bg);
+            background-attachment: scroll;
 
             color: var(--text);
 
             font-family:
+
                 Inter,
                 -apple-system,
                 BlinkMacSystemFont,
@@ -133,117 +169,67 @@
                 Arial,
                 sans-serif;
 
-            padding:
-                max(16px, env(safe-area-inset-top))
-                16px
-                calc(25px + env(safe-area-inset-bottom));
-
             transition:
+
                 background .45s ease,
                 color .35s ease;
+
         }
 
 
         button,
         a {
+
             font: inherit;
+
         }
 
 
         button {
+
             border: 0;
+
         }
 
 
         a {
+
             color: inherit;
+
         }
 
 
         /* =====================================================
-           BACKGROUND GLOW
+           BACKGROUND GLOW — LOW GPU VERSION
+           Uses the body radial gradients above instead of animated
+           blurred fixed layers. This keeps the look but avoids
+           continuous GPU repainting on low-end phones.
         ===================================================== */
 
         body::before,
         body::after {
-            content: "";
-
-            position: fixed;
-
-            width: 260px;
-            height: 260px;
-
-            border-radius: 50%;
-
-            pointer-events: none;
-
-            z-index: -1;
-
-            filter: blur(80px);
-
-            opacity: .25;
-
-            animation:
-                floatingGlow 12s ease-in-out infinite alternate;
-        }
-
-
-        body::before {
-            left: -120px;
-            top: 12%;
-
-            background: #6366f1;
-        }
-
-
-        body::after {
-            right: -120px;
-            bottom: 10%;
-
-            background: #8b5cf6;
-
-            animation-delay: -5s;
-        }
-
-
-        @keyframes floatingGlow {
-
-            0% {
-                transform:
-                    translate3d(0,0,0)
-                    scale(1);
-            }
-
-            50% {
-                transform:
-                    translate3d(30px,-25px,0)
-                    scale(1.08);
-            }
-
-            100% {
-                transform:
-                    translate3d(-20px,25px,0)
-                    scale(.94);
-            }
+            content: none;
         }
 
 
         /* =====================================================
-           MAIN CONTAINER
+           CONTAINER
         ===================================================== */
 
         .container {
+
             width: 100%;
-            max-width: 680px;
+
+            max-width: 700px;
 
             margin: 0 auto;
 
             display: flex;
+
             flex-direction: column;
 
             gap: 16px;
 
-            transform-origin: top center;
         }
 
 
@@ -252,40 +238,50 @@
         ===================================================== */
 
         body.page-loading .container {
+
             opacity: 0;
 
             transform:
                 translateY(25px)
                 scale(.975);
+
         }
 
 
         body.page-ready .container {
+
             animation:
+
                 pageEnter
-                .85s
+                .80s
                 var(--ease)
                 forwards;
+
         }
 
 
         @keyframes pageEnter {
 
             from {
+
                 opacity: 0;
 
                 transform:
                     translateY(25px)
                     scale(.975);
+
             }
 
             to {
+
                 opacity: 1;
 
                 transform:
                     translateY(0)
                     scale(1);
+
             }
+
         }
 
 
@@ -294,76 +290,94 @@
         ===================================================== */
 
         .header-top {
+
             width: 100%;
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
 
             gap: 10px;
 
             animation:
+
                 headerEnter
                 .65s
                 var(--ease)
                 both;
+
         }
 
 
         @keyframes headerEnter {
 
             from {
+
                 opacity: 0;
-                transform: translateY(-15px);
+
+                transform:
+                    translateY(-15px);
+
             }
 
             to {
+
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
+
             }
+
         }
 
 
         .badge {
+
             min-height: 38px;
 
             display: flex;
+
             align-items: center;
+
             gap: 8px;
 
             padding: 8px 13px;
 
             border-radius: 999px;
 
-            background:
-                var(--card);
+            background: var(--card);
 
             border: 1px solid var(--border);
 
-            box-shadow:
-                var(--shadow);
+            box-shadow: var(--shadow);
 
-            backdrop-filter:
-                blur(18px);
+            backdrop-filter: none;
 
-            -webkit-backdrop-filter:
-                blur(18px);
+            -webkit-backdrop-filter: none;
 
             color: var(--accent);
 
             font-size: 13px;
+
             font-weight: 700;
 
             white-space: nowrap;
+
         }
 
 
         .badge i {
+
             animation:
+
                 boltPulse
                 2s
                 ease-in-out
                 infinite;
+
         }
 
 
@@ -371,95 +385,114 @@
 
             0%,
             100% {
+
                 transform: scale(1);
+
             }
 
             50% {
-                transform: scale(1.2) rotate(-8deg);
+
+                transform:
+                    scale(1.2)
+                    rotate(-8deg);
+
             }
+
         }
 
 
         .controls {
+
             display: flex;
+
             align-items: center;
-            gap: 6px;
+
+            gap: 5px;
+
         }
 
 
         .theme-toggle,
         .lang-btn {
+
+            width: 38px;
+
             min-width: 38px;
+
             height: 38px;
 
             display: flex;
+
             justify-content: center;
+
             align-items: center;
 
             border-radius: 12px;
 
             cursor: pointer;
 
-            background:
-                var(--card);
+            background: var(--card);
 
-            color:
-                var(--text);
+            color: var(--text);
 
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
-            box-shadow:
-                var(--shadow);
+            box-shadow: var(--shadow);
 
-            backdrop-filter:
-                blur(15px);
+            backdrop-filter: none;
 
-            -webkit-backdrop-filter:
-                blur(15px);
+            -webkit-backdrop-filter: none;
 
             transition:
+
                 transform .22s var(--ease),
                 background .3s ease,
-                color .3s ease,
-                border-color .3s ease;
+                color .3s ease;
+
         }
 
 
         .theme-toggle:hover,
         .lang-btn:hover {
-            transform: translateY(-2px);
+
+            transform:
+                translateY(-2px);
+
         }
 
 
         .theme-toggle:active,
         .lang-btn:active {
-            transform: scale(.9);
+
+            transform:
+                scale(.90);
+
         }
 
 
         .lang-btn {
-            font-size: 12px;
-            font-weight: 700;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
         }
 
 
         .lang-btn.active {
+
             background:
+
                 linear-gradient(
                     135deg,
                     var(--accent),
                     var(--accent-2)
                 );
 
-            color: #fff;
+            color: white;
 
-            border-color:
-                transparent;
+            border-color: transparent;
 
-            box-shadow:
-                0 8px 22px
-                rgba(99,102,241,.25);
         }
 
 
@@ -468,6 +501,7 @@
         ===================================================== */
 
         .profile-card {
+
             position: relative;
 
             overflow: hidden;
@@ -477,52 +511,53 @@
             padding: 30px 20px 25px;
 
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
 
             gap: 10px;
 
-            border-radius:
-                var(--radius-xl);
+            border-radius: var(--radius-xl);
 
-            background:
-                var(--card);
+            background: var(--card);
 
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
-            box-shadow:
-                var(--shadow);
+            box-shadow: var(--shadow);
 
-            backdrop-filter:
-                blur(20px);
+            backdrop-filter: none;
 
-            -webkit-backdrop-filter:
-                blur(20px);
+            -webkit-backdrop-filter: none;
 
             animation:
+
                 profileEnter
-                .8s
+                .80s
                 var(--ease)
                 .08s
                 both;
 
             transition:
-                transform .3s var(--ease),
-                box-shadow .3s ease,
-                border-color .3s ease;
+
+                transform .25s var(--ease),
+                box-shadow .25s ease;
+
         }
 
 
         .profile-card::before {
+
             content: "";
 
             position: absolute;
 
             width: 180px;
+
             height: 180px;
 
             left: 50%;
+
             top: -120px;
 
             transform:
@@ -531,47 +566,57 @@
             border-radius: 50%;
 
             background:
-                rgba(99,102,241,.18);
+                rgba(99,102,241,.15);
 
-            filter:
-                blur(35px);
+            filter: blur(35px);
 
             pointer-events: none;
+
         }
 
 
         @keyframes profileEnter {
 
             from {
+
                 opacity: 0;
 
                 transform:
                     translateY(20px)
                     scale(.97);
+
             }
 
             to {
+
                 opacity: 1;
 
                 transform:
                     translateY(0)
                     scale(1);
+
             }
+
         }
 
 
         .avatar-container {
+
             position: relative;
 
             width: 96px;
+
             height: 96px;
 
             margin-bottom: 2px;
+
         }
 
 
         .avatar {
+
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
@@ -582,6 +627,7 @@
                 3px solid var(--accent);
 
             box-shadow:
+
                 0 0 0 5px
                 rgba(99,102,241,.08),
 
@@ -589,47 +635,59 @@
                 rgba(99,102,241,.22);
 
             animation:
+
                 avatarEnter
-                .9s
+                .90s
                 var(--ease)
                 .18s
                 both;
+
         }
 
 
         @keyframes avatarEnter {
 
             0% {
+
                 opacity: 0;
 
                 transform:
                     scale(.55)
                     rotate(-15deg);
+
             }
 
             65% {
+
                 opacity: 1;
 
                 transform:
                     scale(1.08)
                     rotate(3deg);
+
             }
 
             100% {
+
                 transform:
                     scale(1)
                     rotate(0);
+
             }
+
         }
 
 
         .status-dot {
+
             position: absolute;
 
             right: 3px;
+
             bottom: 3px;
 
             width: 18px;
+
             height: 18px;
 
             border-radius: 50%;
@@ -637,14 +695,15 @@
             background: #22c55e;
 
             border:
-                3px solid
-                var(--card-solid);
+                3px solid var(--card-solid);
 
             animation:
+
                 statusPulse
                 2.2s
                 ease-in-out
                 infinite;
+
         }
 
 
@@ -652,42 +711,53 @@
 
             0%,
             100% {
+
                 box-shadow:
                     0 0 0 0
                     rgba(34,197,94,.4);
+
             }
 
             50% {
+
                 box-shadow:
                     0 0 0 7px
                     rgba(34,197,94,0);
+
             }
+
         }
 
 
         .name {
-            font-size: clamp(25px, 6vw, 32px);
+
+            font-size:
+                clamp(25px, 6vw, 32px);
 
             font-weight: 800;
 
             letter-spacing: -.7px;
+
         }
 
 
         .title {
+
             color: var(--accent);
 
             font-size: 14px;
 
             font-weight: 700;
+
         }
 
 
         /* =====================================================
-           TABS
+           TOP TABS
         ===================================================== */
 
         .nav-tabs {
+
             position: relative;
 
             display: flex;
@@ -696,55 +766,55 @@
 
             padding: 5px;
 
-            border-radius:
-                var(--radius-lg);
+            border-radius: var(--radius-lg);
 
-            background:
-                var(--card);
+            background: var(--card);
 
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
-            box-shadow:
-                var(--shadow);
+            box-shadow: var(--shadow);
 
-            backdrop-filter:
-                blur(18px);
+            backdrop-filter: none;
 
-            -webkit-backdrop-filter:
-                blur(18px);
+            -webkit-backdrop-filter: none;
 
             animation:
+
                 tabsEnter
-                .7s
+                .70s
                 var(--ease)
-                .2s
+                .20s
                 both;
+
         }
 
 
         @keyframes tabsEnter {
 
             from {
+
                 opacity: 0;
 
                 transform:
                     translateY(15px)
                     scale(.98);
+
             }
 
             to {
+
                 opacity: 1;
 
                 transform:
                     translateY(0)
                     scale(1);
+
             }
+
         }
 
 
         .tab-btn {
-            position: relative;
 
             flex: 1;
 
@@ -759,32 +829,40 @@
             cursor: pointer;
 
             font-size: 13px;
+
             font-weight: 700;
 
             overflow: hidden;
 
             transition:
-                transform .2s var(--ease),
+
+                transform .20s var(--ease),
                 color .25s ease,
-                background .25s ease,
-                box-shadow .25s ease;
+                background .25s ease;
+
         }
 
 
         .tab-btn:hover {
+
             color: var(--text);
+
         }
 
 
         .tab-btn:active {
+
             transform: scale(.94);
+
         }
 
 
         .tab-btn.active {
+
             color: white;
 
             background:
+
                 linear-gradient(
                     135deg,
                     var(--accent),
@@ -792,136 +870,101 @@
                 );
 
             box-shadow:
+
                 0 7px 20px
                 rgba(99,102,241,.24);
+
         }
 
 
         /* =====================================================
-           CONTENT
+           SECTIONS
         ===================================================== */
 
         .section-content {
+
             display: none;
 
             flex-direction: column;
 
             gap: 12px;
+
         }
 
 
         .section-content.active {
+
             display: flex;
 
             animation:
+
                 sectionEnter
                 .45s
                 var(--ease)
                 both;
+
         }
 
 
         @keyframes sectionEnter {
 
             from {
+
                 opacity: 0;
 
                 transform:
                     translateY(12px);
+
             }
 
             to {
+
                 opacity: 1;
 
                 transform:
                     translateY(0);
+
             }
+
         }
 
 
         /* =====================================================
            CARD
+           NOTE: NO WHITE SHINE EFFECT
         ===================================================== */
 
         .card {
+
             position: relative;
 
             overflow: hidden;
 
             padding: 18px;
 
-            border-radius:
-                var(--radius-lg);
+            border-radius: var(--radius-lg);
 
-            background:
-                var(--card);
+            background: var(--card);
 
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
-            box-shadow:
-                var(--shadow);
+            box-shadow: var(--shadow);
 
-            backdrop-filter:
-                blur(18px);
+            backdrop-filter: none;
 
-            -webkit-backdrop-filter:
-                blur(18px);
+            -webkit-backdrop-filter: none;
 
             transition:
-                transform .3s var(--ease),
-                box-shadow .3s ease,
-                border-color .3s ease;
-        }
+                transform .20s var(--ease),
+                box-shadow .20s ease,
+                border-color .20s ease;
+            contain: layout paint;
 
-
-        .card::before {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: -120%;
-
-            width: 70%;
-            height: 100%;
-
-            pointer-events: none;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255,255,255,.07),
-                    transparent
-                );
-
-            transform:
-                skewX(-18deg);
-        }
-
-
-        .card:hover::before {
-            animation:
-                cardShine
-                .8s
-                ease;
-        }
-
-
-        @keyframes cardShine {
-
-            from {
-                left: -120%;
-            }
-
-            to {
-                left: 140%;
-            }
         }
 
 
         .card:hover {
+
             transform:
                 translateY(-3px);
 
@@ -930,12 +973,16 @@
 
             border-color:
                 rgba(99,102,241,.18);
+
         }
 
 
         .card h3 {
+
             display: flex;
+
             align-items: center;
+
             gap: 9px;
 
             margin-bottom: 8px;
@@ -945,22 +992,27 @@
             font-size: 16px;
 
             line-height: 1.35;
+
         }
 
 
         .card h3 i {
+
             width: 25px;
 
             text-align: center;
+
         }
 
 
         .card p {
+
             color: var(--text-secondary);
 
             font-size: 13px;
 
             line-height: 1.65;
+
         }
 
 
@@ -969,20 +1021,27 @@
         ===================================================== */
 
         .skill-list {
+            contain: layout paint;
             display: flex;
+
             flex-direction: column;
+
             gap: 14px;
+
         }
 
 
         .skill-item {
+
             opacity: 0;
 
             animation:
+
                 skillEnter
                 .55s
                 var(--ease)
                 forwards;
+
         }
 
 
@@ -1010,41 +1069,59 @@
         @keyframes skillEnter {
 
             from {
+
                 opacity: 0;
-                transform: translateX(-15px);
+
+                transform:
+                    translateX(-15px);
+
             }
 
             to {
+
                 opacity: 1;
-                transform: translateX(0);
+
+                transform:
+                    translateX(0);
+
             }
+
         }
 
 
         .skill-top {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
 
             margin-bottom: 7px;
 
             font-size: 13px;
+
         }
 
 
         .skill-top b {
+
             color: var(--text);
+
         }
 
 
         .skill-percent {
+
             color: var(--accent);
 
             font-weight: 700;
+
         }
 
 
         .progress {
+
             height: 7px;
 
             overflow: hidden;
@@ -1053,10 +1130,12 @@
 
             background:
                 rgba(127,127,127,.13);
+
         }
 
 
         .progress span {
+
             display: block;
 
             width: var(--progress);
@@ -1068,6 +1147,7 @@
             transform-origin: left;
 
             background:
+
                 linear-gradient(
                     90deg,
                     var(--accent),
@@ -1075,23 +1155,32 @@
                 );
 
             animation:
+
                 progressGrow
                 1s
                 var(--ease)
                 .15s
                 both;
+
         }
 
 
         @keyframes progressGrow {
 
             from {
-                transform: scaleX(0);
+
+                transform:
+                    scaleX(0);
+
             }
 
             to {
-                transform: scaleX(1);
+
+                transform:
+                    scaleX(1);
+
             }
+
         }
 
 
@@ -1100,17 +1189,22 @@
         ===================================================== */
 
         .projects-list {
+            contain: layout paint;
             display: flex;
+
             flex-direction: column;
 
             gap: 10px;
+
         }
 
 
         .project {
+
             position: relative;
 
             display: flex;
+
             align-items: center;
 
             gap: 12px;
@@ -1136,16 +1230,19 @@
                 scale(.98);
 
             animation:
+
                 projectEnter
-                .6s
+                .60s
                 var(--ease)
                 forwards;
 
             transition:
-                transform .28s var(--ease),
-                box-shadow .28s ease,
-                border-color .28s ease,
-                background .28s ease;
+
+                transform .18s var(--ease),
+                box-shadow .18s ease,
+                border-color .18s ease,
+                background .18s ease;
+
         }
 
 
@@ -1193,24 +1290,30 @@
         @keyframes projectEnter {
 
             from {
+
                 opacity: 0;
 
                 transform:
                     translateX(-18px)
                     scale(.98);
+
             }
 
             to {
+
                 opacity: 1;
 
                 transform:
                     translateX(0)
                     scale(1);
+
             }
+
         }
 
 
         .project:hover {
+
             transform:
                 translateX(4px)
                 translateY(-2px);
@@ -1219,27 +1322,34 @@
                 rgba(99,102,241,.25);
 
             box-shadow:
+
                 0 10px 28px
                 rgba(99,102,241,.10);
 
             background:
                 rgba(99,102,241,.055);
+
         }
 
 
         .project-icon {
+
             flex: 0 0 45px;
 
             width: 45px;
+
             height: 45px;
 
             display: flex;
+
             justify-content: center;
+
             align-items: center;
 
             border-radius: 14px;
 
             background:
+
                 linear-gradient(
                     135deg,
                     var(--accent),
@@ -1251,28 +1361,37 @@
             font-size: 17px;
 
             box-shadow:
+
                 0 7px 18px
-                rgba(99,102,241,.2);
+                rgba(99,102,241,.20);
 
             transition:
+
                 transform .28s var(--ease);
+
         }
 
 
         .project:hover .project-icon {
+
             transform:
                 scale(1.08)
                 rotate(-5deg);
+
         }
 
 
         .project-info {
+
             min-width: 0;
+
             flex: 1;
+
         }
 
 
         .project-title {
+
             color: var(--text);
 
             font-size: 14px;
@@ -1280,10 +1399,12 @@
             font-weight: 750;
 
             line-height: 1.3;
+
         }
 
 
         .project-description {
+
             margin-top: 3px;
 
             color: var(--text-secondary);
@@ -1291,17 +1412,22 @@
             font-size: 11px;
 
             line-height: 1.4;
+
         }
 
 
         .project-arrow {
+
             flex: 0 0 auto;
 
             width: 32px;
+
             height: 32px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             border-radius: 10px;
@@ -1312,17 +1438,21 @@
                 rgba(99,102,241,.09);
 
             transition:
+
                 transform .25s var(--ease),
                 background .25s ease;
+
         }
 
 
         .project:hover .project-arrow {
+
             transform:
                 translateX(3px);
 
             background:
                 rgba(99,102,241,.17);
+
         }
 
 
@@ -1330,94 +1460,112 @@
            SOCIAL
         ===================================================== */
 
-        .social-container {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, minmax(0,1fr));
-
-            gap: 9px;
+        .social-card {
 
             animation:
+
                 socialEnter
-                .7s
+                .70s
                 var(--ease)
-                .3s
+                .25s
                 both;
+
         }
 
 
         @keyframes socialEnter {
 
             from {
+
                 opacity: 0;
-                transform: translateY(12px);
+
+                transform:
+                    translateY(12px);
+
             }
 
             to {
+
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
+
             }
+
+        }
+
+
+        .social-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0,1fr));
+
+            gap: 8px;
+
+            margin-top: 12px;
+
         }
 
 
         .social-btn {
+
             position: relative;
 
             overflow: hidden;
 
-            min-height: 48px;
+            min-height: 44px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             gap: 8px;
 
-            padding: 11px;
+            padding: 10px;
 
-            border-radius: 14px;
+            border-radius: 13px;
 
             background:
-                var(--card);
+                rgba(127,127,127,.035);
 
             border:
                 1px solid var(--border);
 
-            box-shadow:
-                var(--shadow);
-
             text-decoration: none;
 
-            color:
-                var(--text);
+            color: var(--text);
 
-            font-size: 13px;
+            font-size: 12px;
+
             font-weight: 700;
 
-            backdrop-filter:
-                blur(15px);
-
-            -webkit-backdrop-filter:
-                blur(15px);
-
             transition:
+
                 transform .23s var(--ease),
                 box-shadow .23s ease,
                 border-color .23s ease,
                 color .23s ease;
+
         }
 
 
         .social-btn i {
-            font-size: 17px;
+
+            font-size: 15px;
 
             transition:
                 transform .25s var(--ease);
+
         }
 
 
         .social-btn:hover {
+
             transform:
                 translateY(-3px);
 
@@ -1425,23 +1573,29 @@
                 rgba(99,102,241,.25);
 
             box-shadow:
-                var(--shadow-hover);
+
+                0 10px 25px
+                rgba(99,102,241,.10);
 
             color:
                 var(--accent);
+
         }
 
 
         .social-btn:hover i {
+
             transform:
-                scale(1.18)
-                rotate(-5deg);
+                scale(1.15);
+
         }
 
 
         .social-btn:active {
+
             transform:
                 scale(.94);
+
         }
 
 
@@ -1450,73 +1604,418 @@
         ===================================================== */
 
         .ripple {
+
             position: absolute;
 
             pointer-events: none;
 
             width: 30px;
+
             height: 30px;
 
             border-radius: 50%;
 
             background:
-                rgba(255,255,255,.28);
+                rgba(255,255,255,.18);
 
             transform:
                 scale(0);
 
             animation:
+
                 rippleAnimation
                 .65s
                 ease-out
                 forwards;
+
         }
 
 
         @keyframes rippleAnimation {
 
             to {
+
                 transform:
                     scale(5);
 
                 opacity: 0;
+
             }
+
         }
 
 
         /* =====================================================
-           FOOTER
+           BOTTOM NAVIGATION
         ===================================================== */
 
-        .footer {
-            height: 5px;
+        .bottom-nav {
+
+            position: fixed;
+
+            left: 50%;
+
+            bottom:
+                max(
+                    12px,
+                    env(safe-area-inset-bottom)
+                );
+
+            transform:
+                translateX(-50%);
+
+            width:
+                min(
+                    calc(100% - 30px),
+                    520px
+                );
+
+            height: 58px;
+
+            padding: 5px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 5px;
+
+            z-index: 9999;
+
+            background:
+                rgba(20,30,49,.94);
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            border-radius: 20px;
+
+            box-shadow:
+
+                0 12px 35px
+                rgba(0,0,0,.30);
+
+            backdrop-filter:
+                blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+
+            animation:
+
+                bottomNavEnter
+                .65s
+                var(--ease)
+                .25s
+                both;
+
+        }
+
+
+        @keyframes bottomNavEnter {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateX(-50%)
+                    translateY(30px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateX(-50%)
+                    translateY(0);
+
+            }
+
+        }
+
+
+        .bottom-nav-btn {
+
+            position: relative;
+
+            min-width: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 3px;
+
+            border: 0;
+
+            border-radius: 15px;
+
+            background: transparent;
+
+            color:
+                #94a3b8;
+
+            cursor: pointer;
+
+            transition:
+
+                color .25s ease,
+                background .25s ease,
+                transform .20s var(--ease);
+
+        }
+
+
+        .bottom-nav-btn i {
+
+            font-size: 15px;
+
+            transition:
+                transform .25s var(--ease);
+
+        }
+
+
+        .bottom-nav-btn span {
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+
+
+        .bottom-nav-btn.active {
+
+            color:
+                #a78bfa;
+
+            background:
+                rgba(99,102,241,.15);
+
+        }
+
+
+        .bottom-nav-btn.active i {
+
+            transform:
+                translateY(-1px)
+                scale(1.08);
+
+        }
+
+
+        .bottom-nav-btn:hover {
+
+            color:
+                #c4b5fd;
+
+            background:
+                rgba(99,102,241,.09);
+
+        }
+
+
+        .bottom-nav-btn:active {
+
+            transform:
+                scale(.91);
+
         }
 
 
         /* =====================================================
-           DESKTOP
+           MOBILE
         ===================================================== */
 
-        @media (min-width: 768px) {
+        @media (max-width: 480px) {
 
             body {
-                padding-top: 30px;
+
+                padding-left: 11px;
+
+                padding-right: 11px;
+
             }
 
 
-            .container {
-                max-width: 700px;
+            .badge {
+
+                font-size: 11px;
+
+                padding-left: 10px;
+
+                padding-right: 10px;
+
+            }
+
+
+            .controls {
+
+                gap: 4px;
+
+            }
+
+
+            .theme-toggle,
+            .lang-btn {
+
+                width: 34px;
+
+                min-width: 34px;
+
+                height: 34px;
+
+                font-size: 10px;
+
             }
 
 
             .profile-card {
-                padding-top: 35px;
-                padding-bottom: 30px;
+
+                padding:
+                    26px 15px 22px;
+
+            }
+
+
+            .avatar-container {
+
+                width: 88px;
+
+                height: 88px;
+
+            }
+
+
+            .name {
+
+                font-size: 25px;
+
+            }
+
+
+            .title {
+
+                font-size: 13px;
+
+            }
+
+
+            .tab-btn {
+
+                min-height: 42px;
+
+                font-size: 12px;
+
             }
 
 
             .card {
-                padding: 20px;
+
+                padding: 15px;
+
+            }
+
+
+            .card h3 {
+
+                font-size: 15px;
+
+            }
+
+
+            .card p {
+
+                font-size: 12px;
+
+            }
+
+
+            .project {
+
+                padding: 12px;
+
+            }
+
+
+            .project-icon {
+
+                width: 41px;
+
+                height: 41px;
+
+                flex-basis: 41px;
+
+                border-radius: 12px;
+
+            }
+
+
+            .project-title {
+
+                font-size: 13px;
+
+            }
+
+
+            .project-description {
+
+                font-size: 10px;
+
+            }
+
+
+            .social-grid {
+
+                gap: 7px;
+
+            }
+
+
+            .social-btn {
+
+                min-height: 43px;
+
+                font-size: 11px;
+
+            }
+
+
+            .bottom-nav {
+
+                width:
+                    calc(100% - 28px);
+
+                height: 58px;
+
+                border-radius: 19px;
+
+            }
+
+
+            .bottom-nav-btn span {
+
+                font-size: 9px;
+
+            }
+
+
+            .bottom-nav-btn i {
+
+                font-size: 14px;
+
             }
 
         }
@@ -1529,121 +2028,70 @@
         @media (min-width: 600px) {
 
             .container {
+
                 gap: 18px;
+
             }
 
 
-            .social-container {
+            .social-grid {
+
                 gap: 10px;
+
             }
 
 
             .project {
+
                 padding: 14px;
+
             }
 
         }
 
 
         /* =====================================================
-           MOBILE
+           DESKTOP
         ===================================================== */
 
-        @media (max-width: 420px) {
+        @media (min-width: 768px) {
 
             body {
-                padding-left: 11px;
-                padding-right: 11px;
+
+                padding-top: 30px;
+
             }
 
 
-            .badge {
-                font-size: 11px;
+            .container {
 
-                padding-left: 10px;
-                padding-right: 10px;
-            }
+                max-width: 700px;
 
-
-            .controls {
-                gap: 4px;
-            }
-
-
-            .theme-toggle,
-            .lang-btn {
-                width: 34px;
-                min-width: 34px;
-
-                height: 34px;
-
-                font-size: 11px;
             }
 
 
             .profile-card {
-                padding:
-                    26px
-                    15px
-                    22px;
-            }
 
+                padding-top: 35px;
 
-            .avatar-container {
-                width: 88px;
-                height: 88px;
-            }
+                padding-bottom: 30px;
 
-
-            .name {
-                font-size: 25px;
-            }
-
-
-            .title {
-                font-size: 13px;
-            }
-
-
-            .tab-btn {
-                min-height: 42px;
-
-                font-size: 12px;
             }
 
 
             .card {
-                padding: 15px;
+
+                padding: 20px;
+
             }
 
 
-            .card h3 {
-                font-size: 15px;
-            }
+            .bottom-nav {
 
+                width: 520px;
 
-            .card p {
-                font-size: 12px;
-            }
+                bottom: 18px;
 
-
-            .project-icon {
-                width: 41px;
-                height: 41px;
-
-                flex-basis: 41px;
-
-                border-radius: 12px;
-            }
-
-
-            .project-title {
-                font-size: 13px;
-            }
-
-
-            .project-description {
-                font-size: 10px;
             }
 
         }
@@ -1656,40 +2104,126 @@
         @media (hover: none) {
 
             .card:hover {
+
                 transform: none;
 
                 box-shadow:
                     var(--shadow);
+
             }
 
 
             .project:hover {
+
                 transform: none;
 
                 box-shadow: none;
+
             }
 
 
             .social-btn:hover {
+
                 transform: none;
 
-                box-shadow:
-                    var(--shadow);
+                box-shadow: none;
+
             }
 
 
             .project:hover .project-icon {
+
                 transform: none;
+
             }
 
 
             .social-btn:hover i {
+
                 transform: none;
+
             }
 
         }
 
 
+        .page-paused *,
+        .page-paused *::before,
+        .page-paused *::after {
+            animation-play-state: paused !important;
+        }
+
+        /* =====================================================
+           PERFORMANCE / LOW-END DEVICES
+        ===================================================== */
+
+        /* Avoid browser promotion of every element. Only the elements
+           that actually animate get compositing when needed. */
+        .profile-card,
+        .section-content.active,
+        .bottom-nav {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* Touch devices do not need hover painting. */
+        @media (hover: none), (pointer: coarse) {
+            .card,
+            .project,
+            .social-btn,
+            .theme-toggle,
+            .lang-btn {
+                transition-duration: .12s;
+            }
+
+            .card:hover,
+            .project:hover,
+            .social-btn:hover {
+                transform: none;
+                box-shadow: var(--shadow);
+            }
+        }
+
+        /* Redmi 9A-class hardware: keep entrance feedback, but stop
+           continuous animations after the initial render. */
+        @media (max-width: 600px) {
+            body::before,
+            body::after {
+                content: none !important;
+            }
+
+            .badge i,
+            .status-dot {
+                animation: none !important;
+            }
+
+            .profile-card::before {
+                filter: none !important;
+                opacity: .45;
+            }
+
+            .profile-card,
+            .nav-tabs,
+            .card,
+            .badge,
+            .theme-toggle,
+            .lang-btn,
+            .bottom-nav {
+                -webkit-backdrop-filter: none !important;
+                backdrop-filter: none !important;
+            }
+
+            .card {
+                box-shadow: var(--shadow);
+            }
+
+            .project {
+                box-shadow: none;
+            }
+        }
+
+        /* If the OS/browser requests reduced motion, keep all features
+           but make their visual transitions nearly instant. */
         /* =====================================================
            REDUCED MOTION
         ===================================================== */
@@ -1699,18 +2233,25 @@
             *,
             *::before,
             *::after {
-                animation-duration: .01ms !important;
 
-                animation-iteration-count: 1 !important;
+                animation-duration:
+                    .01ms !important;
 
-                transition-duration: .01ms !important;
+                animation-iteration-count:
+                    1 !important;
 
-                scroll-behavior: auto !important;
+                transition-duration:
+                    .01ms !important;
+
+                scroll-behavior:
+                    auto !important;
+
             }
 
         }
 
     </style>
+
 </head>
 
 
@@ -1719,1886 +2260,1554 @@
     data-theme="dark"
 >
 
-    <main class="container">
 
-        <!-- =================================================
-             HEADER
-        ================================================== -->
-
-        <header class="header-top">
-
-            <div class="badge">
-                <i class="fa-solid fa-bolt"></i>
-
-                <span id="lbl-badge">
-                    ReyZer Portfolio
-                </span>
-            </div>
+<main class="container">
 
 
-            <div class="controls">
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
 
-                <button
-                    type="button"
-                    class="theme-toggle"
-                    id="theme-btn"
-                    aria-label="Change theme"
-                    onclick="toggleTheme()"
-                >
-                    ☀️
-                </button>
+    <header class="header-top">
 
+        <div class="badge">
 
-                <button
-                    type="button"
-                    class="lang-btn active"
-                    id="btn-uz"
-                    onclick="setLang('uz')"
-                >
-                    O'z
-                </button>
+            <i class="fa-solid fa-bolt"></i>
+
+            <span id="lbl-badge">
+                ReyZer Portfolio
+            </span>
+
+        </div>
 
 
-                <button
-                    type="button"
-                    class="lang-btn"
-                    id="btn-ru"
-                    onclick="setLang('ru')"
-                >
-                    Ру
-                </button>
+        <div class="controls">
 
-
-                <button
-                    type="button"
-                    class="lang-btn"
-                    id="btn-en"
-                    onclick="setLang('en')"
-                >
-                    En
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <!-- =================================================
-             PROFILE
-        ================================================== -->
-
-        <section class="profile-card">
-
-            <div class="avatar-container">
-
-                <img
-                    src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=300"
-                    alt="ReyZer"
-                    class="avatar"
-                    id="profile-img"
-                >
-
-                <div class="status-dot"></div>
-
-            </div>
-
-
-            <h1 class="name">
-                ReyZer
-            </h1>
-
-
-            <p
-                class="title"
-                id="lbl-title"
+            <button
+                type="button"
+                class="theme-toggle"
+                id="theme-btn"
+                aria-label="Theme"
             >
-                Frontend & Backend Developer
+                ☀️
+            </button>
+
+
+            <button
+                type="button"
+                class="lang-btn active"
+                id="btn-uz"
+            >
+                O'z
+            </button>
+
+
+            <button
+                type="button"
+                class="lang-btn"
+                id="btn-ru"
+            >
+                Ру
+            </button>
+
+
+            <button
+                type="button"
+                class="lang-btn"
+                id="btn-en"
+            >
+                En
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PROFILE
+    ===================================================== -->
+
+    <section class="profile-card">
+
+        <div class="avatar-container">
+
+            <img
+                src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=300"
+                alt="ReyZer"
+                class="avatar"
+            >
+
+            <div class="status-dot"></div>
+
+        </div>
+
+
+        <h1 class="name">
+            ReyZer
+        </h1>
+
+
+        <p
+            class="title"
+            id="lbl-title"
+        >
+            Frontend & Backend Developer
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TOP NAVIGATION
+    ===================================================== -->
+
+    <nav class="nav-tabs">
+
+        <button
+            type="button"
+            class="tab-btn active"
+            id="tab-info"
+        >
+            <i class="fa-solid fa-user"></i>
+            Info
+        </button>
+
+
+        <button
+            type="button"
+            class="tab-btn"
+            id="tab-skills"
+        >
+            <i class="fa-solid fa-code"></i>
+            Ko'nikmalar
+        </button>
+
+
+        <button
+            type="button"
+            class="tab-btn"
+            id="tab-projects"
+        >
+            <i class="fa-solid fa-folder"></i>
+            Loyihalar
+        </button>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         INFO
+    ===================================================== -->
+
+    <section
+        id="section-info"
+        class="section-content active"
+    >
+
+
+        <article class="card">
+
+            <h3>
+
+                <i class="fa-solid fa-laptop-code"></i>
+
+                <span id="info-h1">
+                    Frontend & Backend
+                </span>
+
+            </h3>
+
+
+            <p id="info-p1">
+                Zamonaviy va interaktiv web-loyihalar
+                yarataman. Frontend va backend yo'nalishlarida
+                ishlayman.
             </p>
 
-        </section>
+        </article>
+
+
+
+        <article class="card">
+
+            <h3>
+
+                <i class="fa-solid fa-gamepad"></i>
+
+                <span id="info-h2">
+                    Gaming & Creation
+                </span>
+
+            </h3>
+
+
+            <p id="info-p2">
+                Roblox va Minecraft platformalariga qiziqaman.
+                O'yinlar va kreativ loyihalar yaratishni
+                yoqtiraman.
+            </p>
+
+        </article>
+
+
+
+        <article class="card">
+
+            <h3>
+
+                <i class="fa-solid fa-film"></i>
+
+                <span id="info-h3">
+                    GIF Creator
+                </span>
+
+            </h3>
+
+
+            <p id="info-p3">
+                Kreativ GIF animatsiyalar yarataman.
+                GIF kontentlarim 3 mlrd+ ko'rishlarga ega.
+            </p>
+
+        </article>
+
+
+
+        <article class="card">
+
+            <h3>
+
+                <i class="fa-solid fa-camera"></i>
+
+                <span id="info-h4">
+                    Mobilografiya
+                </span>
+
+            </h3>
+
+
+            <p id="info-p4">
+                Mobil fotografiya, video va kreativ vizual
+                kontent yaratishga qiziqaman.
+            </p>
+
+        </article>
+
+
+
+        <article class="card">
+
+            <h3>
+
+                <i class="fa-solid fa-bullseye"></i>
+
+                <span id="info-h5">
+                    Maqsadim
+                </span>
+
+            </h3>
+
+
+            <p id="info-p5">
+                IT va kreativ yo'nalishlarni birlashtirib,
+                katta va innovatsion loyihalar yaratish.
+            </p>
+
+        </article>
+
 
 
         <!-- =================================================
-             TABS
+             SOCIAL NETWORKS
         ================================================== -->
 
-        <nav
-            class="nav-tabs"
-            aria-label="Navigation"
-        >
+        <article class="card social-card">
 
-            <button
-                type="button"
-                class="tab-btn active"
-                id="tab-info"
-                onclick="switchTab('info', this)"
-            >
-                Info
-            </button>
+            <h3>
+
+                <i class="fa-solid fa-share-nodes"></i>
+
+                <span id="social-title">
+                    Ijtimoiy tarmoqlar
+                </span>
+
+            </h3>
 
 
-            <button
-                type="button"
-                class="tab-btn"
-                id="tab-skills"
-                onclick="switchTab('skills', this)"
-            >
-                Ko'nikmalar
-            </button>
+            <p id="social-description">
+                Meni quyidagi platformalarda kuzatishingiz mumkin.
+            </p>
 
 
-            <button
-                type="button"
-                class="tab-btn"
-                id="tab-projects"
-                onclick="switchTab('projects', this)"
-            >
-                Loyihalar
-            </button>
-
-        </nav>
+            <div class="social-grid">
 
 
-        <!-- =================================================
-             INFO
-        ================================================== -->
+                <!-- Instagram -->
 
-        <section
-            id="section-info"
-            class="section-content active"
-        >
+                <a
+                    class="social-btn"
+                    href="https://instagram.com/reyzer2112"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
 
-            <article class="card">
+                    <i
+                        class="fa-brands fa-instagram"
+                        style="color:#e1306c"
+                    ></i>
 
-                <h3>
-                    <i class="fa-solid fa-laptop-code"></i>
+                    Instagram
 
-                    <span id="info-h1">
-                        Frontend & Backend | IT
-                    </span>
-                </h3>
-
-
-                <p id="info-p1">
-                    Zamonaviy va interaktiv web-loyihalar
-                    yaratishga qiziqaman. Frontend va backend
-                    yo'nalishlarida ishlayman, yangi texnologiyalarni
-                    o'rganib, ularni amaliy loyihalarda qo'llayman.
-                    10+ loyihaning muallifi sifatida turli
-                    g'oyalarni real loyihalarga aylantiraman.
-                </p>
-
-            </article>
+                </a>
 
 
-            <article class="card">
 
-                <h3>
+                <!-- Telegram -->
+
+                <a
+                    class="social-btn"
+                    href="https://t.me/reyzer2112"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <i
+                        class="fa-brands fa-telegram"
+                        style="color:#24a1de"
+                    ></i>
+
+                    Telegram
+
+                </a>
+
+
+
+                <!-- YouTube -->
+
+                <a
+                    class="social-btn"
+                    href="https://youtube.com/@ReyZer-2112"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <i
+                        class="fa-brands fa-youtube"
+                        style="color:#ff0000"
+                    ></i>
+
+                    YouTube
+
+                </a>
+
+
+
+                <!-- Roblox -->
+
+                <a
+                    class="social-btn"
+                    href="https://www.roblox.com/users/4669071068/profile"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
                     <i class="fa-solid fa-gamepad"></i>
 
-                    <span id="info-h2">
-                        Gaming & Creation
-                    </span>
-                </h3>
+                    Roblox
+
+                </a>
 
 
-                <p id="info-p2">
-                    Gaming olamiga, ayniqsa Roblox va Minecraft
-                    platformalariga qiziqaman. O'yinlarni o'ynash
-                    bilan birga, o'z g'oyalarim asosida kreativ
-                    loyihalar ham yarataman.
-                </p>
 
-            </article>
+                <!-- Snapchat -->
 
+                <a
+                    class="social-btn"
+                    href="https://www.snapchat.com/add/reyzer2112"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
 
-            <article class="card">
+                    <i
+                        class="fa-brands fa-snapchat"
+                        style="color:#f7e600"
+                    ></i>
 
-                <h3>
-                    <i class="fa-solid fa-photo-film"></i>
+                    Snapchat
 
-                    <span id="info-h3">
-                        GIF Creator
-                    </span>
-                </h3>
-
-
-                <p id="info-p3">
-                    Instagram uchun kreativ GIF animatsiyalar
-                    yarataman. GIF'larim umumiy hisobda
-                    3 mlrd+ ko'rishlar to'plagan.
-                </p>
-
-            </article>
+                </a>
 
 
-            <article class="card">
 
-                <h3>
-                    <i class="fa-solid fa-camera"></i>
+                <!-- Discord -->
 
-                    <span id="info-h4">
-                        Mobilograf
-                    </span>
-                </h3>
+                <a
+                    class="social-btn"
+                    href="https://discord.com/users/reyzer2112"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
 
+                    <i
+                        class="fa-brands fa-discord"
+                        style="color:#5865f2"
+                    ></i>
 
-                <p id="info-p4">
-                    Mobilografiya va vizual kontent yaratishga
-                    qiziqaman. Foto va video orqali kreativ
-                    g'oyalarni ifodalash va yangi uslublarni
-                    sinab ko'rishni yoqtiraman.
-                </p>
+                    Discord
 
-            </article>
+                </a>
 
+            </div>
 
-            <article class="card">
+        </article>
 
-                <h3>
-                    <i class="fa-solid fa-bullseye"></i>
-
-                    <span id="info-h5">
-                        Maqsadim
-                    </span>
-                </h3>
+    </section>
 
 
-                <p id="info-p5">
-                    IT, dasturlash va kreativ sohalardagi
-                    bilimlarimni birlashtirib, yirik va
-                    innovatsion loyihalar yaratish.
-                </p>
 
-            </article>
+    <!-- =====================================================
+         SKILLS
+    ===================================================== -->
 
-        </section>
+    <section
+        id="section-skills"
+        class="section-content"
+    >
 
+        <article class="card">
 
-        <!-- =================================================
-             SKILLS
-        ================================================== -->
+            <h3>
 
-        <section
-            id="section-skills"
-            class="section-content"
-        >
+                <i class="fa-solid fa-briefcase"></i>
 
-            <article class="card">
+                <span id="skills-title">
+                    Ko'nikmalarim
+                </span>
 
-                <h3>
-                    <i class="fa-solid fa-briefcase"></i>
-
-                    <span id="skills-title">
-                        Ko'nikmalarim
-                    </span>
-                </h3>
+            </h3>
 
 
-                <div class="skill-list">
+            <div class="skill-list">
 
 
-                    <div class="skill-item">
+                <div class="skill-item">
 
-                        <div class="skill-top">
+                    <div class="skill-top">
 
-                            <b>
-                                🌐 HTML / CSS / JavaScript
-                            </b>
+                        <b>
+                            🌐 HTML / CSS / JavaScript
+                        </b>
 
-                            <span class="skill-percent">
-                                95%
-                            </span>
-
-                        </div>
-
-
-                        <div class="progress">
-                            <span style="--progress:95%"></span>
-                        </div>
+                        <span class="skill-percent">
+                            95%
+                        </span>
 
                     </div>
 
 
-                    <div class="skill-item">
+                    <div class="progress">
 
-                        <div class="skill-top">
-
-                            <b>
-                                🎮 Game Creation
-                            </b>
-
-                            <span class="skill-percent">
-                                85%
-                            </span>
-
-                        </div>
-
-
-                        <div class="progress">
-                            <span style="--progress:85%"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill-item">
-
-                        <div class="skill-top">
-
-                            <b>
-                                🎬 GIF Creation
-                            </b>
-
-                            <span class="skill-percent">
-                                90%
-                            </span>
-
-                        </div>
-
-
-                        <div class="progress">
-                            <span style="--progress:90%"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill-item">
-
-                        <div class="skill-top">
-
-                            <b>
-                                📸 Media & Mobilography
-                            </b>
-
-                            <span class="skill-percent">
-                                80%
-                            </span>
-
-                        </div>
-
-
-                        <div class="progress">
-                            <span style="--progress:80%"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill-item">
-
-                        <div class="skill-top">
-
-                            <b>
-                                🧠 Learning & Development
-                            </b>
-
-                            <span class="skill-percent">
-                                95%
-                            </span>
-
-                        </div>
-
-
-                        <div class="progress">
-                            <span style="--progress:95%"></span>
-                        </div>
+                        <span
+                            style="--progress:95%"
+                        ></span>
 
                     </div>
 
                 </div>
 
-            </article>
 
-        </section>
 
+                <div class="skill-item">
 
-        <!-- =================================================
-             PROJECTS
-        ================================================== -->
+                    <div class="skill-top">
 
-        <section
-            id="section-projects"
-            class="section-content"
-        >
+                        <b>
+                            🎮 Game Creation
+                        </b>
 
-            <article class="card">
+                        <span class="skill-percent">
+                            85%
+                        </span>
 
-                <h3>
-                    <i class="fa-solid fa-code"></i>
+                    </div>
 
-                    <span id="proj-title">
-                        Asosiy Loyihalar
-                    </span>
-                </h3>
 
+                    <div class="progress">
 
-                <div class="projects-list">
+                        <span
+                            style="--progress:85%"
+                        ></span>
 
-
-                    <!-- 1 -->
-
-                    <a
-                        class="project"
-                        href="https://reyzer2112.github.io/2048-Oyini/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="project-icon">
-                            <i class="fa-solid fa-table-cells"></i>
-                        </div>
-
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                2048 O'yini
-                            </div>
-
-                            <div class="project-description">
-                                Classic 2048 web game
-                            </div>
-
-                        </div>
-
-
-                        <div class="project-arrow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-
-                    </a>
-
-
-                    <!-- 2 -->
-
-                    <a
-                        class="project"
-                        href="https://reyzer2112.github.io/Wordle-Uzbekcha/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="project-icon">
-                            <i class="fa-solid fa-font"></i>
-                        </div>
-
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Wordle Uzbekcha
-                            </div>
-
-                            <div class="project-description">
-                                Uzbek word guessing game
-                            </div>
-
-                        </div>
-
-
-                        <div class="project-arrow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-
-                    </a>
-
-
-                    <!-- 3 -->
-
-                    <a
-                        class="project"
-                        href="https://reyzer2112.github.io/Necha-kun-qoldi/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="project-icon">
-                            <i class="fa-solid fa-calendar-days"></i>
-                        </div>
-
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Necha kun qoldi
-                            </div>
-
-                            <div class="project-description">
-                                Countdown web application
-                            </div>
-
-                        </div>
-
-
-                        <div class="project-arrow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-
-                    </a>
-
-
-                    <!-- 4 -->
-
-                    <a
-                        class="project"
-                        href="https://reyzer2112.github.io/ReyZer-Kubik-Rubik/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="project-icon">
-                            <i class="fa-solid fa-cube"></i>
-                        </div>
-
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Kubik Rubik
-                            </div>
-
-                            <div class="project-description">
-                                Rubik's Cube project
-                            </div>
-
-                        </div>
-
-
-                        <div class="project-arrow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-
-                    </a>
-
-
-                    <!-- 5 -->
-
-                    <a
-                        class="project"
-                        href="https://reyzer2112.github.io/Tayoqli-Qahramon/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="project-icon">
-                            <i class="fa-solid fa-person-running"></i>
-                        </div>
-
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Tayoqli Qahramon
-                            </div>
-
-                            <div class="project-description">
-                                Creative browser game
-                            </div>
-
-                        </div>
-
-
-                        <div class="project-arrow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-
-                    </a>
-
-
-                    <!-- 6 -->
-
-                    <a
-                        class="project"
-                        href="https://reyzer2112.github.io/FlappyBird/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="project-icon">
-                            <i class="fa-solid fa-dove"></i>
-                        </div>
-
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Flappy Bird
-                            </div>
-
-                            <div class="project-description">
-                                Arcade flying game
-                            </div>
-
-                        </div>
-
-
-                        <div class="project-arrow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-
-                    </a>
-
-
-                    <!-- 7 -->
-
-                    <a
-                        class="project"
-                        href="https://reyzer2112.github.io/Tower-Blocks/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="project-icon">
-                            <i class="fa-solid fa-building"></i>
-                        </div>
-
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Tower Blocks
-                            </div>
-
-                            <div class="project-description">
-                                Tower building game
-                            </div>
-
-                        </div>
-
-
-                        <div class="project-arrow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-
-                    </a>
-
-
-                    <!-- 8 -->
-
-                    <a
-                        class="project"
-                        href="https://reyzer2112.github.io/Aqldan-Ozgan-Haydovchi/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="project-icon">
-                            <i class="fa-solid fa-car-side"></i>
-                        </div>
-
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Aqldan Ozgan Haydovchi
-                            </div>
-
-                            <div class="project-description">
-                                Fast-paced driving game
-                            </div>
-
-                        </div>
-
-
-                        <div class="project-arrow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-
-                    </a>
-
-
-                    <!-- 9 -->
-
-                    <a
-                        class="project"
-                        href="https://reyzer2112.github.io/Xotira-Chiroqlari/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="project-icon">
-                            <i class="fa-solid fa-lightbulb"></i>
-                        </div>
-
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Xotira Chiroqlari
-                            </div>
-
-                            <div class="project-description">
-                                Memory and lights game
-                            </div>
-
-                        </div>
-
-
-                        <div class="project-arrow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-
-                    </a>
-
-
-                    <!-- 10 -->
-
-                    <a
-                        class="project"
-                        href="https://reyzer2112.github.io/Tarjimon/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="project-icon">
-                            <i class="fa-solid fa-language"></i>
-                        </div>
-
-
-                        <div class="project-info">
-
-                            <div class="project-title">
-                                Tarjimon
-                            </div>
-
-                            <div class="project-description">
-                                Translation web application
-                            </div>
-
-                        </div>
-
-
-                        <div class="project-arrow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-
-                    </a>
+                    </div>
 
                 </div>
 
-            </article>
-
-        </section>
 
 
-        <!-- =================================================
-             SOCIAL LINKS
-        ================================================== -->
+                <div class="skill-item">
 
-        <section class="social-container">
+                    <div class="skill-top">
 
+                        <b>
+                            🎬 GIF Creation
+                        </b>
 
-            <a
-                href="https://instagram.com/reyzer2112"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-            >
+                        <span class="skill-percent">
+                            90%
+                        </span>
 
-                <i
-                    class="fa-brands fa-instagram"
-                    style="color:#e1306c"
-                ></i>
-
-                Instagram
-
-            </a>
+                    </div>
 
 
-            <a
-                href="https://t.me/reyzer2112"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-            >
+                    <div class="progress">
 
-                <i
-                    class="fa-brands fa-telegram"
-                    style="color:#24a1de"
-                ></i>
+                        <span
+                            style="--progress:90%"
+                        ></span>
 
-                Telegram
+                    </div>
 
-            </a>
+                </div>
 
 
-            <a
-                href="https://youtube.com/@ReyZer-2112"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-            >
 
-                <i
-                    class="fa-brands fa-youtube"
-                    style="color:#ff0000"
-                ></i>
+                <div class="skill-item">
 
-                YouTube
+                    <div class="skill-top">
 
-            </a>
+                        <b>
+                            📸 Media & Mobilography
+                        </b>
 
+                        <span class="skill-percent">
+                            80%
+                        </span>
 
-            <a
-                href="https://www.roblox.com/users/4669071068/profile"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-            >
-
-                <i
-                    class="fa-solid fa-gamepad"
-                ></i>
-
-                Roblox
-
-            </a>
-
-        </section>
+                    </div>
 
 
-        <!-- Intentionally no 2026 copyright -->
+                    <div class="progress">
 
-        <div class="footer"></div>
+                        <span
+                            style="--progress:80%"
+                        ></span>
 
-    </main>
+                    </div>
 
-
-    <script>
-
-        /* =====================================================
-           TELEGRAM MINI APP
-        ===================================================== */
-
-        const tg =
-            window.Telegram &&
-            window.Telegram.WebApp
-                ? window.Telegram.WebApp
-                : null;
+                </div>
 
 
-        if (tg) {
 
-            try {
+                <div class="skill-item">
 
-                tg.ready();
+                    <div class="skill-top">
 
-                tg.expand();
+                        <b>
+                            🧠 Learning & Development
+                        </b>
 
-                if (tg.setHeaderColor) {
-                    tg.setHeaderColor("#070b14");
-                }
+                        <span class="skill-percent">
+                            95%
+                        </span>
 
-                if (tg.setBackgroundColor) {
-                    tg.setBackgroundColor("#070b14");
-                }
+                    </div>
 
-            } catch (error) {
 
-                console.warn(
-                    "Telegram WebApp initialization:",
-                    error
-                );
+                    <div class="progress">
 
-            }
+                        <span
+                            style="--progress:95%"
+                        ></span>
 
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROJECTS
+    ===================================================== -->
+
+    <section
+        id="section-projects"
+        class="section-content"
+    >
+
+        <article class="card">
+
+            <h3>
+
+                <i class="fa-solid fa-code"></i>
+
+                <span id="proj-title">
+                    Asosiy Loyihalar
+                </span>
+
+            </h3>
+
+
+            <div class="projects-list">
+
+
+                <!-- 1 -->
+
+                <a
+                    class="project"
+                    href="https://reyzer2112.github.io/2048-Oyini/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-icon">
+
+                        <i
+                            class="fa-solid fa-table-cells"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="project-info">
+
+                        <div class="project-title">
+                            2048 O'yini
+                        </div>
+
+                        <div class="project-description">
+                            Classic 2048 web game
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-arrow">
+
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- 2 -->
+
+                <a
+                    class="project"
+                    href="https://reyzer2112.github.io/Wordle-Uzbekcha/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-icon">
+
+                        <i
+                            class="fa-solid fa-font"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="project-info">
+
+                        <div class="project-title">
+                            Wordle Uzbekcha
+                        </div>
+
+                        <div class="project-description">
+                            Uzbek word guessing game
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-arrow">
+
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- 3 -->
+
+                <a
+                    class="project"
+                    href="https://reyzer2112.github.io/Necha-kun-qoldi/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-icon">
+
+                        <i
+                            class="fa-solid fa-calendar-days"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="project-info">
+
+                        <div class="project-title">
+                            Necha kun qoldi
+                        </div>
+
+                        <div class="project-description">
+                            Countdown web application
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-arrow">
+
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- 4 -->
+
+                <a
+                    class="project"
+                    href="https://reyzer2112.github.io/ReyZer-Kubik-Rubik/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-icon">
+
+                        <i
+                            class="fa-solid fa-cube"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="project-info">
+
+                        <div class="project-title">
+                            Kubik Rubik
+                        </div>
+
+                        <div class="project-description">
+                            Rubik's Cube project
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-arrow">
+
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- 5 -->
+
+                <a
+                    class="project"
+                    href="https://reyzer2112.github.io/Tayoqli-Qahramon/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-icon">
+
+                        <i
+                            class="fa-solid fa-person-running"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="project-info">
+
+                        <div class="project-title">
+                            Tayoqli Qahramon
+                        </div>
+
+                        <div class="project-description">
+                            Creative browser game
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-arrow">
+
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- 6 -->
+
+                <a
+                    class="project"
+                    href="https://reyzer2112.github.io/FlappyBird/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-icon">
+
+                        <i
+                            class="fa-solid fa-dove"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="project-info">
+
+                        <div class="project-title">
+                            Flappy Bird
+                        </div>
+
+                        <div class="project-description">
+                            Arcade flying game
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-arrow">
+
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- 7 -->
+
+                <a
+                    class="project"
+                    href="https://reyzer2112.github.io/Tower-Blocks/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-icon">
+
+                        <i
+                            class="fa-solid fa-building"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="project-info">
+
+                        <div class="project-title">
+                            Tower Blocks
+                        </div>
+
+                        <div class="project-description">
+                            Tower building game
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-arrow">
+
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- 8 -->
+
+                <a
+                    class="project"
+                    href="https://reyzer2112.github.io/Aqldan-Ozgan-Haydovchi/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-icon">
+
+                        <i
+                            class="fa-solid fa-car-side"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="project-info">
+
+                        <div class="project-title">
+                            Aqldan Ozgan Haydovchi
+                        </div>
+
+                        <div class="project-description">
+                            Fast-paced driving game
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-arrow">
+
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- 9 -->
+
+                <a
+                    class="project"
+                    href="https://reyzer2112.github.io/Xotira-Chiroqlari/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-icon">
+
+                        <i
+                            class="fa-solid fa-lightbulb"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="project-info">
+
+                        <div class="project-title">
+                            Xotira Chiroqlari
+                        </div>
+
+                        <div class="project-description">
+                            Memory and lights game
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-arrow">
+
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- 10 -->
+
+                <a
+                    class="project"
+                    href="https://reyzer2112.github.io/Tarjimon/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-icon">
+
+                        <i
+                            class="fa-solid fa-language"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="project-info">
+
+                        <div class="project-title">
+                            Tarjimon
+                        </div>
+
+                        <div class="project-description">
+                            Translation web application
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-arrow">
+
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     BOTTOM NAVIGATION
+========================================================= -->
+
+<nav class="bottom-nav">
+
+
+    <button
+        type="button"
+        class="bottom-nav-btn active"
+        id="bottom-info"
+    >
+
+        <i class="fa-solid fa-user"></i>
+
+        <span>
+            Info
+        </span>
+
+    </button>
+
+
+
+    <button
+        type="button"
+        class="bottom-nav-btn"
+        id="bottom-skills"
+    >
+
+        <i class="fa-solid fa-code"></i>
+
+        <span>
+            Ko'nikmalar
+        </span>
+
+    </button>
+
+
+
+    <button
+        type="button"
+        class="bottom-nav-btn"
+        id="bottom-projects"
+    >
+
+        <i class="fa-solid fa-folder"></i>
+
+        <span>
+            Loyihalar
+        </span>
+
+    </button>
+
+
+</nav>
+
+
+
+<script>
+(() => {
+    "use strict";
+
+    /* =====================================================
+       TELEGRAM
+    ===================================================== */
+
+    const tg = window.Telegram?.WebApp || null;
+
+    if (tg) {
+        try {
+            tg.ready();
+            tg.expand();
+        } catch (_) {}
+    }
+
+
+    /* =====================================================
+       CACHE DOM — avoid repeated querySelector/getElementById
+       calls during navigation and language changes.
+    ===================================================== */
+
+    const $ = id => document.getElementById(id);
+
+    const body = document.body;
+    const html = document.documentElement;
+
+    const themeButton = $("theme-btn");
+
+    const sections = {
+        info: $("section-info"),
+        skills: $("section-skills"),
+        projects: $("section-projects")
+    };
+
+    const topButtons = {
+        info: $("tab-info"),
+        skills: $("tab-skills"),
+        projects: $("tab-projects")
+    };
+
+    const bottomButtons = {
+        info: $("bottom-info"),
+        skills: $("bottom-skills"),
+        projects: $("bottom-projects")
+    };
+
+    const langButtons = {
+        uz: $("btn-uz"),
+        ru: $("btn-ru"),
+        en: $("btn-en")
+    };
+
+
+    /* =====================================================
+       PAGE LOAD
+    ===================================================== */
+
+    const showPage = () => {
+        requestAnimationFrame(() => {
+            body.classList.remove("page-loading");
+            body.classList.add("page-ready");
+        });
+    };
+
+    if (document.readyState === "complete") {
+        showPage();
+    } else {
+        window.addEventListener("load", showPage, { once: true, passive: true });
+    }
+
+
+    /* =====================================================
+       HAPTIC
+    ===================================================== */
+
+    function haptic(type = "light") {
+        try {
+            tg?.HapticFeedback?.impactOccurred(type);
+        } catch (_) {}
+    }
+
+
+    /* =====================================================
+       THEME
+    ===================================================== */
+
+    function updateThemeIcon() {
+        themeButton.textContent =
+            body.getAttribute("data-theme") === "dark" ? "☀️" : "🌙";
+    }
+
+    function applyTelegramTheme(theme) {
+        if (!tg) return;
+
+        try {
+            const color = theme === "dark" ? "#070b14" : "#f5f7fb";
+            tg.setHeaderColor?.(color);
+            tg.setBackgroundColor?.(color);
+        } catch (_) {}
+    }
+
+    function toggleTheme() {
+        const next =
+            body.getAttribute("data-theme") === "dark"
+                ? "light"
+                : "dark";
+
+        body.setAttribute("data-theme", next);
+
+        try {
+            localStorage.setItem("reyzer-theme", next);
+        } catch (_) {}
+
+        updateThemeIcon();
+        applyTelegramTheme(next);
+        haptic("light");
+    }
+
+    themeButton.addEventListener("click", toggleTheme);
+
+    try {
+        const savedTheme = localStorage.getItem("reyzer-theme");
+
+        if (savedTheme === "light" || savedTheme === "dark") {
+            body.setAttribute("data-theme", savedTheme);
+        }
+    } catch (_) {}
+
+    updateThemeIcon();
+    applyTelegramTheme(body.getAttribute("data-theme"));
+
+
+    /* =====================================================
+       TRANSLATIONS
+    ===================================================== */
+
+    const translations = {
+        uz: {
+            badge: "ReyZer Portfolio",
+            title: "Frontend & Backend Developer",
+            info: "Info",
+            skills: "Ko'nikmalar",
+            projects: "Loyihalar",
+            infoH1: "Frontend & Backend",
+            infoP1: "Zamonaviy va interaktiv web-loyihalar yarataman. Frontend va backend yo'nalishlarida ishlayman.",
+            infoH2: "Gaming & Creation",
+            infoP2: "Roblox va Minecraft platformalariga qiziqaman. O'yinlar va kreativ loyihalar yaratishni yoqtiraman.",
+            infoH3: "GIF Creator",
+            infoP3: "Kreativ GIF animatsiyalar yarataman. GIF kontentlarim 3 mlrd+ ko'rishlarga ega.",
+            infoH4: "Mobilografiya",
+            infoP4: "Mobil fotografiya, video va kreativ vizual kontent yaratishga qiziqaman.",
+            infoH5: "Maqsadim",
+            infoP5: "IT va kreativ yo'nalishlarni birlashtirib, katta va innovatsion loyihalar yaratish.",
+            socialTitle: "Ijtimoiy tarmoqlar",
+            socialDescription: "Meni quyidagi platformalarda kuzatishingiz mumkin.",
+            skillsTitle: "Ko'nikmalarim",
+            projectsTitle: "Asosiy Loyihalar"
+        },
+
+        ru: {
+            badge: "Портфолио ReyZer",
+            title: "Frontend & Backend Разработчик",
+            info: "Инфо",
+            skills: "Навыки",
+            projects: "Проекты",
+            infoH1: "Frontend & Backend",
+            infoP1: "Создаю современные и интерактивные веб-проекты. Работаю в направлениях frontend и backend.",
+            infoH2: "Gaming & Creation",
+            infoP2: "Интересуюсь Roblox и Minecraft. Люблю создавать игры и креативные проекты.",
+            infoH3: "GIF Creator",
+            infoP3: "Создаю креативные GIF-анимации. Мои GIF получили 3 млрд+ просмотров.",
+            infoH4: "Мобилография",
+            infoP4: "Интересуюсь мобильной фотографией, видео и созданием визуального контента.",
+            infoH5: "Моя цель",
+            infoP5: "Объединить IT и творческие направления для создания крупных и инновационных проектов.",
+            socialTitle: "Социальные сети",
+            socialDescription: "Вы можете следить за мной на следующих платформах.",
+            skillsTitle: "Мои навыки",
+            projectsTitle: "Основные проекты"
+        },
+
+        en: {
+            badge: "ReyZer Portfolio",
+            title: "Frontend & Backend Developer",
+            info: "Info",
+            skills: "Skills",
+            projects: "Projects",
+            infoH1: "Frontend & Backend",
+            infoP1: "I create modern and interactive web projects. I work in both frontend and backend development.",
+            infoH2: "Gaming & Creation",
+            infoP2: "I am interested in Roblox and Minecraft. I enjoy creating games and creative projects.",
+            infoH3: "GIF Creator",
+            infoP3: "I create creative GIF animations. My GIF content has reached 3B+ views.",
+            infoH4: "Mobilography",
+            infoP4: "I am interested in mobile photography, video and creative visual content.",
+            infoH5: "My Goal",
+            infoP5: "To combine IT and creative fields to build large and innovative projects.",
+            socialTitle: "Social Networks",
+            socialDescription: "You can follow me on the following platforms.",
+            skillsTitle: "My Skills",
+            projectsTitle: "Main Projects"
+        }
+    };
+
+
+    /* =====================================================
+       LANGUAGE
+    ===================================================== */
+
+    const textMap = {
+        lblBadge: ["lbl-badge", "badge"],
+        lblTitle: ["lbl-title", "title"],
+
+        infoH1: ["info-h1", "infoH1"],
+        infoP1: ["info-p1", "infoP1"],
+        infoH2: ["info-h2", "infoH2"],
+        infoP2: ["info-p2", "infoP2"],
+        infoH3: ["info-h3", "infoH3"],
+        infoP3: ["info-p3", "infoP3"],
+        infoH4: ["info-h4", "infoH4"],
+        infoP4: ["info-p4", "infoP4"],
+        infoH5: ["info-h5", "infoH5"],
+        infoP5: ["info-p5", "infoP5"],
+        socialTitle: ["social-title", "socialTitle"],
+        socialDescription: ["social-description", "socialDescription"],
+        skillsTitle: ["skills-title", "skillsTitle"],
+        projectsTitle: ["proj-title", "projectsTitle"]
+    };
+
+    function setLang(lang, doHaptic = true) {
+        const t = translations[lang];
+        if (!t) return;
+
+        html.lang = lang;
+
+        for (const [, [id, key]] of Object.entries(textMap)) {
+            const el = $(id);
+            if (el) el.textContent = t[key];
         }
 
+        $("tab-info").querySelector("i") || ($("tab-info").innerHTML = '<i class="fa-solid fa-user"></i>');
+        $("tab-skills").querySelector("i") || ($("tab-skills").innerHTML = '<i class="fa-solid fa-code"></i>');
+        $("tab-projects").querySelector("i") || ($("tab-projects").innerHTML = '<i class="fa-solid fa-folder"></i>');
 
-        /* =====================================================
-           PAGE LOAD
-        ===================================================== */
+        // Preserve icons without innerHTML replacement on every language switch.
+        topButtons.info.lastChild.textContent = ` ${t.info}`;
+        topButtons.skills.lastChild.textContent = ` ${t.skills}`;
+        topButtons.projects.lastChild.textContent = ` ${t.projects}`;
 
-        window.addEventListener(
-            "load",
-            () => {
+        bottomButtons.info.querySelector("span").textContent = t.info;
+        bottomButtons.skills.querySelector("span").textContent = t.skills;
+        bottomButtons.projects.querySelector("span").textContent = t.projects;
 
-                requestAnimationFrame(() => {
-
-                    document.body.classList.remove(
-                        "page-loading"
-                    );
-
-                    document.body.classList.add(
-                        "page-ready"
-                    );
-
-                });
-
-            }
-        );
-
-
-        /* =====================================================
-           THEME
-        ===================================================== */
-
-        function toggleTheme() {
-
-            const body =
-                document.body;
-
-            const button =
-                document.getElementById(
-                    "theme-btn"
-                );
-
-
-            const isDark =
-                body.getAttribute(
-                    "data-theme"
-                ) === "dark";
-
-
-            body.classList.add(
-                "theme-changing"
-            );
-
-
-            if (isDark) {
-
-                body.setAttribute(
-                    "data-theme",
-                    "light"
-                );
-
-                button.textContent =
-                    "🌙";
-
-            } else {
-
-                body.setAttribute(
-                    "data-theme",
-                    "dark"
-                );
-
-                button.textContent =
-                    "☀️";
-
-            }
-
-
-            localStorage.setItem(
-                "reyzer-theme",
-                isDark
-                    ? "light"
-                    : "dark"
-            );
-
-
-            updateTelegramTheme(
-                isDark
-                    ? "light"
-                    : "dark"
-            );
-
-
-            setTimeout(() => {
-
-                body.classList.remove(
-                    "theme-changing"
-                );
-
-            }, 500);
-
-
-            haptic("light");
+        for (const key in langButtons) {
+            langButtons[key].classList.toggle("active", key === lang);
         }
 
+        try {
+            localStorage.setItem("reyzer-language", lang);
+        } catch (_) {}
 
-        /* Restore theme */
+        if (doHaptic) haptic("light");
+    }
 
-        (() => {
+    // The original markup already contains the icons, so this initializes
+    // text without recreating the icon DOM.
+    try {
+        const savedLanguage = localStorage.getItem("reyzer-language");
+        if (savedLanguage && translations[savedLanguage]) {
+            setLang(savedLanguage, false);
+        } else {
+            setLang("uz", false);
+        }
+    } catch (_) {
+        setLang("uz", false);
+    }
 
-            try {
-
-                const saved =
-                    localStorage.getItem(
-                        "reyzer-theme"
-                    );
-
-
-                if (saved === "light") {
-
-                    document.body.setAttribute(
-                        "data-theme",
-                        "light"
-                    );
-
-                    document.getElementById(
-                        "theme-btn"
-                    ).textContent = "🌙";
-
-                }
-
-            } catch (error) {}
-
-        })();
+    langButtons.uz.addEventListener("click", () => setLang("uz"));
+    langButtons.ru.addEventListener("click", () => setLang("ru"));
+    langButtons.en.addEventListener("click", () => setLang("en"));
 
 
-        /* =====================================================
-           TELEGRAM THEME
-        ===================================================== */
+    /* =====================================================
+       TAB SWITCHING
+       - Cache all nodes.
+       - Do not force a layout with offsetWidth.
+       - Reflow is avoided; CSS animation restarts via a tiny
+         class cycle on the next frame.
+    ===================================================== */
 
-        function updateTelegramTheme(theme) {
+    let activeTab = "info";
+    let switchFrame = 0;
 
-            if (!tg) return;
+    function restartSectionAnimation(target) {
+        target.classList.remove("section-refresh");
 
+        cancelAnimationFrame(switchFrame);
 
-            try {
+        switchFrame = requestAnimationFrame(() => {
+            target.classList.add("section-refresh");
+        });
+    }
 
-                if (theme === "dark") {
+    function switchTab(tabName) {
+        const target = sections[tabName];
+        if (!target || activeTab === tabName) return;
 
-                    if (tg.setHeaderColor) {
-                        tg.setHeaderColor("#070b14");
-                    }
+        activeTab = tabName;
 
-                    if (tg.setBackgroundColor) {
-                        tg.setBackgroundColor("#070b14");
-                    }
-
-                } else {
-
-                    if (tg.setHeaderColor) {
-                        tg.setHeaderColor("#f5f7fb");
-                    }
-
-                    if (tg.setBackgroundColor) {
-                        tg.setBackgroundColor("#f5f7fb");
-                    }
-
-                }
-
-            } catch (error) {}
-
+        for (const key in sections) {
+            sections[key].classList.toggle("active", key === tabName);
+            topButtons[key].classList.toggle("active", key === tabName);
+            bottomButtons[key].classList.toggle("active", key === tabName);
         }
 
+        restartSectionAnimation(target);
+        haptic("light");
 
-        /* =====================================================
-           TAB SWITCHING
-        ===================================================== */
+        // Instant scroll is much cheaper on old Android WebViews than
+        // running a long smooth scroll animation every tab click.
+        window.scrollTo(0, 0);
+    }
 
-        function switchTab(
-            tabName,
-            clickedButton
-        ) {
+    for (const key in topButtons) {
+        topButtons[key].addEventListener("click", () => switchTab(key));
+        bottomButtons[key].addEventListener("click", () => switchTab(key));
+    }
 
-            const sections =
-                document.querySelectorAll(
-                    ".section-content"
-                );
 
+    /* =====================================================
+       RIPPLE
+       Lightweight, single-element effect. No shadows or filters.
+    ===================================================== */
 
-            const buttons =
-                document.querySelectorAll(
-                    ".tab-btn"
-                );
+    function createRipple(element, x, y) {
+        if (!element) return;
 
+        const rect = element.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height) * 1.5;
 
-            buttons.forEach(
-                button => {
+        const ripple = document.createElement("span");
+        ripple.className = "ripple";
 
-                    button.classList.remove(
-                        "active"
-                    );
+        ripple.style.width = `${size}px`;
+        ripple.style.height = `${size}px`;
+        ripple.style.left = `${x - rect.left - size / 2}px`;
+        ripple.style.top = `${y - rect.top - size / 2}px`;
 
-                }
-            );
+        element.appendChild(ripple);
 
+        ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
+    }
 
-            sections.forEach(
-                section => {
+    const rippleSelector =
+        ".theme-toggle, .lang-btn, .social-btn, .project";
 
-                    section.classList.remove(
-                        "active"
-                    );
+    // One delegated listener instead of many individual listeners.
+    document.addEventListener("pointerdown", event => {
+        const target = event.target.closest(rippleSelector);
+        if (!target) return;
 
-                }
-            );
+        createRipple(target, event.clientX, event.clientY);
+    }, { passive: true });
 
 
-            const target =
-                document.getElementById(
-                    `section-${tabName}`
-                );
+    /* =====================================================
+       PROJECT HAPTIC
+       Combined with the existing delegated pointer/click logic.
+    ===================================================== */
 
+    document.addEventListener("click", event => {
+        if (event.target.closest(".project")) haptic("light");
+    }, { passive: true });
 
-            if (!target) return;
 
+    /* =====================================================
+       DESKTOP 3D PROFILE
+       - Only enabled on mouse/fine-pointer devices.
+       - requestAnimationFrame throttles pointermove to 1 update/frame.
+    ===================================================== */
 
-            target.classList.add(
-                "active"
-            );
+    const desktopHover = window.matchMedia("(hover:hover) and (pointer:fine)");
+    const profile = document.querySelector(".profile-card");
 
+    if (desktopHover.matches && profile) {
+        let raf = 0;
+        let lastX = 0;
+        let lastY = 0;
 
-            if (clickedButton) {
+        profile.addEventListener("pointermove", event => {
+            lastX = event.clientX;
+            lastY = event.clientY;
 
-                clickedButton.classList.add(
-                    "active"
-                );
+            if (raf) return;
 
-            }
+            raf = requestAnimationFrame(() => {
+                raf = 0;
 
+                const rect = profile.getBoundingClientRect();
+                const centerX = rect.width * 0.5;
+                const centerY = rect.height * 0.5;
 
-            animateSection(
-                target
-            );
+                const rotateX = ((lastY - rect.top - centerY) / centerY) * -1.1;
+                const rotateY = ((lastX - rect.left - centerX) / centerX) * 1.1;
 
+                profile.style.transform =
+                    `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) ` +
+                    `rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
+            });
+        }, { passive: true });
 
-            haptic("light");
+        profile.addEventListener("pointerleave", () => {
+            cancelAnimationFrame(raf);
+            raf = 0;
+            profile.style.transform = "";
+        }, { passive: true });
+    }
 
-        }
 
+    /* =====================================================
+       RESIZE
+       Reset 3D transform only when resize has settled.
+    ===================================================== */
 
-        function animateSection(
-            section
-        ) {
+    let resizeTimer = 0;
 
-            section.classList.remove(
-                "section-refresh"
-            );
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
 
+        resizeTimer = setTimeout(() => {
+            if (profile) profile.style.transform = "";
+        }, 120);
+    }, { passive: true });
 
-            void section.offsetWidth;
 
+    /* =====================================================
+       VISIBILITY
+       Pause animations while Telegram/browser is hidden.
+    ===================================================== */
 
-            section.classList.add(
-                "section-refresh"
-            );
+    document.addEventListener("visibilitychange", () => {
+        body.classList.toggle("page-paused", document.hidden);
+    }, { passive: true });
 
+})();
+</script>
 
-            setTimeout(() => {
-
-                section.classList.remove(
-                    "section-refresh"
-                );
-
-            }, 500);
-
-        }
-
-
-        /* =====================================================
-           LANGUAGE
-        ===================================================== */
-
-        const translations = {
-
-            uz: {
-
-                badge:
-                    "ReyZer Portfolio",
-
-                title:
-                    "Frontend & Backend Developer",
-
-                tabInfo:
-                    "Info",
-
-                tabSkills:
-                    "Ko'nikmalar",
-
-                tabProjects:
-                    "Loyihalar",
-
-
-                infoH1:
-                    "Frontend & Backend | IT",
-
-                infoP1:
-                    "Zamonaviy va interaktiv web-loyihalar yaratishga qiziqaman. Frontend va backend yo'nalishlarida ishlayman, yangi texnologiyalarni o'rganib, ularni amaliy loyihalarda qo'llayman. 10+ loyihaning muallifi sifatida turli g'oyalarni real loyihalarga aylantiraman.",
-
-
-                infoH2:
-                    "Gaming & Creation",
-
-                infoP2:
-                    "Gaming olamiga, ayniqsa Roblox va Minecraft platformalariga qiziqaman. O'yinlarni o'ynash bilan birga, o'z g'oyalarim asosida kreativ loyihalar ham yarataman.",
-
-
-                infoH3:
-                    "GIF Creator",
-
-                infoP3:
-                    "Instagram uchun kreativ GIF animatsiyalar yarataman. GIF'larim umumiy hisobda 3 mlrd+ ko'rishlar to'plagan.",
-
-
-                infoH4:
-                    "Mobilograf",
-
-                infoP4:
-                    "Mobilografiya va vizual kontent yaratishga qiziqaman. Foto va video orqali kreativ g'oyalarni ifodalash va yangi uslublarni sinab ko'rishni yoqtiraman.",
-
-
-                infoH5:
-                    "Maqsadim",
-
-                infoP5:
-                    "IT, dasturlash va kreativ sohalardagi bilimlarimni birlashtirib, yirik va innovatsion loyihalar yaratish.",
-
-
-                skillsTitle:
-                    "Ko'nikmalarim",
-
-                projectsTitle:
-                    "Asosiy Loyihalar"
-
-            },
-
-
-            ru: {
-
-                badge:
-                    "Портфолио ReyZer",
-
-                title:
-                    "Frontend & Backend Разработчик",
-
-                tabInfo:
-                    "Инфо",
-
-                tabSkills:
-                    "Навыки",
-
-                tabProjects:
-                    "Проекты",
-
-
-                infoH1:
-                    "Frontend & Backend | IT",
-
-                infoP1:
-                    "Создаю современные и интерактивные веб-проекты. Работаю в направлениях frontend и backend, изучаю новые технологии и применяю их на практике. Я автор более 10 проектов, превращая идеи в реальные продукты.",
-
-
-                infoH2:
-                    "Gaming & Creation",
-
-                infoP2:
-                    "Интересуюсь игровой индустрией, особенно Roblox и Minecraft. Помимо игр, создаю собственные игровые и креативные проекты.",
-
-
-                infoH3:
-                    "GIF Creator",
-
-                infoP3:
-                    "Создаю креативные GIF-анимации для Instagram. Общее количество просмотров моих GIF достигает 3 млрд+.",
-
-
-                infoH4:
-                    "Мобилограф",
-
-                infoP4:
-                    "Интересуюсь мобильной фотографией и созданием визуального контента. Экспериментирую с новыми стилями и способами подачи.",
-
-
-                infoH5:
-                    "Моя цель",
-
-                infoP5:
-                    "Объединить знания в IT, программировании и креативных направлениях для создания крупных и инновационных проектов.",
-
-
-                skillsTitle:
-                    "Мои навыки",
-
-                projectsTitle:
-                    "Основные проекты"
-
-            },
-
-
-            en: {
-
-                badge:
-                    "ReyZer Portfolio",
-
-                title:
-                    "Frontend & Backend Developer",
-
-                tabInfo:
-                    "Info",
-
-                tabSkills:
-                    "Skills",
-
-                tabProjects:
-                    "Projects",
-
-
-                infoH1:
-                    "Frontend & Backend | IT",
-
-                infoP1:
-                    "I enjoy building modern and interactive web projects. I work across frontend and backend development, learn new technologies, and apply them in real projects. I have created 10+ projects, turning different ideas into real products.",
-
-
-                infoH2:
-                    "Gaming & Creation",
-
-                infoP2:
-                    "I am interested in gaming, especially Roblox and Minecraft. Besides playing games, I create my own gaming and creative projects.",
-
-
-                infoH3:
-                    "GIF Creator",
-
-                infoP3:
-                    "I create creative GIF animations for Instagram. My GIFs have reached 3B+ total views.",
-
-
-                infoH4:
-                    "Mobilographer",
-
-                infoP4:
-                    "I am also interested in mobile photography and visual content creation. I enjoy experimenting with new styles and creative ideas.",
-
-
-                infoH5:
-                    "My Goal",
-
-                infoP5:
-                    "To combine my knowledge of IT, programming, and creative fields to build large and innovative projects.",
-
-
-                skillsTitle:
-                    "My Skills",
-
-                projectsTitle:
-                    "Main Projects"
-
-            }
-
-        };
-
-
-        function setLang(
-            lang
-        ) {
-
-            const t =
-                translations[lang];
-
-
-            if (!t) return;
-
-
-            const body =
-                document.body;
-
-
-            body.classList.add(
-                "language-changing"
-            );
-
-
-            setTimeout(() => {
-
-                document.getElementById(
-                    "lbl-badge"
-                ).textContent =
-                    t.badge;
-
-
-                document.getElementById(
-                    "lbl-title"
-                ).textContent =
-                    t.title;
-
-
-                document.getElementById(
-                    "tab-info"
-                ).textContent =
-                    t.tabInfo;
-
-
-                document.getElementById(
-                    "tab-skills"
-                ).textContent =
-                    t.tabSkills;
-
-
-                document.getElementById(
-                    "tab-projects"
-                ).textContent =
-                    t.tabProjects;
-
-
-                document.getElementById(
-                    "info-h1"
-                ).textContent =
-                    t.infoH1;
-
-
-                document.getElementById(
-                    "info-p1"
-                ).textContent =
-                    t.infoP1;
-
-
-                document.getElementById(
-                    "info-h2"
-                ).textContent =
-                    t.infoH2;
-
-
-                document.getElementById(
-                    "info-p2"
-                ).textContent =
-                    t.infoP2;
-
-
-                document.getElementById(
-                    "info-h3"
-                ).textContent =
-                    t.infoH3;
-
-
-                document.getElementById(
-                    "info-p3"
-                ).textContent =
-                    t.infoP3;
-
-
-                document.getElementById(
-                    "info-h4"
-                ).textContent =
-                    t.infoH4;
-
-
-                document.getElementById(
-                    "info-p4"
-                ).textContent =
-                    t.infoP4;
-
-
-                document.getElementById(
-                    "info-h5"
-                ).textContent =
-                    t.infoH5;
-
-
-                document.getElementById(
-                    "info-p5"
-                ).textContent =
-                    t.infoP5;
-
-
-                document.getElementById(
-                    "skills-title"
-                ).textContent =
-                    t.skillsTitle;
-
-
-                document.getElementById(
-                    "proj-title"
-                ).textContent =
-                    t.projectsTitle;
-
-
-                document
-                    .querySelectorAll(
-                        ".lang-btn"
-                    )
-                    .forEach(
-                        btn => {
-
-                            btn.classList.remove(
-                                "active"
-                            );
-
-                        }
-                    );
-
-
-                const selected =
-                    document.getElementById(
-                        `btn-${lang}`
-                    );
-
-
-                if (selected) {
-
-                    selected.classList.add(
-                        "active"
-                    );
-
-                }
-
-
-                localStorage.setItem(
-                    "reyzer-language",
-                    lang
-                );
-
-
-                document.documentElement
-                    .setAttribute(
-                        "lang",
-                        lang
-                    );
-
-
-                body.classList.remove(
-                    "language-changing"
-                );
-
-
-            }, 120);
-
-
-            haptic("light");
-
-        }
-
-
-        /* Restore language */
-
-        (() => {
-
-            try {
-
-                const saved =
-                    localStorage.getItem(
-                        "reyzer-language"
-                    );
-
-
-                if (
-                    saved &&
-                    translations[saved]
-                ) {
-
-                    setTimeout(
-                        () => setLang(saved),
-                        50
-                    );
-
-                }
-
-            } catch (error) {}
-
-        })();
-
-
-        /* =====================================================
-           RIPPLE EFFECT
-        ===================================================== */
-
-        function createRipple(
-            event
-        ) {
-
-            const element =
-                event.currentTarget;
-
-
-            if (!element) return;
-
-
-            const rect =
-                element.getBoundingClientRect();
-
-
-            const ripple =
-                document.createElement(
-                    "span"
-                );
-
-
-            ripple.className =
-                "ripple";
-
-
-            const size =
-                Math.max(
-                    rect.width,
-                    rect.height
-                ) * 1.5;
-
-
-            ripple.style.width =
-                `${size}px`;
-
-            ripple.style.height =
-                `${size}px`;
-
-
-            const clientX =
-                event.clientX ||
-                rect.left +
-                rect.width / 2;
-
-
-            const clientY =
-                event.clientY ||
-                rect.top +
-                rect.height / 2;
-
-
-            ripple.style.left =
-                `${
-                    clientX -
-                    rect.left -
-                    size / 2
-                }px`;
-
-
-            ripple.style.top =
-                `${
-                    clientY -
-                    rect.top -
-                    size / 2
-                }px`;
-
-
-            element.appendChild(
-                ripple
-            );
-
-
-            ripple.addEventListener(
-                "animationend",
-                () => ripple.remove(),
-                {
-                    once: true
-                }
-            );
-
-        }
-
-
-        document.addEventListener(
-            "pointerdown",
-            event => {
-
-                const target =
-                    event.target.closest(
-                        ".tab-btn, .theme-toggle, .lang-btn, .social-btn, .project"
-                    );
-
-
-                if (!target) return;
-
-
-                createRipple({
-                    currentTarget: target,
-                    clientX: event.clientX,
-                    clientY: event.clientY
-                });
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        /* =====================================================
-           HAPTIC FEEDBACK
-        ===================================================== */
-
-        function haptic(
-            type = "light"
-        ) {
-
-            try {
-
-                if (
-                    tg &&
-                    tg.HapticFeedback
-                ) {
-
-                    tg.HapticFeedback
-                        .impactOccurred(
-                            type
-                        );
-
-                }
-
-            } catch (error) {}
-
-        }
-
-
-        /* =====================================================
-           PROJECT CLICK FEEDBACK
-        ===================================================== */
-
-        document.addEventListener(
-            "click",
-            event => {
-
-                const project =
-                    event.target.closest(
-                        ".project"
-                    );
-
-
-                if (!project) return;
-
-
-                haptic("light");
-
-            }
-        );
-
-
-        /* =====================================================
-           DESKTOP 3D EFFECT
-        ===================================================== */
-
-        const desktopHover =
-            window.matchMedia(
-                "(hover:hover) and (pointer:fine)"
-            );
-
-
-        if (desktopHover.matches) {
-
-            document
-                .querySelectorAll(
-                    ".profile-card"
-                )
-                .forEach(card => {
-
-                    card.addEventListener(
-                        "pointermove",
-                        event => {
-
-                            const rect =
-                                card.getBoundingClientRect();
-
-
-                            const x =
-                                event.clientX -
-                                rect.left;
-
-
-                            const y =
-                                event.clientY -
-                                rect.top;
-
-
-                            const centerX =
-                                rect.width / 2;
-
-
-                            const centerY =
-                                rect.height / 2;
-
-
-                            const rotateX =
-                                (
-                                    (y - centerY) /
-                                    centerY
-                                ) * -1.2;
-
-
-                            const rotateY =
-                                (
-                                    (x - centerX) /
-                                    centerX
-                                ) * 1.2;
-
-
-                            card.style.transform =
-                                `
-                                perspective(900px)
-                                rotateX(${rotateX}deg)
-                                rotateY(${rotateY}deg)
-                                translateY(-2px)
-                                `;
-                        }
-                    );
-
-
-                    card.addEventListener(
-                        "pointerleave",
-                        () => {
-
-                            card.style.transform =
-                                "";
-
-                        }
-                    );
-
-                });
-
-        }
-
-
-        /* =====================================================
-           RESIZE SAFETY
-        ===================================================== */
-
-        let resizeTimer;
-
-
-        window.addEventListener(
-            "resize",
-            () => {
-
-                clearTimeout(
-                    resizeTimer
-                );
-
-
-                resizeTimer =
-                    setTimeout(() => {
-
-                        document
-                            .querySelector(
-                                ".profile-card"
-                            )
-                            ?.style
-                            .removeProperty(
-                                "transform"
-                            );
-
-                    }, 150);
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        /* =====================================================
-           VISIBILITY PERFORMANCE
-        ===================================================== */
-
-        document.addEventListener(
-            "visibilitychange",
-            () => {
-
-                if (
-                    document.hidden
-                ) {
-
-                    document.body
-                        .classList
-                        .add(
-                            "page-paused"
-                        );
-
-                } else {
-
-                    document.body
-                        .classList
-                        .remove(
-                            "page-paused"
-                        );
-
-                }
-
-            }
-        );
-
-    </script>
 
 </body>
 </html>
