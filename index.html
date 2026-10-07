@@ -172,6 +172,26 @@
 
         }
 
+        /* No white browser/tap focus spot on language and theme controls. */
+        .theme-toggle,
+        .lang-btn,
+        .tab-btn,
+        .bottom-nav-btn {
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
+
+        .theme-toggle:focus,
+        .theme-toggle:focus-visible,
+        .lang-btn:focus,
+        .lang-btn:focus-visible,
+        .tab-btn:focus,
+        .tab-btn:focus-visible,
+        .bottom-nav-btn:focus,
+        .bottom-nav-btn:focus-visible {
+            outline: none;
+        }
+
 
         a {
 
@@ -757,6 +777,7 @@
         .tab-btn {
 
             flex: 1;
+            min-width: 0;
 
             min-height: 44px;
 
@@ -1508,49 +1529,6 @@
 
 
         /* =====================================================
-           RIPPLE
-        ===================================================== */
-
-        .ripple {
-
-            position: absolute;
-
-            pointer-events: none;
-
-            width: 30px;
-
-            height: 30px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(255, 255, 255, .18);
-
-            transform:
-                scale(0);
-
-            animation:
-
-                rippleAnimation .65s ease-out forwards;
-
-        }
-
-
-        @keyframes rippleAnimation {
-
-            to {
-
-                transform:
-                    scale(5);
-
-                opacity: 0;
-
-            }
-
-        }
-
-
-        /* =====================================================
            BOTTOM NAVIGATION
         ===================================================== */
 
@@ -1910,6 +1888,29 @@
 
             }
 
+        }
+
+
+        @media (max-width: 480px) {
+            .nav-tabs {
+                gap: 3px;
+                padding: 4px;
+            }
+
+            .tab-btn {
+                min-height: 44px;
+                padding: 0 6px;
+                font-size: 11px;
+                white-space: nowrap;
+            }
+
+            .tab-btn i {
+                margin-right: 2px;
+            }
+
+            .bottom-nav {
+                width: calc(100% - 24px);
+            }
         }
 
 
@@ -2422,10 +2423,21 @@
                     </a>
 
 
+                    <!-- Discord -->
+
+                    <a class="social-btn" href="https://discord.com/" target="_blank" rel="noopener noreferrer">
+
+                        <i class="fa-brands fa-discord" style="color:#5865f2"></i>
+
+                        Discord
+
+                    </a>
+
+
 
                     <!-- YouTube -->
 
-                    <a class="social-btn" href="https://youtube.com/@ReyZer-2112" target="_blank"
+                    <a class="social-btn" href="https://www.youtube.com/@ReyZer2112" target="_blank"
                         rel="noopener noreferrer">
 
                         <i class="fa-brands fa-youtube" style="color:#ff0000"></i>
@@ -2462,22 +2474,11 @@
 
 
 
-                    <!-- Discord -->
+                    </div>
 
-                    <a class="social-btn" href="https://discord.com/users/reyzer2112" target="_blank"
-                        rel="noopener noreferrer">
+                </article>
 
-                        <i class="fa-brands fa-discord" style="color:#5865f2"></i>
-
-                        Discord
-
-                    </a>
-
-                </div>
-
-            </article>
-
-        </section>
+            </section>
 
 
 
@@ -2490,142 +2491,43 @@
             <article class="card">
 
                 <h3>
-
                     <i class="fa-solid fa-briefcase"></i>
-
-                    <span id="skills-title">
-                        Ko'nikmalarim
-                    </span>
-
+                    <span id="skills-title">Ko'nikmalarim</span>
                 </h3>
-
 
                 <div class="skill-list">
 
-
                     <div class="skill-item">
-
                         <div class="skill-top">
-
-                            <b>
-                                🌐 HTML / CSS / JavaScript
-                            </b>
-
-                            <span class="skill-percent">
-                                95%
-                            </span>
-
+                            <b id="skill-name-1">🌐 HTML / CSS / JavaScript</b>
+                            <span class="skill-percent" id="skill-percent-1">80%</span>
                         </div>
-
-
-                        <div class="progress">
-
-                            <span style="--progress:95%"></span>
-
-                        </div>
-
+                        <div class="progress"><span id="skill-progress-1" style="--progress:80%"></span></div>
                     </div>
 
-
-
                     <div class="skill-item">
-
                         <div class="skill-top">
-
-                            <b>
-                                🎮 Game Creation
-                            </b>
-
-                            <span class="skill-percent">
-                                85%
-                            </span>
-
+                            <b id="skill-name-2">🎮 O'yin yaratish</b>
+                            <span class="skill-percent" id="skill-percent-2">90%</span>
                         </div>
-
-
-                        <div class="progress">
-
-                            <span style="--progress:85%"></span>
-
-                        </div>
-
+                        <div class="progress"><span id="skill-progress-2" style="--progress:90%"></span></div>
                     </div>
 
-
-
                     <div class="skill-item">
-
                         <div class="skill-top">
-
-                            <b>
-                                🎬 GIF Creation
-                            </b>
-
-                            <span class="skill-percent">
-                                90%
-                            </span>
-
+                            <b id="skill-name-3">🎬 GIF yaratish</b>
+                            <span class="skill-percent" id="skill-percent-3">99%</span>
                         </div>
-
-
-                        <div class="progress">
-
-                            <span style="--progress:90%"></span>
-
-                        </div>
-
+                        <div class="progress"><span id="skill-progress-3" style="--progress:99%"></span></div>
                     </div>
 
-
-
                     <div class="skill-item">
-
                         <div class="skill-top">
-
-                            <b>
-                                📸 Media & Mobilography
-                            </b>
-
-                            <span class="skill-percent">
-                                80%
-                            </span>
-
+                            <b id="skill-name-4">📸 Media va mobilografiya</b>
+                            <span class="skill-percent" id="skill-percent-4">75%</span>
                         </div>
-
-
-                        <div class="progress">
-
-                            <span style="--progress:80%"></span>
-
-                        </div>
-
+                        <div class="progress"><span id="skill-progress-4" style="--progress:75%"></span></div>
                     </div>
-
-
-
-                    <div class="skill-item">
-
-                        <div class="skill-top">
-
-                            <b>
-                                🧠 Learning & Development
-                            </b>
-
-                            <span class="skill-percent">
-                                95%
-                            </span>
-
-                        </div>
-
-
-                        <div class="progress">
-
-                            <span style="--progress:95%"></span>
-
-                        </div>
-
-                    </div>
-
 
                 </div>
 
@@ -2644,363 +2546,187 @@
             <article class="card">
 
                 <h3>
-
                     <i class="fa-solid fa-code"></i>
-
-                    <span id="proj-title">
-                        Asosiy Loyihalar
-                    </span>
-
+                    <span id="proj-title">Asosiy loyihalar</span>
                 </h3>
-
 
                 <div class="projects-list">
 
-
-                    <!-- 1 -->
-
-                    <a class="project" href="https://reyzer2112.github.io/2048-Oyini/" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project" href="https://reyzer2112.github.io/2048-Oyini/" target="_blank" rel="noopener noreferrer">
 
                         <div class="project-icon">
-
                             <i class="fa-solid fa-table-cells"></i>
-
                         </div>
-
 
                         <div class="project-info">
-
-                            <div class="project-title">
-                                2048 O'yini
-                            </div>
-
-                            <div class="project-description">
-                                Classic 2048 web game
-                            </div>
-
+                            <div class="project-title" id="project-title-1">2048 o'yini</div>
+                            <div class="project-description" id="project-description-1">Klassik 2048 web-o'yini</div>
                         </div>
 
-
                         <div class="project-arrow">
-
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
                         </div>
 
                     </a>
 
 
-
-                    <!-- 2 -->
-
-                    <a class="project" href="https://reyzer2112.github.io/Wordle-Uzbekcha/" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project" href="https://reyzer2112.github.io/Wordle-Uzbekcha/" target="_blank" rel="noopener noreferrer">
 
                         <div class="project-icon">
-
                             <i class="fa-solid fa-font"></i>
-
                         </div>
-
 
                         <div class="project-info">
-
-                            <div class="project-title">
-                                Wordle Uzbekcha
-                            </div>
-
-                            <div class="project-description">
-                                Uzbek word guessing game
-                            </div>
-
+                            <div class="project-title" id="project-title-2">Wordle O'zbekcha</div>
+                            <div class="project-description" id="project-description-2">O'zbekcha so'z topish o'yini</div>
                         </div>
 
-
                         <div class="project-arrow">
-
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
                         </div>
 
                     </a>
 
 
-
-                    <!-- 3 -->
-
-                    <a class="project" href="https://reyzer2112.github.io/Necha-kun-qoldi/" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project" href="https://reyzer2112.github.io/Necha-kun-qoldi/" target="_blank" rel="noopener noreferrer">
 
                         <div class="project-icon">
-
                             <i class="fa-solid fa-calendar-days"></i>
-
                         </div>
-
 
                         <div class="project-info">
-
-                            <div class="project-title">
-                                Necha kun qoldi
-                            </div>
-
-                            <div class="project-description">
-                                Countdown web application
-                            </div>
-
+                            <div class="project-title" id="project-title-3">Necha kun qoldi</div>
+                            <div class="project-description" id="project-description-3">Qolgan kunlarni hisoblaydigan web-ilova</div>
                         </div>
 
-
                         <div class="project-arrow">
-
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
                         </div>
 
                     </a>
 
 
-
-                    <!-- 4 -->
-
-                    <a class="project" href="https://reyzer2112.github.io/ReyZer-Kubik-Rubik/" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project" href="https://reyzer2112.github.io/ReyZer-Kubik-Rubik/" target="_blank" rel="noopener noreferrer">
 
                         <div class="project-icon">
-
                             <i class="fa-solid fa-cube"></i>
-
                         </div>
-
 
                         <div class="project-info">
-
-                            <div class="project-title">
-                                Kubik Rubik
-                            </div>
-
-                            <div class="project-description">
-                                Rubik's Cube project
-                            </div>
-
+                            <div class="project-title" id="project-title-4">Rubik kubigi</div>
+                            <div class="project-description" id="project-description-4">Rubik kubigi loyihasi</div>
                         </div>
 
-
                         <div class="project-arrow">
-
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
                         </div>
 
                     </a>
 
 
-
-                    <!-- 5 -->
-
-                    <a class="project" href="https://reyzer2112.github.io/Tayoqli-Qahramon/" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project" href="https://reyzer2112.github.io/Tayoqli-Qahramon/" target="_blank" rel="noopener noreferrer">
 
                         <div class="project-icon">
-
                             <i class="fa-solid fa-person-running"></i>
-
                         </div>
-
 
                         <div class="project-info">
-
-                            <div class="project-title">
-                                Tayoqli Qahramon
-                            </div>
-
-                            <div class="project-description">
-                                Creative browser game
-                            </div>
-
+                            <div class="project-title" id="project-title-5">Tayoqli qahramon</div>
+                            <div class="project-description" id="project-description-5">Ijodiy brauzer o'yini</div>
                         </div>
 
-
                         <div class="project-arrow">
-
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
                         </div>
 
                     </a>
 
 
-
-                    <!-- 6 -->
-
-                    <a class="project" href="https://reyzer2112.github.io/FlappyBird/" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project" href="https://reyzer2112.github.io/FlappyBird/" target="_blank" rel="noopener noreferrer">
 
                         <div class="project-icon">
-
                             <i class="fa-solid fa-dove"></i>
-
                         </div>
-
 
                         <div class="project-info">
-
-                            <div class="project-title">
-                                Flappy Bird
-                            </div>
-
-                            <div class="project-description">
-                                Arcade flying game
-                            </div>
-
+                            <div class="project-title" id="project-title-6">Flappy Bird</div>
+                            <div class="project-description" id="project-description-6">Arkada uslubidagi uchish o'yini</div>
                         </div>
 
-
                         <div class="project-arrow">
-
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
                         </div>
 
                     </a>
 
 
-
-                    <!-- 7 -->
-
-                    <a class="project" href="https://reyzer2112.github.io/Tower-Blocks/" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project" href="https://reyzer2112.github.io/Tower-Blocks/" target="_blank" rel="noopener noreferrer">
 
                         <div class="project-icon">
-
                             <i class="fa-solid fa-building"></i>
-
                         </div>
-
 
                         <div class="project-info">
-
-                            <div class="project-title">
-                                Tower Blocks
-                            </div>
-
-                            <div class="project-description">
-                                Tower building game
-                            </div>
-
+                            <div class="project-title" id="project-title-7">Minora bloklari</div>
+                            <div class="project-description" id="project-description-7">Minora qurish o'yini</div>
                         </div>
 
-
                         <div class="project-arrow">
-
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
                         </div>
 
                     </a>
 
 
-
-                    <!-- 8 -->
-
-                    <a class="project" href="https://reyzer2112.github.io/Aqldan-Ozgan-Haydovchi/" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project" href="https://reyzer2112.github.io/Aqldan-Ozgan-Haydovchi/" target="_blank" rel="noopener noreferrer">
 
                         <div class="project-icon">
-
                             <i class="fa-solid fa-car-side"></i>
-
                         </div>
-
 
                         <div class="project-info">
-
-                            <div class="project-title">
-                                Aqldan Ozgan Haydovchi
-                            </div>
-
-                            <div class="project-description">
-                                Fast-paced driving game
-                            </div>
-
+                            <div class="project-title" id="project-title-8">Aqldan ozgan haydovchi</div>
+                            <div class="project-description" id="project-description-8">Tezkor haydash o'yini</div>
                         </div>
 
-
                         <div class="project-arrow">
-
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
                         </div>
 
                     </a>
 
 
-
-                    <!-- 9 -->
-
-                    <a class="project" href="https://reyzer2112.github.io/Xotira-Chiroqlari/" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project" href="https://reyzer2112.github.io/Xotira-Chiroqlari/" target="_blank" rel="noopener noreferrer">
 
                         <div class="project-icon">
-
                             <i class="fa-solid fa-lightbulb"></i>
-
                         </div>
-
 
                         <div class="project-info">
-
-                            <div class="project-title">
-                                Xotira Chiroqlari
-                            </div>
-
-                            <div class="project-description">
-                                Memory and lights game
-                            </div>
-
+                            <div class="project-title" id="project-title-9">Xotira chiroqlari</div>
+                            <div class="project-description" id="project-description-9">Xotira va chiroqlar o'yini</div>
                         </div>
 
-
                         <div class="project-arrow">
-
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
                         </div>
 
                     </a>
 
 
-
-                    <!-- 10 -->
-
-                    <a class="project" href="https://reyzer2112.github.io/Tarjimon/" target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project" href="https://reyzer2112.github.io/Tarjimon/" target="_blank" rel="noopener noreferrer">
 
                         <div class="project-icon">
-
                             <i class="fa-solid fa-language"></i>
-
                         </div>
-
 
                         <div class="project-info">
-
-                            <div class="project-title">
-                                Tarjimon
-                            </div>
-
-                            <div class="project-description">
-                                Translation web application
-                            </div>
-
+                            <div class="project-title" id="project-title-10">Tarjimon</div>
+                            <div class="project-description" id="project-description-10">Tarjima qilish uchun web-ilova</div>
                         </div>
 
-
                         <div class="project-arrow">
-
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
                         </div>
 
                     </a>
@@ -3011,6 +2737,7 @@
             </article>
 
         </section>
+
 
 
     </main>
@@ -3204,68 +2931,137 @@
             const translations = {
                 uz: {
                     badge: "ReyZer Portfolio",
-                    title: "Frontend & Backend Developer",
-                    info: "Info",
-                    skills: "Ko'nikmalar",
+                    title: "Frontend va Backend dasturchi",
+                    info: "Ma'lumot",
+                    skillsLabel: "Ko'nikmalar",
                     projects: "Loyihalar",
-                    infoH1: "Frontend & Backend",
-                    infoP1: "Zamonaviy va interaktiv web-loyihalar yarataman. Frontend va backend yo'nalishlarida ishlayman.",
-                    infoH2: "Gaming & Creation",
-                    infoP2: "Roblox va Minecraft platformalariga qiziqaman. O'yinlar va kreativ loyihalar yaratishni yoqtiraman.",
-                    infoH3: "GIF Creator",
-                    infoP3: "Kreativ GIF animatsiyalar yarataman. GIF kontentlarim 3 mlrd+ ko'rishlarga ega.",
+                    themeLabel: "Mavzuni almashtirish",
+                    metaDescription: "ReyZer — frontend va backend dasturchi portfoliоsi.",
+
+                    infoH1: "Frontend va Backend",
+                    infoP1: "Zamonaviy va interaktiv web-loyihalar yarataman. Frontend va backend yo'nalishlarida ishlayman hamda qulay, tezkor va foydalanuvchiga mos interfeyslar ishlab chiqishga e'tibor beraman.",
+                    infoH2: "O'yinlar va ijod",
+                    infoP2: "Roblox va Minecraft kabi o'yin platformalarida o'z o'yinlarim va interaktiv loyihalarimni yarataman. O'yin mexanikalari, kreativ g'oyalar va yangi tajribalarni ishlab chiqishni yoqtiraman.",
+                    infoH3: "GIF yaratuvchi",
+                    infoP3: "Kreativ GIF animatsiyalar yarataman. GIF kontentlarim 3 mlrd+ ko'rishga ega va yangi vizual g'oyalarni sinab ko'rishni yaxshi ko'raman.",
                     infoH4: "Mobilografiya",
-                    infoP4: "Mobil fotografiya, video va kreativ vizual kontent yaratishga qiziqaman.",
+                    infoP4: "Mobil fotografiya, video va kreativ vizual kontent yaratishga qiziqaman. Kadr, montaj va zamonaviy mobil kontent ustida ishlayman.",
                     infoH5: "Maqsadim",
-                    infoP5: "IT va kreativ yo'nalishlarni birlashtirib, katta va innovatsion loyihalar yaratish.",
+                    infoP5: "IT va kreativ yo'nalishlarni birlashtirib, katta va innovatsion loyihalar yaratish. Kelajakda Google, Meta kabi yirik texnologik kompaniyalarda ishlab, kuchli mahsulotlar yaratish va tajribamni yanada rivojlantirishni maqsad qilganman.",
                     socialTitle: "Ijtimoiy tarmoqlar",
-                    socialDescription: "Meni quyidagi platformalarda kuzatishingiz mumkin.",
+                    socialDescription: "Meni quyidagi platformalarda kuzatishingiz va yangi loyihalarimdan xabardor bo'lishingiz mumkin.",
                     skillsTitle: "Ko'nikmalarim",
-                    projectsTitle: "Asosiy Loyihalar"
+                    projectsTitle: "Asosiy loyihalar",
+
+                    skills: [
+                        ["🌐 HTML / CSS / JavaScript", "80%"],
+                        ["🎮 O'yin yaratish", "90%"],
+                        ["🎬 GIF yaratish", "99%"],
+                        ["📸 Media va mobilografiya", "75%"]
+                    ],
+
+                    projectTitles: [
+                        "2048 o'yini", "Wordle O'zbekcha", "Necha kun qoldi", "Rubik kubigi",
+                        "Tayoqli qahramon", "Flappy Bird", "Minora bloklari",
+                        "Aqldan ozgan haydovchi", "Xotira chiroqlari", "Tarjimon"
+                    ],
+                    projectDescriptions: [
+                        "Klassik 2048 web-o'yini", "O'zbekcha so'z topish o'yini",
+                        "Qolgan kunlarni hisoblaydigan web-ilova", "Rubik kubigi loyihasi",
+                        "Ijodiy brauzer o'yini", "Arkada uslubidagi uchish o'yini",
+                        "Minora qurish o'yini", "Tezkor haydash o'yini",
+                        "Xotira va chiroqlar o'yini", "Tarjima qilish uchun web-ilova"
+                    ]
                 },
 
                 ru: {
                     badge: "Портфолио ReyZer",
-                    title: "Frontend & Backend Разработчик",
-                    info: "Инфо",
-                    skills: "Навыки",
+                    title: "Frontend и Backend разработчик",
+                    info: "Информация",
+                    skillsLabel: "Навыки",
                     projects: "Проекты",
-                    infoH1: "Frontend & Backend",
-                    infoP1: "Создаю современные и интерактивные веб-проекты. Работаю в направлениях frontend и backend.",
-                    infoH2: "Gaming & Creation",
-                    infoP2: "Интересуюсь Roblox и Minecraft. Люблю создавать игры и креативные проекты.",
-                    infoH3: "GIF Creator",
-                    infoP3: "Создаю креативные GIF-анимации. Мои GIF получили 3 млрд+ просмотров.",
-                    infoH4: "Мобилография",
-                    infoP4: "Интересуюсь мобильной фотографией, видео и созданием визуального контента.",
+                    themeLabel: "Переключить тему",
+                    metaDescription: "ReyZer — портфолио frontend и backend разработчика.",
+
+                    infoH1: "Frontend и Backend",
+                    infoP1: "Создаю современные и интерактивные веб-проекты. Работаю в направлениях frontend и backend, уделяя внимание удобству, скорости и понятному пользовательскому интерфейсу.",
+                    infoH2: "Игры и творчество",
+                    infoP2: "Создаю собственные игры и интерактивные проекты в таких игровых платформах, как Roblox и Minecraft. Мне нравится разрабатывать игровые механики, креативные идеи и новые цифровые впечатления.",
+                    infoH3: "Создание GIF",
+                    infoP3: "Создаю креативные GIF-анимации. Мой GIF-контент набрал более 3 млрд просмотров, а новые визуальные идеи я развиваю через собственные проекты.",
+                    infoH4: "Мобильная фотография",
+                    infoP4: "Интересуюсь мобильной фотографией, видео и созданием визуального контента. Работаю над кадром, монтажом и современными форматами мобильного контента.",
                     infoH5: "Моя цель",
-                    infoP5: "Объединить IT и творческие направления для создания крупных и инновационных проектов.",
+                    infoP5: "Объединить IT и творческие направления для создания крупных и инновационных проектов. В будущем хочу работать в крупных технологических компаниях, таких как Google и Meta, создавать сильные продукты и постоянно развивать свои навыки.",
                     socialTitle: "Социальные сети",
-                    socialDescription: "Вы можете следить за мной на следующих платформах.",
+                    socialDescription: "Вы можете следить за мной на следующих платформах и узнавать о моих новых проектах.",
                     skillsTitle: "Мои навыки",
-                    projectsTitle: "Основные проекты"
+                    projectsTitle: "Основные проекты",
+
+                    skills: [
+                        ["🌐 HTML / CSS / JavaScript", "80%"],
+                        ["🎮 Создание игр", "90%"],
+                        ["🎬 Создание GIF", "99%"],
+                        ["📸 Медиа и мобильная фотография", "75%"]
+                    ],
+
+                    projectTitles: [
+                        "Игра 2048", "Wordle на узбекском", "Сколько дней осталось", "Кубик Рубика",
+                        "Палочный герой", "Flappy Bird", "Башенные блоки",
+                        "Безумный водитель", "Огни памяти", "Переводчик"
+                    ],
+                    projectDescriptions: [
+                        "Классическая веб-игра 2048", "Игра на угадывание узбекских слов",
+                        "Веб-приложение для обратного отсчёта дней", "Проект с кубиком Рубика",
+                        "Креативная браузерная игра", "Аркадная игра с полётом",
+                        "Игра на строительство башни", "Динамичная игра про вождение",
+                        "Игра на память и световые сигналы", "Веб-приложение для перевода"
+                    ]
                 },
 
                 en: {
                     badge: "ReyZer Portfolio",
                     title: "Frontend & Backend Developer",
                     info: "Info",
-                    skills: "Skills",
+                    skillsLabel: "Skills",
                     projects: "Projects",
+                    themeLabel: "Toggle theme",
+                    metaDescription: "ReyZer — frontend and backend developer portfolio.",
+
                     infoH1: "Frontend & Backend",
-                    infoP1: "I create modern and interactive web projects. I work in both frontend and backend development.",
-                    infoH2: "Gaming & Creation",
-                    infoP2: "I am interested in Roblox and Minecraft. I enjoy creating games and creative projects.",
+                    infoP1: "I create modern and interactive web projects. I work across frontend and backend development, with a focus on usability, performance, and clear user interfaces.",
+                    infoH2: "Gaming & Creativity",
+                    infoP2: "I create my own games and interactive projects on platforms such as Roblox and Minecraft. I enjoy developing game mechanics, creative ideas, and new digital experiences.",
                     infoH3: "GIF Creator",
-                    infoP3: "I create creative GIF animations. My GIF content has reached 3B+ views.",
-                    infoH4: "Mobilography",
-                    infoP4: "I am interested in mobile photography, video and creative visual content.",
+                    infoP3: "I create creative GIF animations. My GIF content has reached 3B+ views, and I enjoy exploring new visual ideas through my projects.",
+                    infoH4: "Mobile Photography",
+                    infoP4: "I am interested in mobile photography, video, and creative visual content. I work with framing, editing, and modern mobile content formats.",
                     infoH5: "My Goal",
-                    infoP5: "To combine IT and creative fields to build large and innovative projects.",
+                    infoP5: "To combine IT and creative fields to build large and innovative projects. In the future, I aim to work at major technology companies such as Google and Meta, build impactful products, and continuously grow my skills.",
                     socialTitle: "Social Networks",
-                    socialDescription: "You can follow me on the following platforms.",
+                    socialDescription: "You can follow me on the platforms below and keep up with my latest projects.",
                     skillsTitle: "My Skills",
-                    projectsTitle: "Main Projects"
+                    projectsTitle: "Main Projects",
+
+                    skills: [
+                        ["🌐 HTML / CSS / JavaScript", "80%"],
+                        ["🎮 Game Creation", "90%"],
+                        ["🎬 GIF Creation", "99%"],
+                        ["📸 Media & Mobile Photography", "75%"]
+                    ],
+
+                    projectTitles: [
+                        "2048 Game", "Wordle Uzbek", "How Many Days Left", "Rubik's Cube",
+                        "Stick Hero", "Flappy Bird", "Tower Blocks",
+                        "Crazy Driver", "Memory Lights", "Translator"
+                    ],
+                    projectDescriptions: [
+                        "Classic 2048 web game", "Uzbek word guessing game",
+                        "Countdown web application", "Rubik's Cube project",
+                        "Creative browser game", "Arcade flying game",
+                        "Tower building game", "Fast-paced driving game",
+                        "Memory and lights game", "Translation web application"
+                    ]
                 }
             };
 
@@ -3305,18 +3101,56 @@
                     if (el) el.textContent = t[key];
                 }
 
-                $("tab-info").querySelector("i") || ($("tab-info").innerHTML = '<i class="fa-solid fa-user"></i>');
-                $("tab-skills").querySelector("i") || ($("tab-skills").innerHTML = '<i class="fa-solid fa-code"></i>');
-                $("tab-projects").querySelector("i") || ($("tab-projects").innerHTML = '<i class="fa-solid fa-folder"></i>');
+                themeButton.setAttribute("aria-label", t.themeLabel);
+                const metaDescription = document.querySelector('meta[name="description"]');
+                if (metaDescription) metaDescription.setAttribute("content", t.metaDescription);
 
-                // Preserve icons without innerHTML replacement on every language switch.
-                topButtons.info.lastChild.textContent = ` ${t.info}`;
-                topButtons.skills.lastChild.textContent = ` ${t.skills}`;
-                topButtons.projects.lastChild.textContent = ` ${t.projects}`;
+                // Top navigation labels.
+                topButtons.info.querySelector("span")?.remove();
+                topButtons.skills.querySelector("span")?.remove();
+                topButtons.projects.querySelector("span")?.remove();
+
+                const setButtonLabel = (button, iconClass, label) => {
+                    const icon = button.querySelector("i");
+                    button.textContent = "";
+                    if (icon) button.appendChild(icon);
+                    else {
+                        const newIcon = document.createElement("i");
+                        newIcon.className = iconClass;
+                        button.appendChild(newIcon);
+                    }
+                    button.appendChild(document.createTextNode(` ${label}`));
+                };
+
+                setButtonLabel(topButtons.info, "fa-solid fa-user", t.info);
+                setButtonLabel(topButtons.skills, "fa-solid fa-code", t.skillsLabel);
+                setButtonLabel(topButtons.projects, "fa-solid fa-folder", t.projects);
 
                 bottomButtons.info.querySelector("span").textContent = t.info;
-                bottomButtons.skills.querySelector("span").textContent = t.skills;
+                bottomButtons.skills.querySelector("span").textContent = t.skillsLabel;
                 bottomButtons.projects.querySelector("span").textContent = t.projects;
+
+                // Skills.
+                t.skills.forEach(([name, percent], index) => {
+                    const n = index + 1;
+                    const nameEl = $(`skill-name-${n}`);
+                    const percentEl = $(`skill-percent-${n}`);
+                    const progressEl = $(`skill-progress-${n}`);
+
+                    if (nameEl) nameEl.textContent = name;
+                    if (percentEl) percentEl.textContent = percent;
+                    if (progressEl) progressEl.style.setProperty("--progress", percent);
+                });
+
+                // Projects.
+                t.projectTitles.forEach((title, index) => {
+                    const n = index + 1;
+                    const titleEl = $(`project-title-${n}`);
+                    const descEl = $(`project-description-${n}`);
+
+                    if (titleEl) titleEl.textContent = title;
+                    if (descEl) descEl.textContent = t.projectDescriptions[index];
+                });
 
                 for (const key in langButtons) {
                     langButtons[key].classList.toggle("active", key === lang);
@@ -3329,8 +3163,6 @@
                 if (doHaptic) haptic("light");
             }
 
-            // The original markup already contains the icons, so this initializes
-            // text without recreating the icon DOM.
             try {
                 const savedLanguage = localStorage.getItem("reyzer-language");
                 if (savedLanguage && translations[savedLanguage]) {
@@ -3392,42 +3224,6 @@
                 topButtons[key].addEventListener("click", () => switchTab(key));
                 bottomButtons[key].addEventListener("click", () => switchTab(key));
             }
-
-
-            /* =====================================================
-               RIPPLE
-               Lightweight, single-element effect. No shadows or filters.
-            ===================================================== */
-
-            function createRipple(element, x, y) {
-                if (!element) return;
-
-                const rect = element.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height) * 1.5;
-
-                const ripple = document.createElement("span");
-                ripple.className = "ripple";
-
-                ripple.style.width = `${size}px`;
-                ripple.style.height = `${size}px`;
-                ripple.style.left = `${x - rect.left - size / 2}px`;
-                ripple.style.top = `${y - rect.top - size / 2}px`;
-
-                element.appendChild(ripple);
-
-                ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
-            }
-
-            const rippleSelector =
-                ".theme-toggle, .lang-btn, .social-btn, .project";
-
-            // One delegated listener instead of many individual listeners.
-            document.addEventListener("pointerdown", event => {
-                const target = event.target.closest(rippleSelector);
-                if (!target) return;
-
-                createRipple(target, event.clientX, event.clientY);
-            }, { passive: true });
 
 
             /* =====================================================
