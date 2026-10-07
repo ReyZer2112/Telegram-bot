@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html lang="uz">
+
 <head>
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <meta
-        name="theme-color"
-        content="#070b14"
-    >
+    <meta name="theme-color" content="#070b14">
 
-    <meta
-        name="description"
-        content="ReyZer — Frontend & Backend Developer Portfolio"
-    >
+    <meta name="description" content="ReyZer — Frontend & Backend Developer Portfolio">
 
     <title>ReyZer Portfolio</title>
 
@@ -29,14 +21,10 @@
 
 
     <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 
     <style>
-
         /* =====================================================
            ROOT
         ===================================================== */
@@ -47,7 +35,7 @@
 
             --bg-secondary: #eef1f7;
 
-            --card: rgba(255,255,255,.90);
+            --card: rgba(255, 255, 255, .90);
 
             --card-solid: #ffffff;
 
@@ -59,13 +47,13 @@
 
             --accent-2: #8b5cf6;
 
-            --border: rgba(15,23,42,.09);
+            --border: rgba(15, 23, 42, .09);
 
             --shadow:
-                0 10px 35px rgba(15,23,42,.08);
+                0 10px 35px rgba(15, 23, 42, .08);
 
             --shadow-hover:
-                0 18px 45px rgba(99,102,241,.16);
+                0 18px 45px rgba(99, 102, 241, .16);
 
             --radius-xl: 26px;
 
@@ -74,7 +62,7 @@
             --radius-md: 16px;
 
             --ease:
-                cubic-bezier(.16,1,.3,1);
+                cubic-bezier(.16, 1, .3, 1);
 
         }
 
@@ -89,7 +77,7 @@
 
             --bg-secondary: #0d1422;
 
-            --card: rgba(18,25,40,.90);
+            --card: rgba(18, 25, 40, .90);
 
             --card-solid: #121928;
 
@@ -101,13 +89,13 @@
 
             --accent-2: #a78bfa;
 
-            --border: rgba(255,255,255,.08);
+            --border: rgba(255, 255, 255, .08);
 
             --shadow:
-                0 12px 40px rgba(0,0,0,.25);
+                0 12px 40px rgba(0, 0, 0, .25);
 
             --shadow-hover:
-                0 20px 50px rgba(99,102,241,.20);
+                0 20px 50px rgba(99, 102, 241, .20);
 
         }
 
@@ -144,18 +132,11 @@
 
             padding:
 
-                max(16px, env(safe-area-inset-top))
-
-                16px
-
-                calc(
-                    105px +
-                    env(safe-area-inset-bottom)
-                );
+                max(16px, env(safe-area-inset-top)) 16px calc(105px + env(safe-area-inset-bottom));
 
             background:
-                radial-gradient(circle at 10% 0%, rgba(99,102,241,.08), transparent 28%),
-                radial-gradient(circle at 90% 100%, rgba(139,92,246,.06), transparent 28%),
+                radial-gradient(circle at 10% 0%, rgba(99, 102, 241, .08), transparent 28%),
+                radial-gradient(circle at 90% 100%, rgba(139, 92, 246, .06), transparent 28%),
                 var(--bg);
             background-attachment: scroll;
 
@@ -244,8 +225,7 @@
             opacity: 0;
 
             transform:
-                translateY(25px)
-                scale(.975);
+                translateY(25px) scale(.975);
 
         }
 
@@ -254,10 +234,7 @@
 
             animation:
 
-                pageEnter
-                .80s
-                var(--ease)
-                forwards;
+                pageEnter .80s var(--ease) forwards;
 
         }
 
@@ -269,8 +246,7 @@
                 opacity: 0;
 
                 transform:
-                    translateY(25px)
-                    scale(.975);
+                    translateY(25px) scale(.975);
 
             }
 
@@ -279,8 +255,7 @@
                 opacity: 1;
 
                 transform:
-                    translateY(0)
-                    scale(1);
+                    translateY(0) scale(1);
 
             }
 
@@ -305,10 +280,7 @@
 
             animation:
 
-                headerEnter
-                .65s
-                var(--ease)
-                both;
+                headerEnter .65s var(--ease) both;
 
         }
 
@@ -375,10 +347,7 @@
 
             animation:
 
-                boltPulse
-                2s
-                ease-in-out
-                infinite;
+                boltPulse 2s ease-in-out infinite;
 
         }
 
@@ -395,8 +364,7 @@
             50% {
 
                 transform:
-                    scale(1.2)
-                    rotate(-8deg);
+                    scale(1.2) rotate(-8deg);
 
             }
 
@@ -485,11 +453,9 @@
 
             background:
 
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     var(--accent),
-                    var(--accent-2)
-                );
+                    var(--accent-2));
 
             color: white;
 
@@ -534,11 +500,7 @@
 
             animation:
 
-                profileEnter
-                .80s
-                var(--ease)
-                .08s
-                both;
+                profileEnter .80s var(--ease) .08s both;
 
             transition:
 
@@ -568,7 +530,7 @@
             border-radius: 50%;
 
             background:
-                rgba(99,102,241,.15);
+                rgba(99, 102, 241, .15);
 
             filter: none;
 
@@ -586,8 +548,7 @@
                 opacity: 0;
 
                 transform:
-                    translateY(20px)
-                    scale(.97);
+                    translateY(20px) scale(.97);
 
             }
 
@@ -596,8 +557,7 @@
                 opacity: 1;
 
                 transform:
-                    translateY(0)
-                    scale(1);
+                    translateY(0) scale(1);
 
             }
 
@@ -632,19 +592,13 @@
 
             box-shadow:
 
-                0 0 0 5px
-                rgba(99,102,241,.08),
+                0 0 0 5px rgba(99, 102, 241, .08),
 
-                0 12px 30px
-                rgba(99,102,241,.22);
+                0 12px 30px rgba(99, 102, 241, .22);
 
             animation:
 
-                avatarEnter
-                .90s
-                var(--ease)
-                .18s
-                both;
+                avatarEnter .90s var(--ease) .18s both;
 
         }
 
@@ -656,8 +610,7 @@
                 opacity: 0;
 
                 transform:
-                    scale(.55)
-                    rotate(-15deg);
+                    scale(.55) rotate(-15deg);
 
             }
 
@@ -666,16 +619,14 @@
                 opacity: 1;
 
                 transform:
-                    scale(1.08)
-                    rotate(3deg);
+                    scale(1.08) rotate(3deg);
 
             }
 
             100% {
 
                 transform:
-                    scale(1)
-                    rotate(0);
+                    scale(1) rotate(0);
 
             }
 
@@ -703,10 +654,7 @@
 
             animation:
 
-                statusPulse
-                2.2s
-                ease-in-out
-                infinite;
+                statusPulse 2.2s ease-in-out infinite;
 
         }
 
@@ -717,16 +665,14 @@
             100% {
 
                 box-shadow:
-                    0 0 0 0
-                    rgba(34,197,94,.4);
+                    0 0 0 0 rgba(34, 197, 94, .4);
 
             }
 
             50% {
 
                 box-shadow:
-                    0 0 0 7px
-                    rgba(34,197,94,0);
+                    0 0 0 7px rgba(34, 197, 94, 0);
 
             }
 
@@ -784,11 +730,7 @@
 
             animation:
 
-                tabsEnter
-                .70s
-                var(--ease)
-                .20s
-                both;
+                tabsEnter .70s var(--ease) .20s both;
 
         }
 
@@ -800,8 +742,7 @@
                 opacity: 0;
 
                 transform:
-                    translateY(15px)
-                    scale(.98);
+                    translateY(15px) scale(.98);
 
             }
 
@@ -810,8 +751,7 @@
                 opacity: 1;
 
                 transform:
-                    translateY(0)
-                    scale(1);
+                    translateY(0) scale(1);
 
             }
 
@@ -867,16 +807,13 @@
 
             background:
 
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     var(--accent),
-                    var(--accent-2)
-                );
+                    var(--accent-2));
 
             box-shadow:
 
-                0 7px 20px
-                rgba(99,102,241,.24);
+                0 7px 20px rgba(99, 102, 241, .24);
 
         }
 
@@ -902,10 +839,7 @@
 
             animation:
 
-                sectionEnter
-                .45s
-                var(--ease)
-                both;
+                sectionEnter .45s var(--ease) both;
 
         }
 
@@ -976,7 +910,7 @@
                 var(--shadow-hover);
 
             border-color:
-                rgba(99,102,241,.18);
+                rgba(99, 102, 241, .18);
 
         }
 
@@ -1041,10 +975,7 @@
 
             animation:
 
-                skillEnter
-                .55s
-                var(--ease)
-                forwards;
+                skillEnter .55s var(--ease) forwards;
 
         }
 
@@ -1133,7 +1064,7 @@
             border-radius: 99px;
 
             background:
-                rgba(127,127,127,.13);
+                rgba(127, 127, 127, .13);
 
         }
 
@@ -1152,19 +1083,13 @@
 
             background:
 
-                linear-gradient(
-                    90deg,
+                linear-gradient(90deg,
                     var(--accent),
-                    var(--accent-2)
-                );
+                    var(--accent-2));
 
             animation:
 
-                progressGrow
-                1s
-                var(--ease)
-                .15s
-                both;
+                progressGrow 1s var(--ease) .15s both;
 
         }
 
@@ -1220,7 +1145,7 @@
             border-radius: 17px;
 
             background:
-                rgba(127,127,127,.055);
+                rgba(127, 127, 127, .055);
 
             border:
                 1px solid var(--border);
@@ -1230,15 +1155,11 @@
             opacity: 0;
 
             transform:
-                translateX(-18px)
-                scale(.98);
+                translateX(-18px) scale(.98);
 
             animation:
 
-                projectEnter
-                .60s
-                var(--ease)
-                forwards;
+                projectEnter .60s var(--ease) forwards;
 
             transition:
 
@@ -1298,8 +1219,7 @@
                 opacity: 0;
 
                 transform:
-                    translateX(-18px)
-                    scale(.98);
+                    translateX(-18px) scale(.98);
 
             }
 
@@ -1308,8 +1228,7 @@
                 opacity: 1;
 
                 transform:
-                    translateX(0)
-                    scale(1);
+                    translateX(0) scale(1);
 
             }
 
@@ -1319,19 +1238,17 @@
         .project:hover {
 
             transform:
-                translateX(4px)
-                translateY(-2px);
+                translateX(4px) translateY(-2px);
 
             border-color:
-                rgba(99,102,241,.25);
+                rgba(99, 102, 241, .25);
 
             box-shadow:
 
-                0 10px 28px
-                rgba(99,102,241,.10);
+                0 10px 28px rgba(99, 102, 241, .10);
 
             background:
-                rgba(99,102,241,.055);
+                rgba(99, 102, 241, .055);
 
         }
 
@@ -1354,11 +1271,9 @@
 
             background:
 
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     var(--accent),
-                    var(--accent-2)
-                );
+                    var(--accent-2));
 
             color: white;
 
@@ -1366,8 +1281,7 @@
 
             box-shadow:
 
-                0 7px 18px
-                rgba(99,102,241,.20);
+                0 7px 18px rgba(99, 102, 241, .20);
 
             transition:
 
@@ -1379,8 +1293,7 @@
         .project:hover .project-icon {
 
             transform:
-                scale(1.08)
-                rotate(-5deg);
+                scale(1.08) rotate(-5deg);
 
         }
 
@@ -1439,7 +1352,7 @@
             color: var(--accent);
 
             background:
-                rgba(99,102,241,.09);
+                rgba(99, 102, 241, .09);
 
             transition:
 
@@ -1455,7 +1368,7 @@
                 translateX(3px);
 
             background:
-                rgba(99,102,241,.17);
+                rgba(99, 102, 241, .17);
 
         }
 
@@ -1468,11 +1381,7 @@
 
             animation:
 
-                socialEnter
-                .70s
-                var(--ease)
-                .25s
-                both;
+                socialEnter .70s var(--ease) .25s both;
 
         }
 
@@ -1505,7 +1414,7 @@
             display: grid;
 
             grid-template-columns:
-                repeat(2, minmax(0,1fr));
+                repeat(2, minmax(0, 1fr));
 
             gap: 8px;
 
@@ -1535,7 +1444,7 @@
             border-radius: 13px;
 
             background:
-                rgba(127,127,127,.035);
+                rgba(127, 127, 127, .035);
 
             border:
                 1px solid var(--border);
@@ -1574,12 +1483,11 @@
                 translateY(-3px);
 
             border-color:
-                rgba(99,102,241,.25);
+                rgba(99, 102, 241, .25);
 
             box-shadow:
 
-                0 10px 25px
-                rgba(99,102,241,.10);
+                0 10px 25px rgba(99, 102, 241, .10);
 
             color:
                 var(--accent);
@@ -1614,19 +1522,15 @@
             left: 50%;
 
             bottom:
-                max(
-                    12px,
-                    env(safe-area-inset-bottom)
-                );
+                max(12px,
+                    env(safe-area-inset-bottom));
 
             transform:
                 translateX(-50%);
 
             width:
-                min(
-                    calc(100% - 30px),
-                    520px
-                );
+                min(calc(100% - 30px),
+                    520px);
 
             height: 58px;
 
@@ -1642,18 +1546,16 @@
             z-index: 9999;
 
             background:
-                rgba(20,30,49,.94);
+                rgba(20, 30, 49, .94);
 
             border:
-                1px solid
-                rgba(255,255,255,.10);
+                1px solid rgba(255, 255, 255, .10);
 
             border-radius: 20px;
 
             box-shadow:
 
-                0 12px 35px
-                rgba(0,0,0,.30);
+                0 12px 35px rgba(0, 0, 0, .30);
 
             backdrop-filter: none;
 
@@ -1661,11 +1563,7 @@
 
             animation:
 
-                bottomNavEnter
-                .65s
-                var(--ease)
-                .25s
-                both;
+                bottomNavEnter .65s var(--ease) .25s both;
 
         }
 
@@ -1677,8 +1575,7 @@
                 opacity: 0;
 
                 transform:
-                    translateX(-50%)
-                    translateY(30px);
+                    translateX(-50%) translateY(30px);
 
             }
 
@@ -1687,8 +1584,7 @@
                 opacity: 1;
 
                 transform:
-                    translateX(-50%)
-                    translateY(0);
+                    translateX(-50%) translateY(0);
 
             }
 
@@ -1758,7 +1654,7 @@
                 #a78bfa;
 
             background:
-                rgba(99,102,241,.15);
+                rgba(99, 102, 241, .15);
 
         }
 
@@ -1766,8 +1662,7 @@
         .bottom-nav-btn.active i {
 
             transform:
-                translateY(-1px)
-                scale(1.08);
+                translateY(-1px) scale(1.08);
 
         }
 
@@ -1778,7 +1673,7 @@
                 #c4b5fd;
 
             background:
-                rgba(99,102,241,.09);
+                rgba(99, 102, 241, .09);
 
         }
 
@@ -2123,7 +2018,9 @@
         }
 
         /* Touch devices do not need hover painting. */
-        @media (hover: none), (pointer: coarse) {
+        @media (hover: none),
+        (pointer: coarse) {
+
             .card,
             .project,
             .social-btn,
@@ -2143,6 +2040,7 @@
         /* Redmi 9A-class hardware: keep entrance feedback, but stop
            continuous animations after the initial render. */
         @media (max-width: 600px) {
+
             body::before,
             body::after {
                 content: none !important;
@@ -2180,19 +2078,27 @@
 
 
         @media (max-width: 600px) {
+
             .skill-item,
             .project {
                 animation-duration: .38s;
             }
 
-            .skill-item:nth-child(1), .skill-item:nth-child(2),
-            .skill-item:nth-child(3), .skill-item:nth-child(4),
+            .skill-item:nth-child(1),
+            .skill-item:nth-child(2),
+            .skill-item:nth-child(3),
+            .skill-item:nth-child(4),
             .skill-item:nth-child(5),
-            .project:nth-child(1), .project:nth-child(2),
-            .project:nth-child(3), .project:nth-child(4),
-            .project:nth-child(5), .project:nth-child(6),
-            .project:nth-child(7), .project:nth-child(8),
-            .project:nth-child(9), .project:nth-child(10) {
+            .project:nth-child(1),
+            .project:nth-child(2),
+            .project:nth-child(3),
+            .project:nth-child(4),
+            .project:nth-child(5),
+            .project:nth-child(6),
+            .project:nth-child(7),
+            .project:nth-child(8),
+            .project:nth-child(9),
+            .project:nth-child(10) {
                 animation-delay: 0s;
             }
 
@@ -2228,1532 +2134,1339 @@
             }
 
         }
-
     </style>
 
 </head>
 
 
-<body
-    class="page-loading"
-    data-theme="dark"
->
+<body class="page-loading" data-theme="dark">
 
 
-<main class="container">
+    <main class="container">
 
 
-    <!-- =====================================================
+        <!-- =====================================================
          HEADER
     ===================================================== -->
 
-    <header class="header-top">
+        <header class="header-top">
 
-        <div class="badge">
+            <div class="badge">
 
-            <i class="fa-solid fa-bolt"></i>
+                <i class="fa-solid fa-bolt"></i>
 
-            <span id="lbl-badge">
-                ReyZer Portfolio
-            </span>
+                <span id="lbl-badge">
+                    ReyZer Portfolio
+                </span>
 
-        </div>
-
-
-        <div class="controls">
-
-            <button
-                type="button"
-                class="theme-toggle"
-                id="theme-btn"
-                aria-label="Theme"
-            >
-                ☀️
-            </button>
+            </div>
 
 
-            <button
-                type="button"
-                class="lang-btn active"
-                id="btn-uz"
-            >
-                O'z
-            </button>
+            <div class="controls">
+
+                <button type="button" class="theme-toggle" id="theme-btn" aria-label="Theme">
+                    ☀️
+                </button>
 
 
-            <button
-                type="button"
-                class="lang-btn"
-                id="btn-ru"
-            >
-                Ру
-            </button>
+                <button type="button" class="lang-btn active" id="btn-uz">
+                    O'z
+                </button>
 
 
-            <button
-                type="button"
-                class="lang-btn"
-                id="btn-en"
-            >
-                En
-            </button>
+                <button type="button" class="lang-btn" id="btn-ru">
+                    Ру
+                </button>
 
-        </div>
 
-    </header>
+                <button type="button" class="lang-btn" id="btn-en">
+                    En
+                </button>
+
+            </div>
+
+        </header>
 
 
 
-    <!-- =====================================================
+        <!-- =====================================================
          PROFILE
     ===================================================== -->
 
-    <section class="profile-card">
+        <section class="profile-card">
 
-        <div class="avatar-container">
+            <div class="avatar-container">
 
-            <img
-                src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=300"
-                alt="ReyZer"
-                class="avatar"
-                loading="eager"
-                decoding="async"
-                fetchpriority="high"
-            >
+                <img src="ReyZer.jpg" alt="ReyZer" class="avatar" loading="eager" decoding="async" fetchpriority="high">
 
-            <div class="status-dot"></div>
+                <div class="status-dot"></div>
 
-        </div>
+            </div>
 
 
-        <h1 class="name">
-            ReyZer
-        </h1>
+            <h1 class="name">
+                ReyZer
+            </h1>
 
 
-        <p
-            class="title"
-            id="lbl-title"
-        >
-            Frontend & Backend Developer
-        </p>
+            <p class="title" id="lbl-title">
+                Frontend & Backend Developer
+            </p>
 
-    </section>
+        </section>
 
 
 
-    <!-- =====================================================
+        <!-- =====================================================
          TOP NAVIGATION
     ===================================================== -->
 
-    <nav class="nav-tabs">
+        <nav class="nav-tabs">
 
-        <button
-            type="button"
-            class="tab-btn active"
-            id="tab-info"
-        >
+            <button type="button" class="tab-btn active" id="tab-info">
+                <i class="fa-solid fa-user"></i>
+                Info
+            </button>
+
+
+            <button type="button" class="tab-btn" id="tab-skills">
+                <i class="fa-solid fa-code"></i>
+                Ko'nikmalar
+            </button>
+
+
+            <button type="button" class="tab-btn" id="tab-projects">
+                <i class="fa-solid fa-folder"></i>
+                Loyihalar
+            </button>
+
+        </nav>
+
+
+
+        <!-- =====================================================
+         INFO
+    ===================================================== -->
+
+        <section id="section-info" class="section-content active">
+
+
+            <article class="card">
+
+                <h3>
+
+                    <i class="fa-solid fa-laptop-code"></i>
+
+                    <span id="info-h1">
+                        Frontend & Backend
+                    </span>
+
+                </h3>
+
+
+                <p id="info-p1">
+                    Zamonaviy va interaktiv web-loyihalar
+                    yarataman. Frontend va backend yo'nalishlarida
+                    ishlayman.
+                </p>
+
+            </article>
+
+
+
+            <article class="card">
+
+                <h3>
+
+                    <i class="fa-solid fa-gamepad"></i>
+
+                    <span id="info-h2">
+                        Gaming & Creation
+                    </span>
+
+                </h3>
+
+
+                <p id="info-p2">
+                    Roblox va Minecraft platformalariga qiziqaman.
+                    O'yinlar va kreativ loyihalar yaratishni
+                    yoqtiraman.
+                </p>
+
+            </article>
+
+
+
+            <article class="card">
+
+                <h3>
+
+                    <i class="fa-solid fa-film"></i>
+
+                    <span id="info-h3">
+                        GIF Creator
+                    </span>
+
+                </h3>
+
+
+                <p id="info-p3">
+                    Kreativ GIF animatsiyalar yarataman.
+                    GIF kontentlarim 3 mlrd+ ko'rishlarga ega.
+                </p>
+
+            </article>
+
+
+
+            <article class="card">
+
+                <h3>
+
+                    <i class="fa-solid fa-camera"></i>
+
+                    <span id="info-h4">
+                        Mobilografiya
+                    </span>
+
+                </h3>
+
+
+                <p id="info-p4">
+                    Mobil fotografiya, video va kreativ vizual
+                    kontent yaratishga qiziqaman.
+                </p>
+
+            </article>
+
+
+
+            <article class="card">
+
+                <h3>
+
+                    <i class="fa-solid fa-bullseye"></i>
+
+                    <span id="info-h5">
+                        Maqsadim
+                    </span>
+
+                </h3>
+
+
+                <p id="info-p5">
+                    IT va kreativ yo'nalishlarni birlashtirib,
+                    katta va innovatsion loyihalar yaratish.
+                </p>
+
+            </article>
+
+
+
+            <!-- =================================================
+             SOCIAL NETWORKS
+        ================================================== -->
+
+            <article class="card social-card">
+
+                <h3>
+
+                    <i class="fa-solid fa-share-nodes"></i>
+
+                    <span id="social-title">
+                        Ijtimoiy tarmoqlar
+                    </span>
+
+                </h3>
+
+
+                <p id="social-description">
+                    Meni quyidagi platformalarda kuzatishingiz mumkin.
+                </p>
+
+
+                <div class="social-grid">
+
+
+                    <!-- Instagram -->
+
+                    <a class="social-btn" href="https://instagram.com/reyzer2112" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <i class="fa-brands fa-instagram" style="color:#e1306c"></i>
+
+                        Instagram
+
+                    </a>
+
+
+
+                    <!-- Telegram -->
+
+                    <a class="social-btn" href="https://t.me/reyzer2112" target="_blank" rel="noopener noreferrer">
+
+                        <i class="fa-brands fa-telegram" style="color:#24a1de"></i>
+
+                        Telegram
+
+                    </a>
+
+
+
+                    <!-- YouTube -->
+
+                    <a class="social-btn" href="https://youtube.com/@ReyZer-2112" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <i class="fa-brands fa-youtube" style="color:#ff0000"></i>
+
+                        YouTube
+
+                    </a>
+
+
+
+                    <!-- Roblox -->
+
+                    <a class="social-btn" href="https://www.roblox.com/users/4669071068/profile" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <i class="fa-solid fa-gamepad"></i>
+
+                        Roblox
+
+                    </a>
+
+
+
+                    <!-- Snapchat -->
+
+                    <a class="social-btn" href="https://www.snapchat.com/add/reyzer2112" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <i class="fa-brands fa-snapchat" style="color:#f7e600"></i>
+
+                        Snapchat
+
+                    </a>
+
+
+
+                    <!-- Discord -->
+
+                    <a class="social-btn" href="https://discord.com/users/reyzer2112" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <i class="fa-brands fa-discord" style="color:#5865f2"></i>
+
+                        Discord
+
+                    </a>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =====================================================
+         SKILLS
+    ===================================================== -->
+
+        <section id="section-skills" class="section-content">
+
+            <article class="card">
+
+                <h3>
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <span id="skills-title">
+                        Ko'nikmalarim
+                    </span>
+
+                </h3>
+
+
+                <div class="skill-list">
+
+
+                    <div class="skill-item">
+
+                        <div class="skill-top">
+
+                            <b>
+                                🌐 HTML / CSS / JavaScript
+                            </b>
+
+                            <span class="skill-percent">
+                                95%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <span style="--progress:95%"></span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="skill-item">
+
+                        <div class="skill-top">
+
+                            <b>
+                                🎮 Game Creation
+                            </b>
+
+                            <span class="skill-percent">
+                                85%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <span style="--progress:85%"></span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="skill-item">
+
+                        <div class="skill-top">
+
+                            <b>
+                                🎬 GIF Creation
+                            </b>
+
+                            <span class="skill-percent">
+                                90%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <span style="--progress:90%"></span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="skill-item">
+
+                        <div class="skill-top">
+
+                            <b>
+                                📸 Media & Mobilography
+                            </b>
+
+                            <span class="skill-percent">
+                                80%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <span style="--progress:80%"></span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="skill-item">
+
+                        <div class="skill-top">
+
+                            <b>
+                                🧠 Learning & Development
+                            </b>
+
+                            <span class="skill-percent">
+                                95%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <span style="--progress:95%"></span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =====================================================
+         PROJECTS
+    ===================================================== -->
+
+        <section id="section-projects" class="section-content">
+
+            <article class="card">
+
+                <h3>
+
+                    <i class="fa-solid fa-code"></i>
+
+                    <span id="proj-title">
+                        Asosiy Loyihalar
+                    </span>
+
+                </h3>
+
+
+                <div class="projects-list">
+
+
+                    <!-- 1 -->
+
+                    <a class="project" href="https://reyzer2112.github.io/2048-Oyini/" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <div class="project-icon">
+
+                            <i class="fa-solid fa-table-cells"></i>
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <div class="project-title">
+                                2048 O'yini
+                            </div>
+
+                            <div class="project-description">
+                                Classic 2048 web game
+                            </div>
+
+                        </div>
+
+
+                        <div class="project-arrow">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- 2 -->
+
+                    <a class="project" href="https://reyzer2112.github.io/Wordle-Uzbekcha/" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <div class="project-icon">
+
+                            <i class="fa-solid fa-font"></i>
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <div class="project-title">
+                                Wordle Uzbekcha
+                            </div>
+
+                            <div class="project-description">
+                                Uzbek word guessing game
+                            </div>
+
+                        </div>
+
+
+                        <div class="project-arrow">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- 3 -->
+
+                    <a class="project" href="https://reyzer2112.github.io/Necha-kun-qoldi/" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <div class="project-icon">
+
+                            <i class="fa-solid fa-calendar-days"></i>
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <div class="project-title">
+                                Necha kun qoldi
+                            </div>
+
+                            <div class="project-description">
+                                Countdown web application
+                            </div>
+
+                        </div>
+
+
+                        <div class="project-arrow">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- 4 -->
+
+                    <a class="project" href="https://reyzer2112.github.io/ReyZer-Kubik-Rubik/" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <div class="project-icon">
+
+                            <i class="fa-solid fa-cube"></i>
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <div class="project-title">
+                                Kubik Rubik
+                            </div>
+
+                            <div class="project-description">
+                                Rubik's Cube project
+                            </div>
+
+                        </div>
+
+
+                        <div class="project-arrow">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- 5 -->
+
+                    <a class="project" href="https://reyzer2112.github.io/Tayoqli-Qahramon/" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <div class="project-icon">
+
+                            <i class="fa-solid fa-person-running"></i>
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <div class="project-title">
+                                Tayoqli Qahramon
+                            </div>
+
+                            <div class="project-description">
+                                Creative browser game
+                            </div>
+
+                        </div>
+
+
+                        <div class="project-arrow">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- 6 -->
+
+                    <a class="project" href="https://reyzer2112.github.io/FlappyBird/" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <div class="project-icon">
+
+                            <i class="fa-solid fa-dove"></i>
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <div class="project-title">
+                                Flappy Bird
+                            </div>
+
+                            <div class="project-description">
+                                Arcade flying game
+                            </div>
+
+                        </div>
+
+
+                        <div class="project-arrow">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- 7 -->
+
+                    <a class="project" href="https://reyzer2112.github.io/Tower-Blocks/" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <div class="project-icon">
+
+                            <i class="fa-solid fa-building"></i>
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <div class="project-title">
+                                Tower Blocks
+                            </div>
+
+                            <div class="project-description">
+                                Tower building game
+                            </div>
+
+                        </div>
+
+
+                        <div class="project-arrow">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- 8 -->
+
+                    <a class="project" href="https://reyzer2112.github.io/Aqldan-Ozgan-Haydovchi/" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <div class="project-icon">
+
+                            <i class="fa-solid fa-car-side"></i>
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <div class="project-title">
+                                Aqldan Ozgan Haydovchi
+                            </div>
+
+                            <div class="project-description">
+                                Fast-paced driving game
+                            </div>
+
+                        </div>
+
+
+                        <div class="project-arrow">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- 9 -->
+
+                    <a class="project" href="https://reyzer2112.github.io/Xotira-Chiroqlari/" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <div class="project-icon">
+
+                            <i class="fa-solid fa-lightbulb"></i>
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <div class="project-title">
+                                Xotira Chiroqlari
+                            </div>
+
+                            <div class="project-description">
+                                Memory and lights game
+                            </div>
+
+                        </div>
+
+
+                        <div class="project-arrow">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- 10 -->
+
+                    <a class="project" href="https://reyzer2112.github.io/Tarjimon/" target="_blank"
+                        rel="noopener noreferrer">
+
+                        <div class="project-icon">
+
+                            <i class="fa-solid fa-language"></i>
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <div class="project-title">
+                                Tarjimon
+                            </div>
+
+                            <div class="project-description">
+                                Translation web application
+                            </div>
+
+                        </div>
+
+
+                        <div class="project-arrow">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+     BOTTOM NAVIGATION
+========================================================= -->
+
+    <nav class="bottom-nav">
+
+
+        <button type="button" class="bottom-nav-btn active" id="bottom-info">
+
             <i class="fa-solid fa-user"></i>
-            Info
+
+            <span>
+                Info
+            </span>
+
         </button>
 
 
-        <button
-            type="button"
-            class="tab-btn"
-            id="tab-skills"
-        >
+
+        <button type="button" class="bottom-nav-btn" id="bottom-skills">
+
             <i class="fa-solid fa-code"></i>
-            Ko'nikmalar
+
+            <span>
+                Ko'nikmalar
+            </span>
+
         </button>
 
 
-        <button
-            type="button"
-            class="tab-btn"
-            id="tab-projects"
-        >
+
+        <button type="button" class="bottom-nav-btn" id="bottom-projects">
+
             <i class="fa-solid fa-folder"></i>
-            Loyihalar
+
+            <span>
+                Loyihalar
+            </span>
+
         </button>
+
 
     </nav>
 
 
 
-    <!-- =====================================================
-         INFO
-    ===================================================== -->
+    <script>
+        (() => {
+            "use strict";
+
+            /* =====================================================
+               TELEGRAM
+            ===================================================== */
+
+            const tg = window.Telegram?.WebApp || null;
+
+            if (tg) {
+                try {
+                    tg.ready();
+                    tg.expand();
+                } catch (_) { }
+            }
+
+
+            /* =====================================================
+               CACHE DOM — avoid repeated querySelector/getElementById
+               calls during navigation and language changes.
+            ===================================================== */
+
+            const $ = id => document.getElementById(id);
+
+            const body = document.body;
+            const html = document.documentElement;
+
+            const themeButton = $("theme-btn");
+
+            const sections = {
+                info: $("section-info"),
+                skills: $("section-skills"),
+                projects: $("section-projects")
+            };
 
-    <section
-        id="section-info"
-        class="section-content active"
-    >
-
-
-        <article class="card">
-
-            <h3>
-
-                <i class="fa-solid fa-laptop-code"></i>
-
-                <span id="info-h1">
-                    Frontend & Backend
-                </span>
-
-            </h3>
-
-
-            <p id="info-p1">
-                Zamonaviy va interaktiv web-loyihalar
-                yarataman. Frontend va backend yo'nalishlarida
-                ishlayman.
-            </p>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <h3>
-
-                <i class="fa-solid fa-gamepad"></i>
-
-                <span id="info-h2">
-                    Gaming & Creation
-                </span>
-
-            </h3>
-
-
-            <p id="info-p2">
-                Roblox va Minecraft platformalariga qiziqaman.
-                O'yinlar va kreativ loyihalar yaratishni
-                yoqtiraman.
-            </p>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <h3>
-
-                <i class="fa-solid fa-film"></i>
-
-                <span id="info-h3">
-                    GIF Creator
-                </span>
-
-            </h3>
-
-
-            <p id="info-p3">
-                Kreativ GIF animatsiyalar yarataman.
-                GIF kontentlarim 3 mlrd+ ko'rishlarga ega.
-            </p>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <h3>
-
-                <i class="fa-solid fa-camera"></i>
-
-                <span id="info-h4">
-                    Mobilografiya
-                </span>
-
-            </h3>
-
-
-            <p id="info-p4">
-                Mobil fotografiya, video va kreativ vizual
-                kontent yaratishga qiziqaman.
-            </p>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <h3>
-
-                <i class="fa-solid fa-bullseye"></i>
-
-                <span id="info-h5">
-                    Maqsadim
-                </span>
-
-            </h3>
-
-
-            <p id="info-p5">
-                IT va kreativ yo'nalishlarni birlashtirib,
-                katta va innovatsion loyihalar yaratish.
-            </p>
-
-        </article>
-
-
-
-        <!-- =================================================
-             SOCIAL NETWORKS
-        ================================================== -->
-
-        <article class="card social-card">
-
-            <h3>
-
-                <i class="fa-solid fa-share-nodes"></i>
-
-                <span id="social-title">
-                    Ijtimoiy tarmoqlar
-                </span>
-
-            </h3>
-
-
-            <p id="social-description">
-                Meni quyidagi platformalarda kuzatishingiz mumkin.
-            </p>
-
-
-            <div class="social-grid">
-
-
-                <!-- Instagram -->
-
-                <a
-                    class="social-btn"
-                    href="https://instagram.com/reyzer2112"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <i
-                        class="fa-brands fa-instagram"
-                        style="color:#e1306c"
-                    ></i>
-
-                    Instagram
-
-                </a>
-
-
-
-                <!-- Telegram -->
-
-                <a
-                    class="social-btn"
-                    href="https://t.me/reyzer2112"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <i
-                        class="fa-brands fa-telegram"
-                        style="color:#24a1de"
-                    ></i>
-
-                    Telegram
-
-                </a>
-
-
-
-                <!-- YouTube -->
-
-                <a
-                    class="social-btn"
-                    href="https://youtube.com/@ReyZer-2112"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <i
-                        class="fa-brands fa-youtube"
-                        style="color:#ff0000"
-                    ></i>
-
-                    YouTube
-
-                </a>
-
-
-
-                <!-- Roblox -->
-
-                <a
-                    class="social-btn"
-                    href="https://www.roblox.com/users/4669071068/profile"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <i class="fa-solid fa-gamepad"></i>
-
-                    Roblox
-
-                </a>
-
-
-
-                <!-- Snapchat -->
-
-                <a
-                    class="social-btn"
-                    href="https://www.snapchat.com/add/reyzer2112"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <i
-                        class="fa-brands fa-snapchat"
-                        style="color:#f7e600"
-                    ></i>
-
-                    Snapchat
-
-                </a>
-
-
-
-                <!-- Discord -->
-
-                <a
-                    class="social-btn"
-                    href="https://discord.com/users/reyzer2112"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <i
-                        class="fa-brands fa-discord"
-                        style="color:#5865f2"
-                    ></i>
-
-                    Discord
-
-                </a>
-
-            </div>
-
-        </article>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         SKILLS
-    ===================================================== -->
-
-    <section
-        id="section-skills"
-        class="section-content"
-    >
-
-        <article class="card">
-
-            <h3>
-
-                <i class="fa-solid fa-briefcase"></i>
-
-                <span id="skills-title">
-                    Ko'nikmalarim
-                </span>
-
-            </h3>
-
-
-            <div class="skill-list">
-
-
-                <div class="skill-item">
-
-                    <div class="skill-top">
-
-                        <b>
-                            🌐 HTML / CSS / JavaScript
-                        </b>
-
-                        <span class="skill-percent">
-                            95%
-                        </span>
-
-                    </div>
-
-
-                    <div class="progress">
-
-                        <span
-                            style="--progress:95%"
-                        ></span>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="skill-item">
-
-                    <div class="skill-top">
-
-                        <b>
-                            🎮 Game Creation
-                        </b>
-
-                        <span class="skill-percent">
-                            85%
-                        </span>
-
-                    </div>
-
-
-                    <div class="progress">
-
-                        <span
-                            style="--progress:85%"
-                        ></span>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="skill-item">
-
-                    <div class="skill-top">
-
-                        <b>
-                            🎬 GIF Creation
-                        </b>
-
-                        <span class="skill-percent">
-                            90%
-                        </span>
-
-                    </div>
-
-
-                    <div class="progress">
-
-                        <span
-                            style="--progress:90%"
-                        ></span>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="skill-item">
-
-                    <div class="skill-top">
-
-                        <b>
-                            📸 Media & Mobilography
-                        </b>
-
-                        <span class="skill-percent">
-                            80%
-                        </span>
-
-                    </div>
-
-
-                    <div class="progress">
-
-                        <span
-                            style="--progress:80%"
-                        ></span>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="skill-item">
-
-                    <div class="skill-top">
-
-                        <b>
-                            🧠 Learning & Development
-                        </b>
-
-                        <span class="skill-percent">
-                            95%
-                        </span>
-
-                    </div>
-
-
-                    <div class="progress">
-
-                        <span
-                            style="--progress:95%"
-                        ></span>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </article>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         PROJECTS
-    ===================================================== -->
-
-    <section
-        id="section-projects"
-        class="section-content"
-    >
-
-        <article class="card">
-
-            <h3>
-
-                <i class="fa-solid fa-code"></i>
-
-                <span id="proj-title">
-                    Asosiy Loyihalar
-                </span>
-
-            </h3>
-
-
-            <div class="projects-list">
-
-
-                <!-- 1 -->
-
-                <a
-                    class="project"
-                    href="https://reyzer2112.github.io/2048-Oyini/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="project-icon">
-
-                        <i
-                            class="fa-solid fa-table-cells"
-                        ></i>
-
-                    </div>
-
-
-                    <div class="project-info">
-
-                        <div class="project-title">
-                            2048 O'yini
-                        </div>
-
-                        <div class="project-description">
-                            Classic 2048 web game
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-arrow">
-
-                        <i
-                            class="fa-solid fa-arrow-up-right-from-square"
-                        ></i>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- 2 -->
-
-                <a
-                    class="project"
-                    href="https://reyzer2112.github.io/Wordle-Uzbekcha/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="project-icon">
-
-                        <i
-                            class="fa-solid fa-font"
-                        ></i>
-
-                    </div>
-
-
-                    <div class="project-info">
-
-                        <div class="project-title">
-                            Wordle Uzbekcha
-                        </div>
-
-                        <div class="project-description">
-                            Uzbek word guessing game
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-arrow">
-
-                        <i
-                            class="fa-solid fa-arrow-up-right-from-square"
-                        ></i>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- 3 -->
-
-                <a
-                    class="project"
-                    href="https://reyzer2112.github.io/Necha-kun-qoldi/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="project-icon">
-
-                        <i
-                            class="fa-solid fa-calendar-days"
-                        ></i>
-
-                    </div>
-
-
-                    <div class="project-info">
-
-                        <div class="project-title">
-                            Necha kun qoldi
-                        </div>
-
-                        <div class="project-description">
-                            Countdown web application
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-arrow">
-
-                        <i
-                            class="fa-solid fa-arrow-up-right-from-square"
-                        ></i>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- 4 -->
-
-                <a
-                    class="project"
-                    href="https://reyzer2112.github.io/ReyZer-Kubik-Rubik/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="project-icon">
-
-                        <i
-                            class="fa-solid fa-cube"
-                        ></i>
-
-                    </div>
-
-
-                    <div class="project-info">
-
-                        <div class="project-title">
-                            Kubik Rubik
-                        </div>
-
-                        <div class="project-description">
-                            Rubik's Cube project
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-arrow">
-
-                        <i
-                            class="fa-solid fa-arrow-up-right-from-square"
-                        ></i>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- 5 -->
-
-                <a
-                    class="project"
-                    href="https://reyzer2112.github.io/Tayoqli-Qahramon/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="project-icon">
-
-                        <i
-                            class="fa-solid fa-person-running"
-                        ></i>
-
-                    </div>
-
-
-                    <div class="project-info">
-
-                        <div class="project-title">
-                            Tayoqli Qahramon
-                        </div>
-
-                        <div class="project-description">
-                            Creative browser game
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-arrow">
-
-                        <i
-                            class="fa-solid fa-arrow-up-right-from-square"
-                        ></i>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- 6 -->
-
-                <a
-                    class="project"
-                    href="https://reyzer2112.github.io/FlappyBird/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="project-icon">
-
-                        <i
-                            class="fa-solid fa-dove"
-                        ></i>
-
-                    </div>
-
-
-                    <div class="project-info">
-
-                        <div class="project-title">
-                            Flappy Bird
-                        </div>
-
-                        <div class="project-description">
-                            Arcade flying game
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-arrow">
-
-                        <i
-                            class="fa-solid fa-arrow-up-right-from-square"
-                        ></i>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- 7 -->
-
-                <a
-                    class="project"
-                    href="https://reyzer2112.github.io/Tower-Blocks/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="project-icon">
-
-                        <i
-                            class="fa-solid fa-building"
-                        ></i>
-
-                    </div>
-
-
-                    <div class="project-info">
-
-                        <div class="project-title">
-                            Tower Blocks
-                        </div>
-
-                        <div class="project-description">
-                            Tower building game
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-arrow">
-
-                        <i
-                            class="fa-solid fa-arrow-up-right-from-square"
-                        ></i>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- 8 -->
-
-                <a
-                    class="project"
-                    href="https://reyzer2112.github.io/Aqldan-Ozgan-Haydovchi/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="project-icon">
-
-                        <i
-                            class="fa-solid fa-car-side"
-                        ></i>
-
-                    </div>
-
-
-                    <div class="project-info">
-
-                        <div class="project-title">
-                            Aqldan Ozgan Haydovchi
-                        </div>
-
-                        <div class="project-description">
-                            Fast-paced driving game
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-arrow">
-
-                        <i
-                            class="fa-solid fa-arrow-up-right-from-square"
-                        ></i>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- 9 -->
-
-                <a
-                    class="project"
-                    href="https://reyzer2112.github.io/Xotira-Chiroqlari/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="project-icon">
-
-                        <i
-                            class="fa-solid fa-lightbulb"
-                        ></i>
-
-                    </div>
-
-
-                    <div class="project-info">
-
-                        <div class="project-title">
-                            Xotira Chiroqlari
-                        </div>
-
-                        <div class="project-description">
-                            Memory and lights game
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-arrow">
-
-                        <i
-                            class="fa-solid fa-arrow-up-right-from-square"
-                        ></i>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- 10 -->
-
-                <a
-                    class="project"
-                    href="https://reyzer2112.github.io/Tarjimon/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="project-icon">
-
-                        <i
-                            class="fa-solid fa-language"
-                        ></i>
-
-                    </div>
-
-
-                    <div class="project-info">
-
-                        <div class="project-title">
-                            Tarjimon
-                        </div>
-
-                        <div class="project-description">
-                            Translation web application
-                        </div>
-
-                    </div>
-
-
-                    <div class="project-arrow">
-
-                        <i
-                            class="fa-solid fa-arrow-up-right-from-square"
-                        ></i>
-
-                    </div>
-
-                </a>
-
-
-            </div>
-
-        </article>
-
-    </section>
-
-
-</main>
-
-
-
-<!-- =========================================================
-     BOTTOM NAVIGATION
-========================================================= -->
-
-<nav class="bottom-nav">
-
-
-    <button
-        type="button"
-        class="bottom-nav-btn active"
-        id="bottom-info"
-    >
-
-        <i class="fa-solid fa-user"></i>
-
-        <span>
-            Info
-        </span>
-
-    </button>
-
-
-
-    <button
-        type="button"
-        class="bottom-nav-btn"
-        id="bottom-skills"
-    >
-
-        <i class="fa-solid fa-code"></i>
-
-        <span>
-            Ko'nikmalar
-        </span>
-
-    </button>
-
-
-
-    <button
-        type="button"
-        class="bottom-nav-btn"
-        id="bottom-projects"
-    >
-
-        <i class="fa-solid fa-folder"></i>
-
-        <span>
-            Loyihalar
-        </span>
-
-    </button>
-
-
-</nav>
-
-
-
-<script>
-(() => {
-    "use strict";
-
-    /* =====================================================
-       TELEGRAM
-    ===================================================== */
-
-    const tg = window.Telegram?.WebApp || null;
-
-    if (tg) {
-        try {
-            tg.ready();
-            tg.expand();
-        } catch (_) {}
-    }
-
-
-    /* =====================================================
-       CACHE DOM — avoid repeated querySelector/getElementById
-       calls during navigation and language changes.
-    ===================================================== */
-
-    const $ = id => document.getElementById(id);
-
-    const body = document.body;
-    const html = document.documentElement;
-
-    const themeButton = $("theme-btn");
-
-    const sections = {
-        info: $("section-info"),
-        skills: $("section-skills"),
-        projects: $("section-projects")
-    };
-
-    const topButtons = {
-        info: $("tab-info"),
-        skills: $("tab-skills"),
-        projects: $("tab-projects")
-    };
-
-    const bottomButtons = {
-        info: $("bottom-info"),
-        skills: $("bottom-skills"),
-        projects: $("bottom-projects")
-    };
-
-    const langButtons = {
-        uz: $("btn-uz"),
-        ru: $("btn-ru"),
-        en: $("btn-en")
-    };
-
-
-    /* =====================================================
-       PAGE LOAD
-    ===================================================== */
-
-    const showPage = () => {
-        requestAnimationFrame(() => {
-            body.classList.remove("page-loading");
-            body.classList.add("page-ready");
-        });
-    };
-
-    if (document.readyState === "complete") {
-        showPage();
-    } else {
-        window.addEventListener("load", showPage, { once: true, passive: true });
-    }
-
-
-    /* =====================================================
-       HAPTIC
-    ===================================================== */
-
-    function haptic(type = "light") {
-        try {
-            tg?.HapticFeedback?.impactOccurred(type);
-        } catch (_) {}
-    }
-
-
-    /* =====================================================
-       THEME
-    ===================================================== */
-
-    function updateThemeIcon() {
-        themeButton.textContent =
-            body.getAttribute("data-theme") === "dark" ? "☀️" : "🌙";
-    }
-
-    function applyTelegramTheme(theme) {
-        if (!tg) return;
-
-        try {
-            const color = theme === "dark" ? "#070b14" : "#f5f7fb";
-            tg.setHeaderColor?.(color);
-            tg.setBackgroundColor?.(color);
-        } catch (_) {}
-    }
-
-    function toggleTheme() {
-        const next =
-            body.getAttribute("data-theme") === "dark"
-                ? "light"
-                : "dark";
-
-        body.setAttribute("data-theme", next);
-
-        try {
-            localStorage.setItem("reyzer-theme", next);
-        } catch (_) {}
-
-        updateThemeIcon();
-        applyTelegramTheme(next);
-        haptic("light");
-    }
-
-    themeButton.addEventListener("click", toggleTheme);
-
-    try {
-        const savedTheme = localStorage.getItem("reyzer-theme");
-
-        if (savedTheme === "light" || savedTheme === "dark") {
-            body.setAttribute("data-theme", savedTheme);
-        }
-    } catch (_) {}
-
-    updateThemeIcon();
-    applyTelegramTheme(body.getAttribute("data-theme"));
-
-
-    /* =====================================================
-       TRANSLATIONS
-    ===================================================== */
-
-    const translations = {
-        uz: {
-            badge: "ReyZer Portfolio",
-            title: "Frontend & Backend Developer",
-            info: "Info",
-            skills: "Ko'nikmalar",
-            projects: "Loyihalar",
-            infoH1: "Frontend & Backend",
-            infoP1: "Zamonaviy va interaktiv web-loyihalar yarataman. Frontend va backend yo'nalishlarida ishlayman.",
-            infoH2: "Gaming & Creation",
-            infoP2: "Roblox va Minecraft platformalariga qiziqaman. O'yinlar va kreativ loyihalar yaratishni yoqtiraman.",
-            infoH3: "GIF Creator",
-            infoP3: "Kreativ GIF animatsiyalar yarataman. GIF kontentlarim 3 mlrd+ ko'rishlarga ega.",
-            infoH4: "Mobilografiya",
-            infoP4: "Mobil fotografiya, video va kreativ vizual kontent yaratishga qiziqaman.",
-            infoH5: "Maqsadim",
-            infoP5: "IT va kreativ yo'nalishlarni birlashtirib, katta va innovatsion loyihalar yaratish.",
-            socialTitle: "Ijtimoiy tarmoqlar",
-            socialDescription: "Meni quyidagi platformalarda kuzatishingiz mumkin.",
-            skillsTitle: "Ko'nikmalarim",
-            projectsTitle: "Asosiy Loyihalar"
-        },
-
-        ru: {
-            badge: "Портфолио ReyZer",
-            title: "Frontend & Backend Разработчик",
-            info: "Инфо",
-            skills: "Навыки",
-            projects: "Проекты",
-            infoH1: "Frontend & Backend",
-            infoP1: "Создаю современные и интерактивные веб-проекты. Работаю в направлениях frontend и backend.",
-            infoH2: "Gaming & Creation",
-            infoP2: "Интересуюсь Roblox и Minecraft. Люблю создавать игры и креативные проекты.",
-            infoH3: "GIF Creator",
-            infoP3: "Создаю креативные GIF-анимации. Мои GIF получили 3 млрд+ просмотров.",
-            infoH4: "Мобилография",
-            infoP4: "Интересуюсь мобильной фотографией, видео и созданием визуального контента.",
-            infoH5: "Моя цель",
-            infoP5: "Объединить IT и творческие направления для создания крупных и инновационных проектов.",
-            socialTitle: "Социальные сети",
-            socialDescription: "Вы можете следить за мной на следующих платформах.",
-            skillsTitle: "Мои навыки",
-            projectsTitle: "Основные проекты"
-        },
-
-        en: {
-            badge: "ReyZer Portfolio",
-            title: "Frontend & Backend Developer",
-            info: "Info",
-            skills: "Skills",
-            projects: "Projects",
-            infoH1: "Frontend & Backend",
-            infoP1: "I create modern and interactive web projects. I work in both frontend and backend development.",
-            infoH2: "Gaming & Creation",
-            infoP2: "I am interested in Roblox and Minecraft. I enjoy creating games and creative projects.",
-            infoH3: "GIF Creator",
-            infoP3: "I create creative GIF animations. My GIF content has reached 3B+ views.",
-            infoH4: "Mobilography",
-            infoP4: "I am interested in mobile photography, video and creative visual content.",
-            infoH5: "My Goal",
-            infoP5: "To combine IT and creative fields to build large and innovative projects.",
-            socialTitle: "Social Networks",
-            socialDescription: "You can follow me on the following platforms.",
-            skillsTitle: "My Skills",
-            projectsTitle: "Main Projects"
-        }
-    };
-
-
-    /* =====================================================
-       LANGUAGE
-    ===================================================== */
-
-    const textMap = {
-        lblBadge: ["lbl-badge", "badge"],
-        lblTitle: ["lbl-title", "title"],
-
-        infoH1: ["info-h1", "infoH1"],
-        infoP1: ["info-p1", "infoP1"],
-        infoH2: ["info-h2", "infoH2"],
-        infoP2: ["info-p2", "infoP2"],
-        infoH3: ["info-h3", "infoH3"],
-        infoP3: ["info-p3", "infoP3"],
-        infoH4: ["info-h4", "infoH4"],
-        infoP4: ["info-p4", "infoP4"],
-        infoH5: ["info-h5", "infoH5"],
-        infoP5: ["info-p5", "infoP5"],
-        socialTitle: ["social-title", "socialTitle"],
-        socialDescription: ["social-description", "socialDescription"],
-        skillsTitle: ["skills-title", "skillsTitle"],
-        projectsTitle: ["proj-title", "projectsTitle"]
-    };
-
-    function setLang(lang, doHaptic = true) {
-        const t = translations[lang];
-        if (!t) return;
-
-        html.lang = lang;
-
-        for (const [, [id, key]] of Object.entries(textMap)) {
-            const el = $(id);
-            if (el) el.textContent = t[key];
-        }
-
-        $("tab-info").querySelector("i") || ($("tab-info").innerHTML = '<i class="fa-solid fa-user"></i>');
-        $("tab-skills").querySelector("i") || ($("tab-skills").innerHTML = '<i class="fa-solid fa-code"></i>');
-        $("tab-projects").querySelector("i") || ($("tab-projects").innerHTML = '<i class="fa-solid fa-folder"></i>');
-
-        // Preserve icons without innerHTML replacement on every language switch.
-        topButtons.info.lastChild.textContent = ` ${t.info}`;
-        topButtons.skills.lastChild.textContent = ` ${t.skills}`;
-        topButtons.projects.lastChild.textContent = ` ${t.projects}`;
-
-        bottomButtons.info.querySelector("span").textContent = t.info;
-        bottomButtons.skills.querySelector("span").textContent = t.skills;
-        bottomButtons.projects.querySelector("span").textContent = t.projects;
-
-        for (const key in langButtons) {
-            langButtons[key].classList.toggle("active", key === lang);
-        }
-
-        try {
-            localStorage.setItem("reyzer-language", lang);
-        } catch (_) {}
-
-        if (doHaptic) haptic("light");
-    }
-
-    // The original markup already contains the icons, so this initializes
-    // text without recreating the icon DOM.
-    try {
-        const savedLanguage = localStorage.getItem("reyzer-language");
-        if (savedLanguage && translations[savedLanguage]) {
-            setLang(savedLanguage, false);
-        } else {
-            setLang("uz", false);
-        }
-    } catch (_) {
-        setLang("uz", false);
-    }
-
-    langButtons.uz.addEventListener("click", () => setLang("uz"));
-    langButtons.ru.addEventListener("click", () => setLang("ru"));
-    langButtons.en.addEventListener("click", () => setLang("en"));
-
-
-    /* =====================================================
-       TAB SWITCHING
-       - Cache all nodes.
-       - Do not force a layout with offsetWidth.
-       - Reflow is avoided; CSS animation restarts via a tiny
-         class cycle on the next frame.
-    ===================================================== */
-
-    let activeTab = "info";
-    let switchFrame = 0;
-
-    function restartSectionAnimation(target) {
-        target.classList.remove("section-refresh");
-
-        cancelAnimationFrame(switchFrame);
-
-        switchFrame = requestAnimationFrame(() => {
-            target.classList.add("section-refresh");
-        });
-    }
-
-    function switchTab(tabName) {
-        const target = sections[tabName];
-        if (!target || activeTab === tabName) return;
-
-        activeTab = tabName;
-
-        for (const key in sections) {
-            sections[key].classList.toggle("active", key === tabName);
-            topButtons[key].classList.toggle("active", key === tabName);
-            bottomButtons[key].classList.toggle("active", key === tabName);
-        }
-
-        restartSectionAnimation(target);
-        haptic("light");
-
-        // Instant scroll is much cheaper on old Android WebViews than
-        // running a long smooth scroll animation every tab click.
-        window.scrollTo(0, 0);
-    }
-
-    for (const key in topButtons) {
-        topButtons[key].addEventListener("click", () => switchTab(key));
-        bottomButtons[key].addEventListener("click", () => switchTab(key));
-    }
-
-
-    /* =====================================================
-       PROJECT HAPTIC
-       Combined with the existing delegated pointer/click logic.
-    ===================================================== */
-
-    document.addEventListener("click", event => {
-        if (event.target.closest(".project")) haptic("light");
-    }, { passive: true });
-
-
-    /* =====================================================
-       DESKTOP 3D PROFILE
-       - Only enabled on mouse/fine-pointer devices.
-       - requestAnimationFrame throttles pointermove to 1 update/frame.
-    ===================================================== */
-
-    const desktopHover = window.matchMedia("(hover:hover) and (pointer:fine)");
-    const profile = document.querySelector(".profile-card");
-
-    if (desktopHover.matches && profile) {
-        let raf = 0;
-        let lastX = 0;
-        let lastY = 0;
-
-        profile.addEventListener("pointermove", event => {
-            lastX = event.clientX;
-            lastY = event.clientY;
-
-            if (raf) return;
-
-            raf = requestAnimationFrame(() => {
-                raf = 0;
-
-                const rect = profile.getBoundingClientRect();
-                const centerX = rect.width * 0.5;
-                const centerY = rect.height * 0.5;
-
-                const rotateX = ((lastY - rect.top - centerY) / centerY) * -1.1;
-                const rotateY = ((lastX - rect.left - centerX) / centerX) * 1.1;
-
-                profile.style.transform =
-                    `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) ` +
-                    `rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
-            });
-        }, { passive: true });
-
-        profile.addEventListener("pointerleave", () => {
-            cancelAnimationFrame(raf);
-            raf = 0;
-            profile.style.transform = "";
-        }, { passive: true });
-    }
-
-
-    /* =====================================================
-       RESIZE
-       Reset 3D transform only when resize has settled.
-    ===================================================== */
-
-    let resizeTimer = 0;
-
-    window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
-
-        resizeTimer = setTimeout(() => {
-            if (profile) profile.style.transform = "";
-        }, 120);
-    }, { passive: true });
-
-
-    /* =====================================================
-       VISIBILITY
-       Pause animations while Telegram/browser is hidden.
-    ===================================================== */
-
-    document.addEventListener("visibilitychange", () => {
-        body.classList.toggle("page-paused", document.hidden);
-    }, { passive: true });
-
-})();
-</script>
+            const topButtons = {
+                info: $("tab-info"),
+                skills: $("tab-skills"),
+                projects: $("tab-projects")
+            };
+
+            const bottomButtons = {
+                info: $("bottom-info"),
+                skills: $("bottom-skills"),
+                projects: $("bottom-projects")
+            };
+
+            const langButtons = {
+                uz: $("btn-uz"),
+                ru: $("btn-ru"),
+                en: $("btn-en")
+            };
+
+
+            /* =====================================================
+               PAGE LOAD
+            ===================================================== */
+
+            const showPage = () => {
+                requestAnimationFrame(() => {
+                    body.classList.remove("page-loading");
+                    body.classList.add("page-ready");
+                });
+            };
+
+            if (document.readyState === "complete") {
+                showPage();
+            } else {
+                window.addEventListener("load", showPage, { once: true, passive: true });
+            }
+
+
+            /* =====================================================
+               HAPTIC
+            ===================================================== */
+
+            function haptic(type = "light") {
+                try {
+                    tg?.HapticFeedback?.impactOccurred(type);
+                } catch (_) { }
+            }
+
+
+            /* =====================================================
+               THEME
+            ===================================================== */
+
+            function updateThemeIcon() {
+                themeButton.textContent =
+                    body.getAttribute("data-theme") === "dark" ? "☀️" : "🌙";
+            }
+
+            function applyTelegramTheme(theme) {
+                if (!tg) return;
+
+                try {
+                    const color = theme === "dark" ? "#070b14" : "#f5f7fb";
+                    tg.setHeaderColor?.(color);
+                    tg.setBackgroundColor?.(color);
+                } catch (_) { }
+            }
+
+            function toggleTheme() {
+                const next =
+                    body.getAttribute("data-theme") === "dark"
+                        ? "light"
+                        : "dark";
+
+                body.setAttribute("data-theme", next);
+
+                try {
+                    localStorage.setItem("reyzer-theme", next);
+                } catch (_) { }
+
+                updateThemeIcon();
+                applyTelegramTheme(next);
+                haptic("light");
+            }
+
+            themeButton.addEventListener("click", toggleTheme);
+
+            try {
+                const savedTheme = localStorage.getItem("reyzer-theme");
+
+                if (savedTheme === "light" || savedTheme === "dark") {
+                    body.setAttribute("data-theme", savedTheme);
+                }
+            } catch (_) { }
+
+            updateThemeIcon();
+            applyTelegramTheme(body.getAttribute("data-theme"));
+
+
+            /* =====================================================
+               TRANSLATIONS
+            ===================================================== */
+
+            const translations = {
+                uz: {
+                    badge: "ReyZer Portfolio",
+                    title: "Frontend & Backend Developer",
+                    info: "Info",
+                    skills: "Ko'nikmalar",
+                    projects: "Loyihalar",
+                    infoH1: "Frontend & Backend",
+                    infoP1: "Zamonaviy va interaktiv web-loyihalar yarataman. Frontend va backend yo'nalishlarida ishlayman.",
+                    infoH2: "Gaming & Creation",
+                    infoP2: "Roblox va Minecraft platformalariga qiziqaman. O'yinlar va kreativ loyihalar yaratishni yoqtiraman.",
+                    infoH3: "GIF Creator",
+                    infoP3: "Kreativ GIF animatsiyalar yarataman. GIF kontentlarim 3 mlrd+ ko'rishlarga ega.",
+                    infoH4: "Mobilografiya",
+                    infoP4: "Mobil fotografiya, video va kreativ vizual kontent yaratishga qiziqaman.",
+                    infoH5: "Maqsadim",
+                    infoP5: "IT va kreativ yo'nalishlarni birlashtirib, katta va innovatsion loyihalar yaratish.",
+                    socialTitle: "Ijtimoiy tarmoqlar",
+                    socialDescription: "Meni quyidagi platformalarda kuzatishingiz mumkin.",
+                    skillsTitle: "Ko'nikmalarim",
+                    projectsTitle: "Asosiy Loyihalar"
+                },
+
+                ru: {
+                    badge: "Портфолио ReyZer",
+                    title: "Frontend & Backend Разработчик",
+                    info: "Инфо",
+                    skills: "Навыки",
+                    projects: "Проекты",
+                    infoH1: "Frontend & Backend",
+                    infoP1: "Создаю современные и интерактивные веб-проекты. Работаю в направлениях frontend и backend.",
+                    infoH2: "Gaming & Creation",
+                    infoP2: "Интересуюсь Roblox и Minecraft. Люблю создавать игры и креативные проекты.",
+                    infoH3: "GIF Creator",
+                    infoP3: "Создаю креативные GIF-анимации. Мои GIF получили 3 млрд+ просмотров.",
+                    infoH4: "Мобилография",
+                    infoP4: "Интересуюсь мобильной фотографией, видео и созданием визуального контента.",
+                    infoH5: "Моя цель",
+                    infoP5: "Объединить IT и творческие направления для создания крупных и инновационных проектов.",
+                    socialTitle: "Социальные сети",
+                    socialDescription: "Вы можете следить за мной на следующих платформах.",
+                    skillsTitle: "Мои навыки",
+                    projectsTitle: "Основные проекты"
+                },
+
+                en: {
+                    badge: "ReyZer Portfolio",
+                    title: "Frontend & Backend Developer",
+                    info: "Info",
+                    skills: "Skills",
+                    projects: "Projects",
+                    infoH1: "Frontend & Backend",
+                    infoP1: "I create modern and interactive web projects. I work in both frontend and backend development.",
+                    infoH2: "Gaming & Creation",
+                    infoP2: "I am interested in Roblox and Minecraft. I enjoy creating games and creative projects.",
+                    infoH3: "GIF Creator",
+                    infoP3: "I create creative GIF animations. My GIF content has reached 3B+ views.",
+                    infoH4: "Mobilography",
+                    infoP4: "I am interested in mobile photography, video and creative visual content.",
+                    infoH5: "My Goal",
+                    infoP5: "To combine IT and creative fields to build large and innovative projects.",
+                    socialTitle: "Social Networks",
+                    socialDescription: "You can follow me on the following platforms.",
+                    skillsTitle: "My Skills",
+                    projectsTitle: "Main Projects"
+                }
+            };
+
+
+            /* =====================================================
+               LANGUAGE
+            ===================================================== */
+
+            const textMap = {
+                lblBadge: ["lbl-badge", "badge"],
+                lblTitle: ["lbl-title", "title"],
+
+                infoH1: ["info-h1", "infoH1"],
+                infoP1: ["info-p1", "infoP1"],
+                infoH2: ["info-h2", "infoH2"],
+                infoP2: ["info-p2", "infoP2"],
+                infoH3: ["info-h3", "infoH3"],
+                infoP3: ["info-p3", "infoP3"],
+                infoH4: ["info-h4", "infoH4"],
+                infoP4: ["info-p4", "infoP4"],
+                infoH5: ["info-h5", "infoH5"],
+                infoP5: ["info-p5", "infoP5"],
+                socialTitle: ["social-title", "socialTitle"],
+                socialDescription: ["social-description", "socialDescription"],
+                skillsTitle: ["skills-title", "skillsTitle"],
+                projectsTitle: ["proj-title", "projectsTitle"]
+            };
+
+            function setLang(lang, doHaptic = true) {
+                const t = translations[lang];
+                if (!t) return;
+
+                html.lang = lang;
+
+                for (const [, [id, key]] of Object.entries(textMap)) {
+                    const el = $(id);
+                    if (el) el.textContent = t[key];
+                }
+
+                $("tab-info").querySelector("i") || ($("tab-info").innerHTML = '<i class="fa-solid fa-user"></i>');
+                $("tab-skills").querySelector("i") || ($("tab-skills").innerHTML = '<i class="fa-solid fa-code"></i>');
+                $("tab-projects").querySelector("i") || ($("tab-projects").innerHTML = '<i class="fa-solid fa-folder"></i>');
+
+                // Preserve icons without innerHTML replacement on every language switch.
+                topButtons.info.lastChild.textContent = ` ${t.info}`;
+                topButtons.skills.lastChild.textContent = ` ${t.skills}`;
+                topButtons.projects.lastChild.textContent = ` ${t.projects}`;
+
+                bottomButtons.info.querySelector("span").textContent = t.info;
+                bottomButtons.skills.querySelector("span").textContent = t.skills;
+                bottomButtons.projects.querySelector("span").textContent = t.projects;
+
+                for (const key in langButtons) {
+                    langButtons[key].classList.toggle("active", key === lang);
+                }
+
+                try {
+                    localStorage.setItem("reyzer-language", lang);
+                } catch (_) { }
+
+                if (doHaptic) haptic("light");
+            }
+
+            // The original markup already contains the icons, so this initializes
+            // text without recreating the icon DOM.
+            try {
+                const savedLanguage = localStorage.getItem("reyzer-language");
+                if (savedLanguage && translations[savedLanguage]) {
+                    setLang(savedLanguage, false);
+                } else {
+                    setLang("uz", false);
+                }
+            } catch (_) {
+                setLang("uz", false);
+            }
+
+            langButtons.uz.addEventListener("click", () => setLang("uz"));
+            langButtons.ru.addEventListener("click", () => setLang("ru"));
+            langButtons.en.addEventListener("click", () => setLang("en"));
+
+
+            /* =====================================================
+               TAB SWITCHING
+               - Cache all nodes.
+               - Do not force a layout with offsetWidth.
+               - Reflow is avoided; CSS animation restarts via a tiny
+                 class cycle on the next frame.
+            ===================================================== */
+
+            let activeTab = "info";
+            let switchFrame = 0;
+
+            function restartSectionAnimation(target) {
+                target.classList.remove("section-refresh");
+
+                cancelAnimationFrame(switchFrame);
+
+                switchFrame = requestAnimationFrame(() => {
+                    target.classList.add("section-refresh");
+                });
+            }
+
+            function switchTab(tabName) {
+                const target = sections[tabName];
+                if (!target || activeTab === tabName) return;
+
+                activeTab = tabName;
+
+                for (const key in sections) {
+                    sections[key].classList.toggle("active", key === tabName);
+                    topButtons[key].classList.toggle("active", key === tabName);
+                    bottomButtons[key].classList.toggle("active", key === tabName);
+                }
+
+                restartSectionAnimation(target);
+                haptic("light");
+
+                // Instant scroll is much cheaper on old Android WebViews than
+                // running a long smooth scroll animation every tab click.
+                window.scrollTo(0, 0);
+            }
+
+            for (const key in topButtons) {
+                topButtons[key].addEventListener("click", () => switchTab(key));
+                bottomButtons[key].addEventListener("click", () => switchTab(key));
+            }
+
+
+            /* =====================================================
+               PROJECT HAPTIC
+               Combined with the existing delegated pointer/click logic.
+            ===================================================== */
+
+            document.addEventListener("click", event => {
+                if (event.target.closest(".project")) haptic("light");
+            }, { passive: true });
+
+
+            /* =====================================================
+               DESKTOP 3D PROFILE
+               - Only enabled on mouse/fine-pointer devices.
+               - requestAnimationFrame throttles pointermove to 1 update/frame.
+            ===================================================== */
+
+            const desktopHover = window.matchMedia("(hover:hover) and (pointer:fine)");
+            const profile = document.querySelector(".profile-card");
+
+            if (desktopHover.matches && profile) {
+                let raf = 0;
+                let lastX = 0;
+                let lastY = 0;
+
+                profile.addEventListener("pointermove", event => {
+                    lastX = event.clientX;
+                    lastY = event.clientY;
+
+                    if (raf) return;
+
+                    raf = requestAnimationFrame(() => {
+                        raf = 0;
+
+                        const rect = profile.getBoundingClientRect();
+                        const centerX = rect.width * 0.5;
+                        const centerY = rect.height * 0.5;
+
+                        const rotateX = ((lastY - rect.top - centerY) / centerY) * -1.1;
+                        const rotateY = ((lastX - rect.left - centerX) / centerX) * 1.1;
+
+                        profile.style.transform =
+                            `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) ` +
+                            `rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
+                    });
+                }, { passive: true });
+
+                profile.addEventListener("pointerleave", () => {
+                    cancelAnimationFrame(raf);
+                    raf = 0;
+                    profile.style.transform = "";
+                }, { passive: true });
+            }
+
+
+            /* =====================================================
+               RESIZE
+               Reset 3D transform only when resize has settled.
+            ===================================================== */
+
+            let resizeTimer = 0;
+
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimer);
+
+                resizeTimer = setTimeout(() => {
+                    if (profile) profile.style.transform = "";
+                }, 120);
+            }, { passive: true });
+
+
+            /* =====================================================
+               VISIBILITY
+               Pause animations while Telegram/browser is hidden.
+            ===================================================== */
+
+            document.addEventListener("visibilitychange", () => {
+                body.classList.toggle("page-paused", document.hidden);
+            }, { passive: true });
+
+        })();
+    </script>
 
 
 </body>
+
 </html>
